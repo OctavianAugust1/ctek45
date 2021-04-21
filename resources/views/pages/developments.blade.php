@@ -38,6 +38,17 @@
     @endauth
 
     <h2>Наши проекты</h2>
+    <div class="dropdown">
+        <span>Категория</span>
+        <select>
+            <option disabled>Категория:</option>
+            <option>Без категории</option>
+            <option>МВД</option>
+            <option>Аэродром</option>
+            <option>МЧС</option>
+            <option>Дорожная техника</option>
+        </select>
+    </div>
     <div class="developments">
         @foreach ($developments as $development)
             <div class="development">

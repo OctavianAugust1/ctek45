@@ -34,8 +34,12 @@
             <div class="images">
                 @foreach ($development_images as $development_image)
                     <div class="image">
-                        <img data="{{ asset($development_image->development_image) }}" alt="">
-                        <div class="for_the_entire_window" data-big="{{ asset($development_image->development_image) }}">
+                        @php
+                            $development_preview_small = DB::table('development_images')->where([['type', 'small'], ['id', $development_image->id]])->first();
+                            $development_preview_big = DB::table('development_images')->where([['type', 'big'], ['id', $development_image->id + 1]])->first();
+                        @endphp
+                        <img data="{{ asset($development_preview_small->path) }}" alt="">
+                        <div class="for_the_entire_window" data-big="{{ asset($development_preview_big->path) }}">
                             <img data="{{ asset('public/image/other/expand.svg') }}">
                         </div>
                         <div class="delete_image_block">
@@ -43,7 +47,7 @@
                         </div>
                         <form action="{{ route('delete_image_development') }}" method="POST">
                             @csrf
-                            <input type="hidden" name="development_image" value="{{ $development_image->development_image }}">
+                            <input type="hidden" name="path" value="{{ $development_image->path }}">
                             <button class="delete_image_btn">Удалить изображение</button>
                         </form>
                     </div>
@@ -53,7 +57,6 @@
             <form class="delete_development" action="{{ route('delete_development') }}" method="POST">
                 @csrf
                 <input type="hidden" name="id" value="{{ $development->id }}">
-                <input type="hidden" name="path" value="{{ Request::path() }}">
                 <button>Удалить</button>
             </form>
         </div>
@@ -63,8 +66,8 @@
             <div class="images">
                 @foreach ($development_images as $development_image)
                     <div class="image">
-                        <img data="{{ asset($development_image->development_image) }}" alt="">
-                        <div class="for_the_entire_window" data-big="{{ asset($development_image->development_image) }}">
+                        <img data="{{ asset($development_image->path) }}" alt="">
+                        <div class="for_the_entire_window" data-big="{{ asset($development_image->path) }}">
                             <img data="{{ asset('public/image/other/expand.svg') }}">
                         </div>
                     </div>

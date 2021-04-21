@@ -119,8 +119,12 @@ header {
     text-shadow: 1px 1px 6px rgba(140, 140, 140);
     color: black;
 }
-.header nav a img {
+nav a .sign-out {
     height: 1.4em;
+    transition: .1s filter linear;
+}
+nav a .sign-out:hover {
+    filter: drop-shadow(1px 1px 6px rgba(140, 140, 140));
 }
 
 
@@ -152,6 +156,9 @@ input, textarea {
     outline: none;
     padding: 5px;
     border: solid 1px gray;
+}
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    box-shadow: 0 0 5px var(--logo-color);
 }
 
 main {
@@ -248,6 +255,7 @@ main {
     max-height: 100%;
     max-width: 90%;
     border: 1px solid black;
+    background: white;
 }
 .modal .form .close {
     position: absolute;
@@ -291,6 +299,22 @@ form .form-box textarea {
     grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
     grid-gap: 1em;
     margin: 10px 0;
+}
+.dropdown {
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.dropdown span {
+    margin-right: 10px;
+}
+.dropdown select {
+    height: 32px;
+    font-size: 1.4rem;
+}
+.dropdown span, .dropdown select {
+    outline: none;
 }
 .development {
     width: 100%;
@@ -355,6 +379,7 @@ form .form-box textarea {
     height: 200px;
     margin-right: 20px;
     margin-top: 20px;
+    background: #a8cffa;
 }
 .development_page .images .image .for_the_entire_window {
     right: 10px;
@@ -555,9 +580,6 @@ header .gradient {
     text-shadow: 1px 1px 6px rgba(140, 140, 140);
     color: black;
 }
-.header_hp nav a img {
-    height: 1.4em;
-}
 
 
 .homepage {
@@ -635,15 +657,62 @@ header .gradient {
     width: 383px;
     margin-bottom: 200px;
 }
+
+
+/* ########################################## */
+/* parallax_effect and translate */
+.desc_photo .anim_translate {
+    animation: company_anim ease-in-out 5s infinite;
+}
+.desc_photo img {
+    /* opacity: .7; */
+}
+@keyframes company_anim {
+    from {
+        transform: translateY(-50px);
+    }
+    50% {
+        transform: translateY(-40px);
+    }
+    to {
+        transform: translateY(-50px);
+    }
+}
+.parallax_effect {
+    height: 100%;
+    perspective: 1px;
+    transform-style: preserve-3d;
+}
+.parallax_effect .photo_presentation {
+    position: relative;
+    transform-style: inherit;
+}
+.parallax_effect .photo_presentation::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1px;
+    transform-origin: center;
+
+    transform: translateZ(-1px) scale(2);
+}
+/* ########################################## */
+
+
 /* .company1 > img, .company2 > img, .company3 > img {
     max-height: 100%;
     max-width: 100%;
 } */
 .company1, .company2, .company3 {
     z-index: -3;
-    height: 39vh;
-    width: 20vw;
-    opacity: .7;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: white;
+    padding: 10px;
 }
 .desc_photo_bg {
     position: absolute;
@@ -665,8 +734,8 @@ header .gradient {
 }
 .company3 {
     position: relative;
-    top: 270px;
-    left: -720px;
+    top: 370px;
+    left: -800px;
 }
 
 .homepage .advantages h2 {
@@ -688,7 +757,8 @@ header .gradient {
     height: 100px;
     width: 100%;
 }
-.homepage .advantages > div img {
+.homepage .advantages > div svg {
+    fill: rgb(53, 53, 53);
     max-height: 100%;
     max-width: 100%;
 }

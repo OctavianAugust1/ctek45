@@ -9,8 +9,8 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $developments = DB::table('developments')->whereIn('id', [4, 7, 10])->get();
-        return view('pages.index', compact('developments'));
+        // $developments = DB::table('developments')->whereIn('id', [4, 7, 10])->get();
+        return view('pages.index'/*, compact('developments')*/);
     }
     public function login()
     {
@@ -37,7 +37,10 @@ class PagesController extends Controller
     public function development($id)
     {
         $development = DB::table('developments')->where('id', $id)->first();
-        $development_images = DB::table('development_images')->where('development_id', $id)->get();
+        $development_images = DB::table('development_images')->where([
+            ['development_id', $id],
+            ['type', 'small']
+        ])->get();
         return view('pages.development', ['id' => $id], compact(['development', 'development_images']));
     }
 
