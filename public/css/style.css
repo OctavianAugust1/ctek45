@@ -960,9 +960,8 @@ nav .close {
         cursor: unset;
         opacity: unset;
         transition: unset;
-        fill: white;
     }
-    .modal .form .close svg path {
+    .modal .form .close path {
         fill: white;
     }
     .modal .close:hover {

@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+	const close_svg = `
+		<svg class="times" viewBox="0 0 352 512">
+			<path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
+			</path>
+		</svg>
+	`
 	if (document.querySelector('[enctype="multipart/form-data"]')) {
 		const forms = document.querySelectorAll('[enctype="multipart/form-data"]')
 		forms.forEach(form => {
@@ -161,9 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
 				let background = document.createElement("div")
 				background.className = "bg_modal"
 				
-				let close = document.createElement("img")
+				let close = document.createElement("div")
 				close.className = "close"
-				close.src = '/public/image/other/times.svg'
+				close.insertAdjacentHTML('afterbegin', close_svg)
 				close.onclick = () => {
 					close.closest('.modal').remove()
 					body.classList.remove('modal-open')
@@ -203,13 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			nav.style.visibility = 'unset'
 			const close = document.createElement('div')
 			close.className = 'close'
-			close.insertAdjacentHTML("afterbegin", `
-				<svg class="times" viewBox="0 0 352 512">
-					<path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
-					</path>
-				</svg>
-			`)
-			close.src = '/public/image/other/times.svg'
+			close.insertAdjacentHTML("afterbegin", close_svg)
 			nav.prepend(close)
 
 			close.addEventListener('click', () => {
