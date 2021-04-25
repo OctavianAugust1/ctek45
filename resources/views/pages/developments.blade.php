@@ -37,17 +37,20 @@
         </form>
     @endauth
 
-    <h2>Наши проекты</h2>
-    <div class="dropdown">
-        <span>Категория</span>
-        <select>
-            <option disabled>Категория:</option>
-            <option>Без категории</option>
-            <option>МВД</option>
-            <option>Аэродром</option>
-            <option>МЧС</option>
-            <option>Дорожная техника</option>
-        </select>
+    <div class="developments_title">
+        <h2>Наши проекты</h2>
+        <div class="dropdown">
+            <span>Категория</span>
+            <select>
+                <option disabled>Категория:</option>
+                <option>Не выбрано</option>
+                <option>МВД</option>
+                <option>Аэродром</option>
+                <option>МЧС</option>
+                <option>Дорожная техника</option>
+                <option>Без категории</option>
+            </select>
+        </div>
     </div>
     <div class="developments">
         @foreach ($developments as $development)
@@ -58,7 +61,7 @@
                         $development_preview_small = DB::table('development_preview')->where([['type', 'small'], ['development_id', $development->id]])->first();
                     @endphp
                     <div class="for_the_entire_window" data-big="{{ asset($development_preview_big->path) }}">
-                        <img data="{{ asset('public/image/other/expand.svg') }}">
+                        <img data="{{ asset('public/image/other/expand.svg') }}" alt="">
                     </div>
                     <img data="{{ asset($development_preview_small->path) }}" alt="">
                 </div>

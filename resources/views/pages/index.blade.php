@@ -1,12 +1,10 @@
 @extends('homepage')
 @section('content')
-    <div class="desc_photo_bg"></div>
     <div class="upper_preview">
         <div class="title_upper_preview">
-            {{-- <h1>Инжиниринговая компания Фирма СТЭК</h1> --}}
+            <h1>Инжиниринговая компания Фирма СТЭК</h1>
             <h2>От идеи до готового проекта</h2>
         </div>
-        <img data="{{ asset('public/image/homepage/blueprint1.webp ') }}" alt="">
     </div>
 
 
@@ -34,9 +32,9 @@
             </p>
         </div>
         <div class="photo_presentation anim_translate">
-            <div class="company1"><img data="{{ asset('public/image/homepage/company1.webp') }}" alt=""></div>
-            <div class="company2"><img data="{{ asset('public/image/homepage/company2.webp') }}" alt=""></div>
-            <div class="company3"><img data="{{ asset('public/image/homepage/company3.webp') }}" alt=""></div>
+            <div class="company1"><img data="{{ asset('public/image/homepage/company1_bg.webp') }}" alt=""></div>
+            <div class="company2"><img data="{{ asset('public/image/homepage/company2_bg.webp') }}" alt=""></div>
+            <div class="company3"><img data="{{ asset('public/image/homepage/company3_bg.webp') }}" alt=""></div>
         </div>
     </div>
     {{-- ####################################################################### --}}
@@ -124,17 +122,17 @@
     <div class="cooperate_with_us container_hp">
         <h2>Сотрудничают с нами</h2>
         <div class="image">
-            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo1.png') }}" alt=""></div>
-            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo3.png') }}" alt=""></div>
-            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo5.png') }}" alt=""></div>
-            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo7.png') }}" alt=""></div>
-            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo8.png') }}" alt=""></div>
-            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo9.png') }}" alt=""></div>
-            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo10.png') }}" alt=""></div>
-            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo11.png') }}" alt=""></div>
-            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo12.png') }}" alt=""></div>
-            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo13.gif') }}" alt=""></div>
-            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo14.png') }}" alt=""></div>
+            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo1.webp') }}" alt=""></div>
+            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo3.webp') }}" alt=""></div>
+            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo5.webp') }}" alt=""></div>
+            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo7.webp') }}" alt=""></div>
+            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo8.webp') }}" alt=""></div>
+            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo9.webp') }}" alt=""></div>
+            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo10.webp') }}" alt=""></div>
+            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo11.webp') }}" alt=""></div>
+            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo12.webp') }}" alt=""></div>
+            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo13.webp') }}" alt=""></div>
+            <div class="animate_emergence"><img data="{{ asset('public/image/about_us/logo14.webp') }}" alt=""></div>
         </div>
     </div>
 @endsection

@@ -182,6 +182,7 @@ class UploadController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'string',
             'image_development' => 'required|image',
+            'images_development' => 'required|array',
             'images_development.*' => 'required|image'
         ]);
         
@@ -215,6 +216,8 @@ class UploadController extends Controller
     
             $path_image_big = 'storage/'.$path_section.'/big/'.$maxId.'/'.$nameImage.'.webp';
             $path_image_small = 'storage/'.$path_section.'/small/'.$maxId.'/'.$nameImage.'_small.webp';
+            Storage::makeDirectory('public/'.$path_section.'/big/'.$maxId.'/');
+            Storage::makeDirectory('public/'.$path_section.'/small/'.$maxId.'/');
             \Intervention\Image\Facades\Image::make($file)->save($path_image_big, 80);
             \Intervention\Image\Facades\Image::make($path_image_big)->fit(500, 300)->save($path_image_small, 70);
             $path_image_big = 'public/'.$path_image_big;
@@ -281,28 +284,31 @@ class UploadController extends Controller
     }
     public function add_development_image(Request $request)
     {
+        // return dd($request->file('images_development'));
         $request->validate([
+            'images_development' => 'required|array',
             'images_development.*' => 'required|image'
         ]);
 
         // images_development
+        $development_id = $request->development_id;
         foreach ($request->file('images_development') as $file) {
-            $maxId = DB::table('developments')->max('id');
-
             $path_section = 'development_images';
             $nameImage = Str::random(20);
             $extensionImage = $file->extension();
     
-            $path_image_big = 'storage/'.$path_section.'/big/'.$maxId.'/'.$nameImage.'.webp';
-            $path_image_small = 'storage/'.$path_section.'/small/'.$maxId.'/'.$nameImage.'_small.webp';
+            $path_image_big = 'storage/'.$path_section.'/big/'.$development_id.'/'.$nameImage.'.webp';
+            $path_image_small = 'storage/'.$path_section.'/small/'.$development_id.'/'.$nameImage.'_small.webp';
+            Storage::makeDirectory('public/'.$path_section.'/big/'.$development_id.'/');
+            Storage::makeDirectory('public/'.$path_section.'/small/'.$development_id.'/');
             \Intervention\Image\Facades\Image::make($file)->save($path_image_big, 80);
             \Intervention\Image\Facades\Image::make($path_image_big)->fit(500, 300)->save($path_image_small, 70);
             $path_image_big = 'public/'.$path_image_big;
             $path_image_small = 'public/'.$path_image_small;
             
             DB::table('development_images')->insert([
-                ['development_id' => $request->development_id, 'type' => 'small', 'path' => $path_image_small],
-                ['development_id' => $maxId, 'type' => 'big', 'path' => $path_image_big]
+                ['development_id' => $development_id, 'type' => 'small', 'path' => $path_image_small],
+                ['development_id' => $development_id, 'type' => 'big', 'path' => $path_image_big]
             ]);
         }
         return redirect()->back();

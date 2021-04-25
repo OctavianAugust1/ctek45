@@ -42,12 +42,12 @@
 			<li>АО «УАЗ»
 		</ul>
 		<div class="image">
-			<div><img data="{{ asset('public/image/about_us/logo1.png') }}" alt=""></div>
-			{{-- <img data="{{ asset('public/image/about_us/logo2.png') }}" alt=""> --}}
-			<div><img data="{{ asset('public/image/about_us/logo3.png') }}" alt=""></div>
-			{{-- <img data="{{ asset('public/image/about_us/logo4.png') }}" alt=""> --}}
-			<div><img data="{{ asset('public/image/about_us/logo5.png') }}" alt=""></div>
-			{{-- <img data="{{ asset('public/image/about_us/logo6.png') }}" alt=""> --}}
+			<div><img data="{{ asset('public/image/about_us/logo1.webp') }}" alt=""></div>
+			{{-- <img data="{{ asset('public/image/about_us/logo2.webp') }}" alt=""> --}}
+			<div><img data="{{ asset('public/image/about_us/logo3.webp') }}" alt=""></div>
+			{{-- <img data="{{ asset('public/image/about_us/logo4.webp') }}" alt=""> --}}
+			<div><img data="{{ asset('public/image/about_us/logo5.webp') }}" alt=""></div>
+			{{-- <img data="{{ asset('public/image/about_us/logo6.webp') }}" alt=""> --}}
 		</div>
 	
 		<p>
@@ -68,18 +68,18 @@
 		<p>В последние годы приоритетными направлениями становятся разработка новых конструкций разнообразного назначения для противопожарной и спецтехники в том числе для «Академии противопожарной техники и МЧС».</p>
 		<p>В числе заказчиков  появляются ОАО «Варгашинский завод противопожарного и специального оборудования», «Опытно-конструкторское бюро «Техника» (г. Москва), ГУ НПО «СТиС» МВД России, ЗАО НПП «КлАСС» (г. Москва), ООО "КАВЗ", ЗАО НПО "КЗСТ", ОАО "Пневмостроймашина" (г. Екатеринбург) и др.</p>
 		<div class="image">
-			<div><img data="{{ asset('public/image/about_us/logo7.png') }}" alt=""></div>
-			<div><img data="{{ asset('public/image/about_us/logo8.png') }}" alt=""></div>
-			<div><img data="{{ asset('public/image/about_us/logo9.png') }}" alt=""></div>
-			<div><img data="{{ asset('public/image/about_us/logo10.png') }}" alt=""></div>
-			<div><img data="{{ asset('public/image/about_us/logo11.png') }}" alt=""></div>
-			<div><img data="{{ asset('public/image/about_us/logo12.png') }}" alt=""></div>
+			<div><img data="{{ asset('public/image/about_us/logo7.webp') }}" alt=""></div>
+			<div><img data="{{ asset('public/image/about_us/logo8.webp') }}" alt=""></div>
+			<div><img data="{{ asset('public/image/about_us/logo9.webp') }}" alt=""></div>
+			<div><img data="{{ asset('public/image/about_us/logo10.webp') }}" alt=""></div>
+			<div><img data="{{ asset('public/image/about_us/logo11.webp') }}" alt=""></div>
+			<div><img data="{{ asset('public/image/about_us/logo12.webp') }}" alt=""></div>
 		</div>
 
 		<p>В области научных исследований и разработок ООО Фирма «СТЭК» сотрудничает  с Тюменским государственным нефтегазовым университетом, ФГУ  "РНЦ "Восстановительная травматология и ортопедия" имени академика Г.А.Илизарова" и др.</p>
 		<div class="image">
-			<div><img data="{{ asset('public/image/about_us/logo13.gif') }}" alt=""></div>
-			<div><img data="{{ asset('public/image/about_us/logo14.png') }}" alt=""></div>
+			<div><img data="{{ asset('public/image/about_us/logo13.webp') }}" alt=""></div>
+			<div><img data="{{ asset('public/image/about_us/logo14.webp') }}" alt=""></div>
 		</div>
 		
 		<p>Машины, оснащенные оборудованием разработанным ООО Фирма «СТЭК», вызывают интерес всех уровней на выставках спецтехники. Директор ООО Фирмы «СТЭК» награжден медалью «Академии ППТ и МЧС» за вклад в развитие противопожарной и специальной техники.  </p>

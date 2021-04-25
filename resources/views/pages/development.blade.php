@@ -43,7 +43,10 @@
                             <img data="{{ asset('public/image/other/expand.svg') }}">
                         </div>
                         <div class="delete_image_block">
-                            <img class="delete_image" data="{{ asset('public/image/other/times.svg') }}">
+                            <svg class="delete_image times" viewBox="0 0 352 512">
+                                <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
+                                </path>
+                            </svg>
                         </div>
                         <form action="{{ route('delete_image_development') }}" method="POST">
                             @csrf
@@ -65,9 +68,13 @@
             <span class="title">{{ $development->name }}</span>
             <div class="images">
                 @foreach ($development_images as $development_image)
+                    @php
+                        $development_preview_small = DB::table('development_images')->where([['type', 'small'], ['id', $development_image->id]])->first();
+                        $development_preview_big = DB::table('development_images')->where([['type', 'big'], ['id', $development_image->id + 1]])->first();
+                    @endphp
                     <div class="image">
-                        <img data="{{ asset($development_image->path) }}" alt="">
-                        <div class="for_the_entire_window" data-big="{{ asset($development_image->path) }}">
+                        <img data="{{ asset($development_preview_small->path) }}" alt="">
+                        <div class="for_the_entire_window" data-big="{{ asset($development_preview_big->path) }}">
                             <img data="{{ asset('public/image/other/expand.svg') }}">
                         </div>
                     </div>
