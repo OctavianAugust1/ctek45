@@ -41,11 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
 						reader.onload = event => {
 							const src = event.target.result
 							preview.insertAdjacentHTML("afterbegin", `
-								<div class="preview-image">
-									<div class="remove-image">
-										<div class="close" data-name="${file.name}">&times;</div>
+								<div class="preview__image">
+									<div class="preview__remove-image">
+										<div class="preview__close" data-name="${file.name}">&times;</div>
 									</div>
-									<img src="${src}" alt=""/>
+									<img class="preview__img" src="${src}" alt=""/>
 								</div>
 							`)
 						}
@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
 					console.log(event.target.dataset)
 					files = files.filter(file => file.name !== name)
 	
-					const block = document.querySelector(`[data-name="${name}"]`).closest('.preview-image')
+					const block = document.querySelector(`[data-name="${name}"]`).closest('.preview__image')
 					console.log(`${name}`)
-					block.classList.add('removing')
+					block.classList.add('preview__image--removing')
 					if (block.parentElement.childElementCount == 1) {
 						const preview_el = block.parentElement
 	
@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 	}
 	
-	if (document.querySelector('.animate_emergence')) {
-		const animItems = document.querySelectorAll('.animate_emergence')
+	if (document.querySelector('.animate-emergence')) {
+		const animItems = document.querySelectorAll('.animate-emergence')
 		window.addEventListener('scroll', animOnScroll)
 		function animOnScroll(params) {
 			animItems.forEach(animItem => {
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 	
 				if ((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)) {
-					animItem.classList.add('active')
+					animItem.classList.add('animate-emergence--active')
 				}
 			})
 			
@@ -151,8 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 	}
 	
-	if (document.querySelector('.for_the_entire_window')) {
-		const references = document.querySelectorAll('.for_the_entire_window')
+	if (document.querySelector('.for-the-entire-window')) {
+		const references = document.querySelectorAll('.for-the-entire-window')
 		references.forEach(reference => {
 			reference.addEventListener('click', event => {
 				const body = document.querySelector('body')
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const nav = document.querySelector('nav')
 			nav.style.visibility = 'unset'
 			const close = document.createElement('div')
-			close.className = 'close'
+			close.className = 'nav__close'
 			close.insertAdjacentHTML("afterbegin", close_svg)
 			nav.prepend(close)
 
@@ -234,10 +234,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				document.body.style.overflow = 'unset'
 				const nav = document.querySelector('nav')
 				nav.style.visibility = 'unset'
-				if (document.querySelector('.close')) {
+				if (document.querySelector('.nav__close')) {
 					body.classList.remove('modal-open')
 					const modal = document.querySelector('.modal')
-					const close = document.querySelector('.close')
+					const close = document.querySelector('.nav__close')
 					modal.remove()
 					close.remove()
 				}

@@ -18,9 +18,12 @@ class AuthController extends Controller
         $user = User::where('login', $request->login)
             ->where('password', $request->password)
             ->first();
-        Auth::guard('web')->login($user, true);
-
-        return redirect()->route('index');
+        if ($user) {
+            Auth::guard('web')->login($user, true);
+            return redirect()->route('index');
+        } else {
+            return redirect()->back();
+        }
     }
     public function logout(Request $request)
     {

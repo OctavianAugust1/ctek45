@@ -18,7 +18,8 @@ Route::get('feedback', 'PagesController@feedback')->name('feedback');
 
 Route::post('mail', 'MailController@mail')->name('mail');
 
-Route::get('login', 'PagesController@login')->name('login');
+Route::middleware('guest:web')->get('login', 'PagesController@login')->name('login');
+// Route::get('login', 'PagesController@login')->name('login');
 Route::post('login', 'AuthController@login')->name('loginA');
 
 Route::get('contacts', 'PagesController@contacts')->name('contacts');

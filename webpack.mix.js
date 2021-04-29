@@ -14,4 +14,12 @@ const mix = require('laravel-mix');
 // mix.js('resources/js/app.js', 'public/js')
 //     .sass('resources/sass/main.sass', 'public/css');
 
- mix.sass('resources/sass/main.sass', 'public/css');
+mix
+    .sass('resources/sass/main.sass', 'public/css')
+    .js('resources/assets/js/script.js', 'public/js');
+mix
+    .options({
+        processCssUrls: false
+    })
+    .version();
+mix.browserSync('http://ctek/');
