@@ -160,15 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
 				let modal = document.createElement("div")
 				modal.className = "modal"
 				let form = document.createElement("div")
-				form.className = "form"
+				form.className = "modal__form"
 				let image = document.createElement("img")
 				image.src = event.target.parentElement.dataset.big
-				image.className = "image"
+				image.className = "modal__image"
 				let background = document.createElement("div")
-				background.className = "bg_modal"
+				background.className = "modal__bg-modal"
 				
 				let close = document.createElement("div")
-				close.className = "close"
+				close.className = "modal__close"
 				close.insertAdjacentHTML('afterbegin', close_svg)
 				close.onclick = () => {
 					close.closest('.modal').remove()
@@ -220,20 +220,32 @@ document.addEventListener('DOMContentLoaded', () => {
 			})
 		})
 		let mobileSize
-		const mobileWidth = 425
+		const tabletWidth = 1000
+		const animate_emergence = document.querySelectorAll('.animate-emergence')
+		if (document.documentElement.clientWidth <= tabletWidth) {
+			animate_emergence.forEach(element => {
+				element.classList.remove('animate-emergence')
+			})
+		}
 		window.addEventListener('resize', () => {
 			const width = document.documentElement.clientWidth
-			if (width > mobileWidth) mobileSize = false
-			if (document.documentElement.clientWidth <= mobileWidth
+			if (width > tabletWidth) mobileSize = false
+			if (document.documentElement.clientWidth <= tabletWidth
 			&& mobileSize == false) {
 				mobileSize = true
 				const nav = document.querySelector('nav')
+				animate_emergence.forEach(element => {
+					element.classList.remove('animate-emergence')
+				})
 				nav.style.visibility = 'hidden'
 			}
-			if (document.documentElement.clientWidth > mobileWidth) {
+			if (document.documentElement.clientWidth > tabletWidth) {
 				document.body.style.overflow = 'unset'
 				const nav = document.querySelector('nav')
 				nav.style.visibility = 'unset'
+				animate_emergence.forEach(element => {
+					element.classList.add('animate-emergence')
+				})
 				if (document.querySelector('.nav__close')) {
 					body.classList.remove('modal-open')
 					const modal = document.querySelector('.modal')

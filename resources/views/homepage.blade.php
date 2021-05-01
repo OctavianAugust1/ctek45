@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	{{-- <link rel="stylesheet" href="{{ asset("public/css/reset.css") }}">
 	<link rel="stylesheet" href="{{ asset("public/css/style.css?5") }}"> --}}
-	<link rel="stylesheet" type="text/css" href="public{{ mix("/css/main.css") }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public'.mix("/css/main.css")) }}">
 	<link rel="icon" href="{{ asset('public/image/logo/icon.ico') }}" type="image/x-icon">
 	<title>СТЭК</title>
 </head>
@@ -59,6 +59,6 @@
 			</div>
 		</div>
 	</footer>
-	<script src="{{ asset('public/js/script_main.js?5') }}" defer></script>
+	<script src="{{ asset('public'.mix('/js/script.js')) }}" defer></script>
 </body>
 </html>

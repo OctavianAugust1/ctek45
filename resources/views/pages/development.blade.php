@@ -12,27 +12,9 @@
         </ul>
     </div>
     @endif
-
-
-        {{-- <div class="development_page">
-            <span class="title">{{ $development->name }}</span>
-            <div class="images">
-                @foreach ($development_images as $development_image)
-                    @php
-                        $development_preview_small = DB::table('development_images')->where([['type', 'small'], ['id', $development_image->id]])->first();
-                        $development_preview_big = DB::table('development_images')->where([['type', 'big'], ['id', $development_image->id + 1]])->first();
-                    @endphp
-                    <div class="image">
-                        <img data="{{ asset($development_preview_small->path) }}" alt="">
-                        <div class="for_the_entire_window" data-big="{{ asset($development_preview_big->path) }}">
-                            <img data="{{ asset('public/image/other/expand.svg') }}">
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <pre class="description">{{ $development->description }}</pre>
-        </div> --}}
-        
+    
+    
+    
     <div class="development">
         @auth
             <form class="form" action="{{ route('change_information_development') }}" method="POST">
