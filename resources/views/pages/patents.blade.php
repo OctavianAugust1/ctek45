@@ -13,7 +13,7 @@
         @endif
 
 
-        <form class="form" action="{{ route('upload_patent') }}" method="POST" enctype="multipart/form-data">
+        <form class="form" id="upload_patent" action="{{ route('upload_patent') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-box form-box--add">
                 <label class="form-box__caption">Заголовок</label>
@@ -40,9 +40,9 @@
                 <div class="patents__item">
                     <div class="patents__thumbnail">
                         <div class="for-the-entire-window" data-big="{{ asset($patent_preview_big->path) }}">
-                            <img class="for-the-entire-window__icon" data="{{ asset('public/image/other/expand.svg') }}">
+                            <img class="for-the-entire-window__icon" src="" data="{{ asset('public/image/other/expand.svg') }}" alt="">
                         </div>
-                        <div class="patents__thumbnail-image"><img class="patents__thumbnail-img" data="{{ asset($patent_preview_small->path) }}" alt=""></div>
+                        <div class="patents__thumbnail-image"><img class="patents__thumbnail-img" src="" data="{{ asset($patent_preview_small->path) }}" alt=""></div>
                     </div>
                     @guest
                         <label class="patents__name">{{ $patent->name }}</label>

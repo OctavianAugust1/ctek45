@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -94,7 +94,7 @@
 /***/ (function(module, exports) {
 
 document.addEventListener('DOMContentLoaded', function () {
-  var close_svg = "\n\t\t<svg class=\"times\" viewBox=\"0 0 352 512\">\n\t\t\t<path fill=\"currentColor\" d=\"M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z\">\n\t\t\t</path>\n\t\t</svg>\n\t";
+  var close_svg = "\n\t\t<svg class=\"delete-image__svg\" viewBox=\"0 0 352 512\">\n\t\t\t<path fill=\"currentColor\" d=\"M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z\">\n\t\t\t</path>\n\t\t</svg>\n\t";
 
   if (document.querySelector('[enctype="multipart/form-data"]')) {
     var forms = document.querySelectorAll('[enctype="multipart/form-data"]');
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             reader.onload = function (event) {
               var src = event.target.result;
-              preview.insertAdjacentHTML("afterbegin", "\n\t\t\t\t\t\t\t\t<div class=\"preview__image\">\n\t\t\t\t\t\t\t\t\t<div class=\"preview__remove-image\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"preview__close\" data-name=\"".concat(file.name, "\">&times;</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<img class=\"preview__img\" src=\"").concat(src, "\" alt=\"\"/>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t"));
+              preview.insertAdjacentHTML("afterbegin", "\n\t\t\t\t\t\t\t\t<div class=\"preview__image\">\n\t\t\t\t\t\t\t\t\t<div class=\"delete-image delete-image--preview__image\">\n\t\t\t\t\t\t\t\t\t\t<svg class=\"delete-image__svg\" viewBox=\"0 0 352 512\">\n\t\t\t\t\t\t\t\t\t\t\t<path data-name=\"".concat(file.name, "\" fill=\"currentColor\" d=\"M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z\">\n\t\t\t\t\t\t\t\t\t\t\t</path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<img class=\"preview__img\" src=\"").concat(src, "\" alt=\"\"/>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t"));
             };
 
             reader.readAsDataURL(file);
@@ -142,12 +142,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var remove = function remove(event) {
           if (!event.target.dataset.name) return;
           var name = event.target.dataset.name;
-          console.log(event.target.dataset);
           files = files.filter(function (file) {
             return file.name !== name;
           });
           var block = document.querySelector("[data-name=\"".concat(name, "\"]")).closest('.preview__image');
-          console.log("".concat(name));
           block.classList.add('preview__image--removing');
 
           if (block.parentElement.childElementCount == 1) {
@@ -254,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function () {
         form.className = "modal__form";
         var image = document.createElement("img");
         image.src = event.target.parentElement.dataset.big;
+        image.alt = "";
         image.className = "modal__image";
         var background = document.createElement("div");
         background.className = "modal__bg-modal";
@@ -295,6 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var modal = document.createElement('div');
       modal.className = 'modal';
       body.append(modal);
+      body.style.overflow = 'hidden';
       body.className = 'modal-open';
       var nav = document.querySelector('nav');
       nav.style.visibility = 'unset';
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
     var mobileSize;
-    var tabletWidth = 1000;
+    var tabletWidth = 1020;
     var animate_emergence = document.querySelectorAll('.animate-emergence');
 
     if (document.documentElement.clientWidth <= tabletWidth) {
@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (document.documentElement.clientWidth > tabletWidth) {
-        document.body.style.overflow = 'unset';
+        body.style.overflow = 'unset';
 
         var _nav = document.querySelector('nav');
 
@@ -351,6 +351,109 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     });
+  }
+
+  if (document.querySelector('#editor')) {
+    var name = function name(params) {
+      var desc = document.querySelector('#description');
+      var vvvvvv = JSON.parse(desc.textContent);
+      var quill_editor = document.querySelector('#quill_editor');
+      quill.setContents(vvvvvv);
+      var dev_description = document.querySelector('#dev_description');
+      dev_description.innerHTML = quill.root.innerHTML; // quill.setAttribute() = JSON.parse(textarea_quill.value)
+
+      quill.setContents(JSON.parse(textarea_quill.value));
+    }; // const editor = new EditorJS({
+    // 	HolderId: 'editorjs',
+    // 	tools: { 
+    // 		header: {
+    // 			class: Header, 
+    // 			inlineToolbar: ['link', 'marker', 'bold', 'italic']
+    // 		}, 
+    // 		list: { 
+    // 			class: List, 
+    // 			inlineToolbar: true 
+    // 		} 
+    // 	},
+    // })
+    // DecoupledEditor
+    //     .create(document.querySelector('.form-box__textarea', {
+    // 		language: 'ru'
+    // 	}))
+    //     .catch(error => {
+    //         console.error(error)
+    //     })
+    // DecoupledEditor
+    // 		.create( document.querySelector( '.form-box__textarea', {
+    // 			language: 'ru'
+    // 		} ) )
+    // 		.then( editor => {
+    // 			const toolbarContainer = document.querySelector( '#toolbar-container' );
+    // 			toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+    // 		} )
+    // 		.catch( error => {
+    // 			console.error( error );
+    // 		} );
+    // const textarea = document.querySelectorAll('textarea')
+    // textarea.forEach(element => {
+    // 	new FroalaEditor(element, {
+    // 		language: 'ru',
+    // 		charCounterCount: false,
+    // 		fileUpload: false,
+    // 		imageUpload: false,
+    // 		imagePaste: false,
+    // 		imageUploadRemoteUrls: false,
+    // 		videoUpload: false,
+    // 		fontFamilyDefaultSelection: 'Nunito',
+    // 		fontSizeDefaultSelection: '19',
+    // 		fontSizeUnit: 'px',
+    // 		fontSizeSelection: true,
+    // 		heightMin: 200,
+    // 		quickInsertEnabled: false,
+    // 		emoticonsUseImage: false,
+    // 		fontFamilySelection: true,
+    // 		attribution: false,
+    // 		spellcheck: false,
+    // 		toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', 'inlineClass', 'clearFormatting'],
+    // 		toolbarBottom: true,
+    // 		keepFormatOnDelete: true,
+    // 		htmlExecuteScripts: false,
+    // 	})
+    // })
+
+
+    var quill = new Quill('#editor', {
+      modules: {
+        toolbar: [['bold', 'italic', 'underline'], ['blockquote'], [{
+          'header': 1
+        }, {
+          'header': 2
+        }], [{
+          'list': 'ordered'
+        }, {
+          'list': 'bullet'
+        }], [{
+          'script': 'sub'
+        }, {
+          'script': 'super'
+        }], [{
+          'indent': '-1'
+        }, {
+          'indent': '+1'
+        }], [{
+          'direction': 'rtl'
+        }], ['clean']]
+      },
+      placeholder: 'Описание',
+      theme: 'snow'
+    });
+    quill.root.setAttribute('spellcheck', false);
+    var submit_quill = document.querySelector('#submit_quill');
+    var textarea_quill = document.querySelector('#textarea_quill');
+
+    submit_quill.onclick = function () {
+      textarea_quill.value = JSON.stringify(quill.getContents());
+    };
   } // validation email
   // preg_match('/^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u', $item)
 
@@ -358,26 +461,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
-/***/ "./resources/sass/main.sass":
-/*!**********************************!*\
-  !*** ./resources/sass/main.sass ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!*****************************************************************!*\
-  !*** multi ./resources/js/script.js ./resources/sass/main.sass ***!
-  \*****************************************************************/
+/***/ 1:
+/*!**************************************!*\
+  !*** multi ./resources/js/script.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! d:\OpenServer\domains\ctek\resources\js\script.js */"./resources/js/script.js");
-module.exports = __webpack_require__(/*! d:\OpenServer\domains\ctek\resources\sass\main.sass */"./resources/sass/main.sass");
+module.exports = __webpack_require__(/*! d:\OpenServer\domains\ctek\resources\js\script.js */"./resources/js/script.js");
 
 
 /***/ })

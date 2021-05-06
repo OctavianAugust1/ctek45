@@ -22,7 +22,10 @@
                 <input type="hidden" name="id" value="{{ $development->id }}">
                 <div class="form-box development__form-box">
                     <input class="development__input-text" type="text" name="name" value="{{ $development->name }}">
-                    <textarea class="development__textarea" name="description">{{ $development->description }}</textarea>
+					<div>
+						<div id="editor"></div>
+					</div>
+                    <textarea class="form-box__textarea development__textarea" id="textarea_quill" name="description">{{ $development->description }}</textarea>
                 </div>
                 <button class="button">Сохранить</button>
             </form>
@@ -48,9 +51,9 @@
                     $development_preview_big = DB::table('development_images')->where([['type', 'big'], ['id', $development_image->id + 1]])->first();
                 @endphp
                 <div class="development__thumbnail-image">
-                    <img class="development__thumbnail-img" data="{{ asset($development_preview_small->path) }}" alt="">
+                    <img class="development__thumbnail-img" src="" data="{{ asset($development_preview_small->path) }}" alt="">
                     <div class="for-the-entire-window" data-big="{{ asset($development_preview_big->path) }}">
-                        <img class="for-the-entire-window__icon" data="{{ asset('public/image/other/expand.svg') }}">
+                        <img class="for-the-entire-window__icon" src="" data="{{ asset('public/image/other/expand.svg') }}" alt="">
                     </div>
                     @auth
                         <div class="delete-image">
@@ -69,7 +72,9 @@
             @endforeach
         </div>
         @guest
-            <pre class="desc">{{ $development->description }}</pre>
+			<div id="description">{{ $development->description }}</div>
+            <div id="quill_editor"></div>
+            <pre class="desc" id="dev_description"></pre>
         @endguest
         @auth
             <form class="form" class="delete_development" action="{{ route('delete_development') }}" method="POST">

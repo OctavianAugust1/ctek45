@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="{{ asset("public/css/style.css?5") }}"> --}}
 	<link rel="stylesheet" type="text/css" href="{{ asset('public'.mix("/css/main.css")) }}">
 	<link rel="icon" href="{{ asset('public/image/logo/icon.ico') }}" type="image/x-icon">
+	{{-- froala-editor --}}
+	<link rel="stylesheet" href="{{ asset('public/js/froala-editor/css/froala_editor.pkgd.min.css') }}" type="text/css">
+	<link rel="stylesheet" href="{{ asset('public/js/froala-editor/css/froala_style.min.css') }}" type="text/css">
+
 	<title>СТЭК</title>
 </head>
 <body class="body">
@@ -59,6 +63,8 @@
 			</div>
 		</div>
 	</footer>
-	<script src="{{ asset('public'.mix('/js/script.js')) }}" defer></script>
+	<script type="text/javascript" src="{{ asset('public'.mix('/js/script.js')) }}" defer></script>
+	<script type="text/javascript" src="{{ asset('public/js/froala-editor/js/froala_editor.pkgd.min.js') }}" defer></script>
+	<script type="text/javascript" src="{{ asset('public/js/froala-editor/js/languages/ru.js') }}" defer></script>
 </body>
 </html>

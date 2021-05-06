@@ -7,604 +7,644 @@ $main-bg-color: rgb(212, 227, 244)
 $logo-color: #185aa0
 $body-bg-color: rgb(250, 250, 250)
 
+$mobile-width: 480px
+$tablet-width: 1020px
+$notebook-width: 1400px
+
 %form-box_opt-1
-    display: grid
-    grid-template-columns: 20% 1fr
+	display: grid
+	grid-template-columns: 20% 1fr
 
 %form-box_opt-2
-    display: flex
-    flex-flow: column wrap
-    justify-content: center
-    width: 100%
+	display: flex
+	flex-flow: column wrap
+	justify-content: center
+	width: 100%
 
 =grid($columns-width)
-    display: grid
-    grid-gap: 1em
-    grid-template-columns: repeat(auto-fill, minmax($columns-width, 1fr))
-    margin: 20px 0
+	display: grid
+	grid-gap: 1em
+	grid-template-columns: repeat(auto-fill, minmax($columns-width, 1fr))
+	margin: 20px 0
 
 // @import normalize
-@import reset, index, aboutUs, contacts, development, developments, feedback, login, patents
-
-// *,
-// .html,
-// .body
-//     font-family: $standart-font
+@import reset, index, aboutUs, contacts, development, developments, patents
 
 *,
 *::after,
 *::before
-    box-sizing: border-box
+	box-sizing: border-box
 
 a,
-// a:link,
-// a:visited,
 a:active,
 a:hover
-    color: black
-    text-decoration: none
+	color: black
+	text-decoration: none
 
 .link
-    text-align: center
+	text-align: center
 
 .title-h1
-    line-height: 1
-    font-size: 2rem
-    font-weight: bold
+	line-height: 1
+	font-size: 2rem
+	font-weight: bold
 
 .title-h2
-    line-height: 1
-    font-size: 1.8rem
-    // font-weight: bold
+	line-height: 1
+	font-size: 1.8rem
 
 .title-h3
-    line-height: 1
-    font-size: 1.3rem
-    // font-weight: bold
+	line-height: 1
+	font-size: 1.3rem
 
 .button,
 .input-button,
 .input-submit,
 .input-file,
 .form__button
-    width: 100%
-    background: none
-    font-family: inherit
-    font-size: 1.1em
-    font-weight: bold
-    padding: 3px 18px
-    border: 1px solid black
-    border-radius: 25px
-    outline: none
-    cursor: pointer
-    transition: background .2s linear, color .2s linear
+	width: 100%
+	background: none
+	font-family: inherit
+	font-size: 1.1rem
+	font-weight: bold
+	padding: 3px 18px
+	border: 1px solid black
+	border-radius: 25px
+	outline: none
+	cursor: pointer
+	transition: background .2s linear, color .2s linear
 
 .button:hover,
 .input-button:hover,
 .input-file:hover,
 .form__button:hover
-    background: rgb(99, 150, 207)
-    color: white
+	background: rgb(99, 150, 207)
+	color: white
 
 .delete-image
-    position: absolute
-    top: 10px
-    right: 50px
-    height: 30px
-    width: 30px
-    background: white
-    border: 1px solid black
-    border-radius: 50%
-    cursor: pointer
-    opacity: 0
-    transition: opacity .2s linear
-    display: flex
+	position: absolute
+	top: 10px
+	right: 50px
+	height: 30px
+	width: 30px
+	background: white
+	border: 1px solid black
+	border-radius: 50%
+	cursor: pointer
+	opacity: 0
+	transition: opacity .2s linear
+	display: flex
+	.preview__image:hover &,
+	.development__thumbnail-image:hover &
+		opacity: .5
+	.preview__image &:hover,
+	.development__thumbnail-image &:hover
+		opacity: 1
+
+.delete-image--preview__image
+	right: 10px
 
 .delete-image__svg
-    max-height: 85%
-    margin: auto
-
-.development__thumbnail-image:hover .delete-image
-    opacity: .5
-
-.development__thumbnail-image .delete-image:hover
-    opacity: 1
+	max-height: 85%
+	margin: auto
 
 
 .list
-    list-style: disc
-    margin-left: 25px
+	list-style: disc
+	margin-left: 25px
 
-.desc
-    word-break: break-word
-    white-space: pre-wrap
+.desc, .fr-view
+	word-break: break-word
+	white-space: pre-wrap
+
+.ql-toolbar
+	background: white
+
+#editor
+	height: 100px
+	max-height: 200px
+	background: white
+
+#textarea_quill
+	display: none
 
 hr
-    width: 100%
-    border: none
-    margin: 2rem 0
+	width: 100%
+	border: none
+	margin: 2rem 0
 
 // пристыковка footer к низу страницы
 .html
-    height: 100%
-    scroll-behavior: smooth
+	height: 100%
+	scroll-behavior: smooth
 
 .body
-    background: $body-bg-color
-    min-height: 100%
-    display: grid
-    grid-template-rows: auto auto 1fr auto
+	background: $body-bg-color
+	min-height: 100%
+	display: grid
+	grid-template-rows: auto auto 1fr auto
 
 input, textarea
-    resize: none
-    outline: none
-    padding: 5px
-    border: solid 1px gray
+	resize: none
+	outline: none
+	padding: 5px
+	border: solid 1px gray
 
 input:not(input[type="button"]):focus, textarea:focus
-    box-shadow: 0 0 5px $logo-color
+	box-shadow: 0 0 5px $logo-color
 
 .main
-    font-family: $standart-font
-    font-size: 1.2rem
-    width: 100%
-    border-radius: 5px
-    line-height: 1.5
-    margin: 20px auto
+	font-family: $standart-font
+	font-size: 1.2rem
+	width: 100%
+	border-radius: 5px
+	line-height: 1.5
+	margin: 20px auto
 
 .container
-    padding: 10px
-    max-width: 90%
+	padding: 10px
+	max-width: 90%
 
 .grid--patents
-    +grid(400px)
+	+grid(400px)
 
 .grid--developments
-    +grid(440px)
+	+grid(440px)
+
+.patents__name, .developments__name
+	display: -webkit-box
+	-webkit-line-clamp: 3
+	-webkit-box-orient: vertical
+	overflow: hidden
+
+.login--title,
+.feedback--title
+	margin-bottom: 20px
 
 .form-box
-    margin: 1em 0
+	margin: 1rem 0
 
 .form-box:first-of-type
-    margin-top: 0
+	margin-top: 0
 
 .form-box--add
-    @extend %form-box_opt-1
+	@extend %form-box_opt-1
 
 .form--change-text
-    display: flex
-    flex-flow: row wrap
+	display: flex
+	flex-flow: row wrap
 
 .login__form-box,
 .contacts__form-box,
 .development__form-box
-    @extend %form-box_opt-2
+	@extend %form-box_opt-2
 
 .form-box__textarea
-    height: 200px
+	height: 200px
 
 img
-    line-height: 0
+	line-height: 0
 
 .for-the-entire-window
-    position: absolute
-    top: 10px
-    right: 10px
-    height: 30px
-    width: 30px
-    background: white
-    border: 1px solid black
-    border-radius: 50%
-    cursor: pointer
-    opacity: 0
-    transition: opacity .2s linear
+	position: absolute
+	top: 10px
+	right: 10px
+	height: 30px
+	width: 30px
+	background: white
+	border: 1px solid black
+	border-radius: 50%
+	cursor: pointer
+	opacity: 0
+	transition: opacity .2s linear
+	.patents__thumbnail:hover &,
+	.developments__thumbnail:hover &,
+	.development__thumbnail-image:hover &
+		opacity: .5
+	.patents__thumbnail &:hover,
+	.developments__thumbnail &:hover,
+	.development__thumbnail-image &:hover
+		opacity: 1
 
 .for-the-entire-window__icon
-    height: 100%
-    width: 100%
-    object-fit: cover
-    padding: 20%
-    color: red
-
-.patents__thumbnail:hover .for-the-entire-window,
-.developments__thumbnail:hover .for-the-entire-window,
-.development__thumbnail-image:hover .for-the-entire-window
-    opacity: .5
-
-.patents__thumbnail .for-the-entire-window:hover,
-.developments__thumbnail .for-the-entire-window:hover,
-.development__thumbnail-image .for-the-entire-window:hover
-    opacity: 1
+	height: 100%
+	width: 100%
+	object-fit: cover
+	padding: 20%
+	color: red
 
 .modal
-    position: fixed
-    top: 0
-    bottom: 0
-    left: 0
-    right: 0
-    background: rgba(0, 0, 0, 0.5)
+	z-index: 3
+	position: fixed
+	top: 0
+	bottom: 0
+	left: 0
+	right: 0
+	background: rgba(0, 0, 0, 0.5)
 
 .modal__bg-modal
-    position: absolute
-    top: 0
-    right: 0
-    left: 0
-    bottom: 0
-
-.modal__bg-modal:hover
-    cursor: pointer
+	position: absolute
+	top: 0
+	right: 0
+	left: 0
+	bottom: 0
+	&:hover
+		cursor: pointer
 
 .modal-open
-    overflow: hidden
+	overflow: hidden
 
 .modal__form
-    height: 100%
-    width: 100%
-    padding: 20px
-    display: flex
+	height: 100%
+	width: 100%
+	padding: 20px
+	display: flex
 
 .modal__image
-    position: relative
-    margin: auto
-    max-height: 100%
-    max-width: 90%
-    border: 1px solid black
-    background: white
+	position: relative
+	margin: auto
+	max-height: 100%
+	max-width: 90%
+	border: 1px solid black
+	background: white
 
 .modal__image:not(.modal__close)
-    max-width: 100%
-    max-height: 100%
+	max-width: 100%
+	max-height: 100%
 
 .modal__close
-    position: absolute
-    height: 50px
-    width: 50px
-    right: 20px
-    /* background: rgba(0, 0, 0, 0.3) */
-    cursor: pointer
-    opacity: .5
-    transition: opacity .1s linear
-
-.times
-    width: 100%
-    height: 100%
-
-.modal__close:hover
-    opacity: 1
-
-.modal__bg-modal:hover ~ .modal__close
-    opacity: 1
-
-.modal__bg_modal:hover
-    cursor: pointer
+	position: absolute
+	height: 50px
+	width: 50px
+	right: 20px
+	/* background: rgba(0, 0, 0, 0.3) */
+	cursor: pointer
+	opacity: .5
+	transition: opacity .1s linear
+	&:hover
+		opacity: 1
+	.modal__bg-modal:hover ~ &
+		opacity: 1
 
 /* input[type="file"] */
 .form-box__input-file
-    display: none
+	display: none
 
 .preview
-    display: flex
-    flex-wrap: wrap
-    padding: .5rem 0
-    display: grid
-    grid-gap: 10px
-    grid-column: 2
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+	display: grid
+	grid-gap: 10px
+	grid-column: 2
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+	padding: .5rem 0
 
 .preview__image
-    position: relative
-    width: 200px
+	position: relative
+	height: 200px
+	width: 200px
 
 .preview__img
-    width: 100%
-    height: auto
+	height: 100%
+	width: 100%
+	object-fit: cover
 
 .preview__remove-image
-    opacity: 0
-    width: 20px
-    height: 20px
-    border-radius: 50%
-    position: absolute
-    right: 2%
-    top: 2%
-    background: white
-    font-weight: bold
-    cursor: pointer
-    transition: opacity .2s
-    display: flex
-    align-items: center
-    justify-content: center
+	opacity: 0
+	width: 20px
+	height: 20px
+	border-radius: 50%
+	position: absolute
+	right: 2%
+	top: 2%
+	background: white
+	font-weight: bold
+	cursor: pointer
+	transition: opacity .2s
+	display: flex
+	align-items: center
+	justify-content: center
+	.preview__image:hover &
+		opacity: 1
 
 .preview__image--removing
-    transform: scale(0)
-    transition: transform .2s
-
-.preview__image:hover .preview__remove-image
-    opacity: 1
+	transform: scale(0)
+	transition: transform .2s
 
 .animate-emergence
-    opacity: 0
-    transform: translate(0px, 40%)
-    transition: opacity .2s linear, translate .2s linear
+	opacity: 0
+	transform: translate(0px, 40%)
+	transition: opacity .2s linear, translate .2s linear
 
 .animate-emergence--active
-    transform: translate(0px, 0px)
-    opacity: 1
+	transform: translate(0px, 0px)
+	opacity: 1
 
 /* hamburger */
 .hamburger
-    display: none
-    height: 50px
-    cursor: pointer
+	display: none
+	height: 50px
+	cursor: pointer
 
 .bars
-    max-height: 100%
-    max-width: 100%
+	max-height: 100%
+	max-width: 100%
 
 .nav__close
-    width: 50px
-    align-self: flex-end
-    justify-self: flex-start
+	height: 70px
+	width: 70px
 
-@media (max-width: 425px)
-    .header__grid--home-page
-        position: absolute
+@media (max-width: $mobile-width)
+	.header__grid--home-page
+		position: absolute
+		z-index: unset
+		height: 138px
+		
+	.header__grid
+		grid-template: "logo hamburger" "title title"
+		grid-template-columns: 1fr 1fr
 
-    .logo
-        height: 50px
+	.header__title
+		margin: 5px 0
+		font-size: 1.5rem
 
-    .header__nav
-        visibility: hidden
-        grid-area: unset
-        position: fixed
-        z-index: 1
-        right: 0
-        top: 0
-        bottom: 0
-        background: $main-bg-color
-        height: 100%
-        width: 70vw
-        display: flex
-        flex-direction: column
-        justify-content: space-around
-        
-    .homepage,
-    .container
-        border-radius: unset
+	.header__gradient::after
+		margin-top: 138px
 
-    .container
-        max-width: 100%
+	.logo
+		height: 50px
+		width: 110px
 
-    .footer__grid
-        display: flex
-        flex-direction: column
+	.header__nav
+		visibility: hidden
+		grid-area: unset
+		position: fixed
+		z-index: 4
+		right: 0
+		top: 0
+		bottom: 0
+		background: $main-bg-color
+		height: 100%
+		width: 70vw
+		display: flex
+		flex-direction: column
+		justify-content: space-around
+		
+	.homepage,
+	.container
+		border-radius: unset
 
-    .footer__logo
-        display: none
+	.container
+		max-width: 100%
 
-    .delete-image
-        cursor: unset
-        opacity: unset
-        transition: unset
+	.footer__grid
+		display: flex
+		flex-direction: column
 
-    .development__thumbnail-images:hover .delete-image
-        opacity: unset
+	.footer__logo
+		display: none
 
-    .delete-image:hover
-        opacity: unset
+	.preview
+		grid-template-columns: 1fr 1fr
 
-    .modal .modal__close:hover
-        opacity: unset
+	.delete-image
+		cursor: unset
+		opacity: unset
+		transition: unset
 
-    .modal__bg-modal:hover ~ .modal__close
-        opacity: unset
+	.development__thumbnail-images:hover .delete-image
+		opacity: unset
 
-    .modal__bg-modal:hover
-        cursor: unset
+	.delete-image:hover
+		opacity: unset
 
-    .form-box
-        display: flex
-        flex-direction: column
+	.modal .modal__close:hover
+		opacity: unset
 
-    .box
-        flex-direction: column
+	.modal__bg-modal:hover ~ .modal__close
+		opacity: unset
 
-    .patents__thumbnail-image
-        height: unset
-        width: 100%
+	.modal__bg-modal:hover
+		cursor: unset
 
-    .grid--patents, .grid--developments
-        grid-template-columns: 1fr
+	.box
+		flex-direction: column
 
-    .developments__header
-        flex-direction: column
-        align-items: unset
-    
-    .dropdown__item
-        font-size: 0.7rem
+	.patents__thumbnail-image
+		height: unset
+		width: 100%
 
-    .development__thumbnail-image
-        margin-right: unset
-        width: 100%
+	.grid--patents, .grid--developments
+		grid-template-columns: 1fr
 
-    .development__thumbnail-img
-        height: 100%
-        width: 100%
+	.developments__header
+		flex-direction: column
+		align-items: unset
+	
+	.dropdown__item
+		font-size: 0.7rem
 
-    .homepage--container
-        max-width: unset
-        padding: 10px
-        min-height: unset
-        margin: 100px 0
+	.development__thumbnail-image
+		margin-right: unset
+		width: 100%
 
-    .upper-preview::after
-        overflow: hidden
+	.development__thumbnail-img
+		height: 100%
+		width: 100%
 
-    .upper-preview__title-h1,
-    .upper-preview__title-h2
-        margin-top: 20px
-        text-align: center
-        font-size: 8vw
+	.homepage--container
+		max-width: unset
+		padding: 10px
+		min-height: unset
+		margin: 100px 0
 
-    .advantages__advantage
-        grid-template-columns: 1fr
-        grid-template-rows: auto 1fr
+	.upper-preview
+		margin-top: 138px
+		height: calc(100vh - 138px)
 
-    .advantages__image
-        width: 100%
+	.upper-preview::after
+		top: 138px
+		overflow: hidden
 
-    .advantages__icon
-        max-width: 100%
+	.upper-preview__title-h1,
+	.upper-preview__title-h2
+		font-size: 8vw
+		margin-top: 20px
+		text-align: center
 
-    .organization-desc
-        grid-template-columns: 1fr
-    
-    .organization-desc__thumbnail
-        flex-direction: column
+	.advantages__advantage
+		grid-template-columns: 1fr
+		grid-template-rows: auto 1fr
 
-    .organization-desc__project-1,
-    .organization-desc__project-2,
-    .organization-desc__project-3
-        width: 100%
-        height: 100%
-        margin-top: 20px
-        position: unset
-        
-    .organization-desc__img-1,
-    .organization-desc__img-2,
-    .organization-desc__img-3
-        width: 100%
-        height: 100%
+	.advantages__image
+		width: 100%
 
-    .cooperate-with-us__image
-        width: 100%
+	.advantages__icon
+		max-width: 100%
 
-    .cooperate-with-us__img
-        max-width: 90%
+	.organization-desc
+		grid-template-columns: 1fr
+	
+	.organization-desc__thumbnail
+		flex-direction: column
 
+	.organization-desc__project-1,
+	.organization-desc__project-2,
+	.organization-desc__project-3
+		width: 100%
+		height: 100%
+		margin-top: 20px
+		position: unset
+		
+	.organization-desc__img-1,
+	.organization-desc__img-2,
+	.organization-desc__img-3
+		width: 100%
+		height: 100%
 
-@media (max-width: 1000px)
-    .header__grid
-        grid-template: "logo hamburger" "title title"
-        grid-template-columns: 1fr 1fr
+	.cooperate-with-us__image
+		width: 100%
 
-    .header__title
-        font-size: 1.5em
-        margin: 20px 0
-        text-align: center
-
-    .hamburger
-        justify-self: end
-
-    .hamburger
-        grid-area: hamburger
-        display: unset
-        height: 50px
-        width: 50px
-
-    .header__nav-link:not(header__nav-link:first-child)
-        margin-top: 20px
-
-    .header__nav-link
-        font-size: 1.2em
-
-    .for-the-entire-window
-        cursor: unset
-        opacity: unset
-        transition: unset
-
-    .development__thumbnail-images:hover .for-the-entire-window
-        opacity: unset
-
-    .for-the-entire-window:hover
-        opacity: unset
-
-    .modal__form
-        background: rgba(0, 0, 0)
-        padding: 0px
-
-    .modal__image
-        max-width: 100%
-        border: unset
-        background: gray
-
-    .modal__close
-        position: absolute
-        height: 30px
-        width: 30px
-        top: 20px
-        right: 20px
-        cursor: unset
-        opacity: unset
-        transition: unset
-
-    .modal__close path
-        fill: white
-
-@media (max-width: 1000px) and (min-width: 426px)
-    .container
-        max-width: 100%
-
-    .header__nav
-        visibility: hidden
-        grid-area: unset
-        position: fixed
-        z-index: 1
-        right: 0
-        top: 0
-        bottom: 0
-        background: $main-bg-color
-        height: 100%
-        width: 30vw
-        display: flex
-        flex-direction: column
-        justify-content: space-around
-
-@media (max-width: 1400px) and (min-width: 426px)
-    .logo
-        height: 70px
-
-    .header__title
-        font-size: 2em
-
-    .header__nav-link
-        font-size: 1.2em
-
-    .header__gradient::after
-        margin-top: 90px
-        height: calc(40vh - 90px)
-
-    .upper-preview
-        margin-top: 90px
-        height: calc(100vh - 90px)
-
-    .upper-preview::after
-        top: 90px
-
-    .organization-desc
-        grid-template-columns: auto auto
-
-    .organization-desc__thumbnail
-        flex-direction: column
-
-    .organization-desc__project-1,
-    .organization-desc__project-2,
-    .organization-desc__project-3
-        width: 100%
-        height: 100%
-        margin-top: 20px
-        position: unset
-        
-    .organization-desc__img-1,
-    .organization-desc__img-2,
-    .organization-desc__img-3
-        max-width: 100%
-        max-height: 100%
+	.cooperate-with-us__img
+		max-width: 90%
 
 
-@media (max-width: 1401px)
-    .organization-desc__thumbnail
-        margin-bottom: unset
+@media (max-width: $tablet-width)
+	.header__grid--wrapper-home-page
+		max-width: unset
 
-    .organization-desc__thumbnail--anim-translate
-        animation: none
+	.header__title
+		text-align: center
+
+	.hamburger
+		justify-self: end
+
+	.hamburger
+		grid-area: hamburger
+		display: unset
+		height: 50px
+		width: 50px
+
+	.header__nav-link:not(header__nav-link:first-child)
+		margin-top: 20px
+
+	.header__nav-link
+		font-size: 1.2rem
+
+	.form-box
+		display: flex
+		flex-direction: column
+
+	.for-the-entire-window
+		cursor: unset
+		opacity: unset
+		transition: unset
+
+	.development__thumbnail-images:hover .for-the-entire-window
+		opacity: unset
+
+	.for-the-entire-window:hover
+		opacity: unset
+
+	.modal__form
+		background: rgba(0, 0, 0)
+		padding: 0px
+
+	.modal__image
+		max-width: 100%
+		border: unset
+		background: gray
+
+	.modal__close
+		position: absolute
+		height: 30px
+		width: 30px
+		top: 20px
+		right: 20px
+		cursor: unset
+		opacity: unset
+		transition: unset
+
+	.modal__close path
+		fill: white
+
+@media (max-width: $tablet-width) and (min-width: $mobile-width + 1px)
+	.container
+		max-width: 100%
+
+	.header__grid
+		grid-template: "logo title hamburger"
+
+	.header__title
+		margin: 20px 0
+		font-size: 3vw
+
+	.header__nav
+		visibility: hidden
+		grid-area: unset
+		position: fixed
+		z-index: 1
+		right: 0
+		top: 0
+		bottom: 0
+		background: $main-bg-color
+		height: 100%
+		width: 30vw
+		display: flex
+		flex-direction: column
+		justify-content: space-around
+
+	.modal
+		z-index: 0
+
+	.grid--developments
+		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+
+@media (max-width: $notebook-width) and (min-width: $tablet-width + 1px)
+	.header__title
+		font-size: 2rem
+
+@media (max-width: $notebook-width) and (min-width: $mobile-width + 1px)
+	.logo
+		height: 70px
+		width: 150px
+
+	.header__nav-link
+		font-size: 1.2rem
+
+	.header__gradient::after
+		margin-top: 90px
+		height: calc(40vh - 90px)
+
+	.upper-preview
+		margin-top: 90px
+		height: calc(100vh - 90px)
+
+	.upper-preview::after
+		top: 90px
+
+	.organization-desc
+		grid-template-columns: auto auto
+
+	.organization-desc__thumbnail
+		flex-direction: column
+
+	.organization-desc__project-1,
+	.organization-desc__project-2,
+	.organization-desc__project-3
+		width: 100%
+		height: 100%
+		margin-top: 20px
+		position: unset
+		
+	.organization-desc__img-1,
+	.organization-desc__img-2,
+	.organization-desc__img-3
+		max-width: 100%
+		max-height: 100%
+
+
+@media (max-width: $notebook-width)
+	.organization-desc__thumbnail
+		margin-bottom: unset
+
+	.organization-desc__thumbnail--anim-translate
+		animation: none

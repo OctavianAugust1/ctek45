@@ -21,7 +21,10 @@
             </div>
             <div class="form-box form-box--add">
                 <label class="form-box__caption">Описание (необязательное поле)</label>
-                <textarea class="form-box__textarea" name="description"></textarea>
+                <div>
+					<div id="editor"></div>
+				</div>
+				<textarea class="form-box__textarea" id="textarea_quill" name="description"></textarea>
             </div>
             <div class="form-box form-box--add">
                 <label class="form-box__caption">Превью</label>
@@ -33,7 +36,7 @@
                 <input class="form-box__input-file" type="file" name="images_development[]" accept="image/*" multiple>
                 <input class="input-button form-box__input-btn" type="button" value="Обзор">
             </div>
-            <button class="form__button">Загрузить проект</button>
+            <button class="form__button" id="submit_quill">Загрузить проект</button>
         </form>
         <hr>
     @endauth
@@ -63,9 +66,9 @@
                 <div class="developments__item">
                     <div class="developments__thumbnail">
                         <div class="for-the-entire-window" data-big="{{ asset($development_preview_big->path) }}">
-                            <img class="for-the-entire-window__icon" data="{{ asset('public/image/other/expand.svg') }}" alt="">
+                            <img class="for-the-entire-window__icon" src="" data="{{ asset('public/image/other/expand.svg') }}" alt="">
                         </div>
-                        <img class="developments__thumbnail-img" data="{{ asset($development_preview_small->path) }}" alt="">
+                        <img class="developments__thumbnail-img" src="" data="{{ asset($development_preview_small->path) }}" alt="">
                     </div>
                     <span class="developments__name">{{ $development->name }}</span>
                     @auth

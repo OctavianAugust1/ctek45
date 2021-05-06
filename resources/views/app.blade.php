@@ -6,8 +6,20 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	{{-- <link rel="stylesheet" href="{{ asset("public/css/reset.css") }}">
 	<link rel="stylesheet" href="{{ asset("public/css/style.css?5") }}"> --}}
-	<link rel="stylesheet" type="text/css" href="{{ asset('public'.mix("/css/main.css")) }}">
+	<link rel="stylesheet" href="{{ asset('public'.mix("/css/main.css")) }}" type="text/css">
 	<link rel="icon" href="{{ asset('public/image/logo/icon.ico') }}" type="image/x-icon">
+	{{-- froala-editor --}}
+	{{-- <link rel="stylesheet" href="{{ asset('public/js/froala-editor/css/froala_editor.pkgd.min.css') }}" type="text/css">
+	<link rel="stylesheet" href="{{ asset('public/js/froala-editor/css/froala_style.min.css') }}" type="text/css"> --}}
+
+	<!-- Core build with no theme, formatting, non-essential modules -->
+	<link type="text/css" href="https://cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
+	<script type="text/javascript" src="https://cdn.quilljs.com/1.3.6/quill.core.js" defer></script>
+	<!-- Main Quill library -->
+	<script type="text/javascript" src="https://cdn.quilljs.com/1.3.6/quill.min.js" defer></script>
+	<!-- Theme included stylesheets -->
+	<link type="text/css" href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+	
 	<title>@yield('title')СТЭК</title>
 </head>
 <body class="body">
@@ -57,6 +69,14 @@
 			</div>
 		</div>
 	</footer>
-	<script src="{{ asset('public'.mix('/js/script.js')) }}" defer></script>
+	{{-- <script type="text/javascript" src="{{ asset('public'.mix('/js/script.js')) }}" defer></script> --}}
+	<script type="text/javascript" src="{{ asset('public'.mix('/js/all.js')) }}" defer></script>
+	{{-- <script type="text/javascript" src="{{ asset('public/js/froala-editor/js/froala_editor.pkgd.min.js') }}" defer></script>
+	<script type="text/javascript" src="{{ asset('public/js/froala-editor/js/languages/ru.js') }}" defer></script>
+
+	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/decoupled-document/translations/ru.js" defer></script>
+	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/decoupled-document/ckeditor.js" defer></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest" defer></script> --}}
 </body>
 </html>

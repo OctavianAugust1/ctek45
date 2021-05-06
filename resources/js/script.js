@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 	const close_svg = `
-		<svg class="times" viewBox="0 0 352 512">
+		<svg class="delete-image__svg" viewBox="0 0 352 512">
 			<path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
 			</path>
 		</svg>
@@ -42,8 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
 							const src = event.target.result
 							preview.insertAdjacentHTML("afterbegin", `
 								<div class="preview__image">
-									<div class="preview__remove-image">
-										<div class="preview__close" data-name="${file.name}">&times;</div>
+									<div class="delete-image delete-image--preview__image">
+										<svg class="delete-image__svg" viewBox="0 0 352 512">
+											<path data-name="${file.name}" fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
+											</path>
+										</svg>
 									</div>
 									<img class="preview__img" src="${src}" alt=""/>
 								</div>
@@ -57,11 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
 				const remove = event => {
 					if (!event.target.dataset.name) return
 					const {name} = event.target.dataset
-					console.log(event.target.dataset)
 					files = files.filter(file => file.name !== name)
 	
 					const block = document.querySelector(`[data-name="${name}"]`).closest('.preview__image')
-					console.log(`${name}`)
 					block.classList.add('preview__image--removing')
 					if (block.parentElement.childElementCount == 1) {
 						const preview_el = block.parentElement
@@ -163,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				form.className = "modal__form"
 				let image = document.createElement("img")
 				image.src = event.target.parentElement.dataset.big
+				image.alt = ""
 				image.className = "modal__image"
 				let background = document.createElement("div")
 				background.className = "modal__bg-modal"
@@ -203,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const modal = document.createElement('div')
 			modal.className = 'modal'
 			body.append(modal)
+			body.style.overflow = 'hidden'
 			body.className = 'modal-open'
 
 			const nav = document.querySelector('nav')
@@ -220,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			})
 		})
 		let mobileSize
-		const tabletWidth = 1000
+		const tabletWidth = 1020
 		const animate_emergence = document.querySelectorAll('.animate-emergence')
 		if (document.documentElement.clientWidth <= tabletWidth) {
 			animate_emergence.forEach(element => {
@@ -240,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				nav.style.visibility = 'hidden'
 			}
 			if (document.documentElement.clientWidth > tabletWidth) {
-				document.body.style.overflow = 'unset'
+				body.style.overflow = 'unset'
 				const nav = document.querySelector('nav')
 				nav.style.visibility = 'unset'
 				animate_emergence.forEach(element => {
@@ -256,7 +259,114 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		})
 	}
-	
+
+	if (document.querySelector('#editor')) {
+		const quill = new Quill('#editor', {
+			modules: {
+				toolbar: [
+					['bold', 'italic', 'underline'],
+					['blockquote'],
+
+					[{ 'header': 1 }, { 'header': 2 }],
+					[{ 'list': 'ordered'}, { 'list': 'bullet' }],
+					[{ 'script': 'sub'}, { 'script': 'super' }],
+					[{ 'indent': '-1'}, { 'indent': '+1' }],
+					[{ 'direction': 'rtl' }],
+
+					['clean']
+				],
+			},
+			placeholder: 'Описание',
+			theme: 'snow'
+		})
+		quill.root.setAttribute('spellcheck', false)
+		const submit_quill = document.querySelector('#submit_quill')
+		const textarea_quill = document.querySelector('#textarea_quill')
+		submit_quill.onclick = () => {
+			textarea_quill.value = JSON.stringify(quill.getContents())
+		}
+
+		function name(params) {
+			let desc = document.querySelector('#description')
+			let vvvvvv = JSON.parse(desc.textContent)
+			const quill_editor = document.querySelector('#quill_editor')
+			quill.setContents(vvvvvv)
+			const dev_description = document.querySelector('#dev_description')
+			dev_description.innerHTML = quill.root.innerHTML
+			// quill.setAttribute() = JSON.parse(textarea_quill.value)
+			quill.setContents(JSON.parse(textarea_quill.value))
+		}
+
+
+
+		// const editor = new EditorJS({
+		// 	HolderId: 'editorjs',
+		// 	tools: { 
+		// 		header: {
+		// 			class: Header, 
+		// 			inlineToolbar: ['link', 'marker', 'bold', 'italic']
+		// 		}, 
+		// 		list: { 
+		// 			class: List, 
+		// 			inlineToolbar: true 
+		// 		} 
+		// 	},
+		// })
+
+
+
+		// DecoupledEditor
+        //     .create(document.querySelector('.form-box__textarea', {
+		// 		language: 'ru'
+		// 	}))
+        //     .catch(error => {
+        //         console.error(error)
+        //     })
+
+		// DecoupledEditor
+		// 		.create( document.querySelector( '.form-box__textarea', {
+		// 			language: 'ru'
+		// 		} ) )
+		// 		.then( editor => {
+		// 			const toolbarContainer = document.querySelector( '#toolbar-container' );
+
+		// 			toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+		// 		} )
+		// 		.catch( error => {
+		// 			console.error( error );
+		// 		} );
+
+
+
+		// const textarea = document.querySelectorAll('textarea')
+		// textarea.forEach(element => {
+		// 	new FroalaEditor(element, {
+		// 		language: 'ru',
+		// 		charCounterCount: false,
+		// 		fileUpload: false,
+		// 		imageUpload: false,
+		// 		imagePaste: false,
+		// 		imageUploadRemoteUrls: false,
+		// 		videoUpload: false,
+		// 		fontFamilyDefaultSelection: 'Nunito',
+		// 		fontSizeDefaultSelection: '19',
+		// 		fontSizeUnit: 'px',
+		// 		fontSizeSelection: true,
+		// 		heightMin: 200,
+		// 		quickInsertEnabled: false,
+		// 		emoticonsUseImage: false,
+		// 		fontFamilySelection: true,
+		// 		attribution: false,
+		// 		spellcheck: false,
+		// 		toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', 'inlineClass', 'clearFormatting'],
+				
+		// 		toolbarBottom: true,
+		// 		keepFormatOnDelete: true,
+		// 		htmlExecuteScripts: false,
+		// 	})
+		// })
+	}
+
 	// validation email
 	// preg_match('/^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u', $item)
 })

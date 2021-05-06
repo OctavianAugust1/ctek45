@@ -1,4 +1,6 @@
 {
+    "/js/ajax.js": "/js/ajax.js",
+    "/css/main.css": "/css/main.css",
     "/js/script.js": "/js/script.js",
-    "/css/main.css": "/css/main.css"
+    "/js/all.js": "/js/all.js"
 }

@@ -219,7 +219,7 @@ class UploadController extends Controller
             Storage::makeDirectory('public/'.$path_section.'/big/'.$maxId.'/');
             Storage::makeDirectory('public/'.$path_section.'/small/'.$maxId.'/');
             \Intervention\Image\Facades\Image::make($file)->save($path_image_big, 80);
-            \Intervention\Image\Facades\Image::make($path_image_big)->fit(500, 300)->save($path_image_small, 70);
+            \Intervention\Image\Facades\Image::make($path_image_big)->fit(300, 200)->save($path_image_small, 70);
             $path_image_big = 'public/'.$path_image_big;
             $path_image_small = 'public/'.$path_image_small;
             
@@ -302,7 +302,7 @@ class UploadController extends Controller
             Storage::makeDirectory('public/'.$path_section.'/big/'.$development_id.'/');
             Storage::makeDirectory('public/'.$path_section.'/small/'.$development_id.'/');
             \Intervention\Image\Facades\Image::make($file)->save($path_image_big, 80);
-            \Intervention\Image\Facades\Image::make($path_image_big)->fit(500, 300)->save($path_image_small, 70);
+            \Intervention\Image\Facades\Image::make($path_image_big)->fit(300, 200)->save($path_image_small, 70);
             $path_image_big = 'public/'.$path_image_big;
             $path_image_small = 'public/'.$path_image_small;
             
