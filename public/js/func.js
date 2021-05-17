@@ -81,34 +81,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./resources/js/ajax.js":
-/*!******************************!*\
-  !*** ./resources/js/ajax.js ***!
-  \******************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _func_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./func.js */ "./resources/js/func.js");
-
-document.addEventListener('DOMContentLoaded', function () {
-  var form = document.querySelectorAll("form:not([action=\"/login\"])");
-  form.forEach(function (event) {
-    var request = event.action;
-    if (event.querySelector('.form-box__input-text--patents')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["changedNamePatent"])(event, request);
-    if (event.querySelector('textarea')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["changedNameAndDescDev"])(event, request);
-    if (event.querySelector('.dropdown__input-text--change-category')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["changeCategory"])(event, request);
-    if (event.querySelector('button')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["requestBtn"])(event, request);
-  });
-});
-
-/***/ }),
 
 /***/ "./resources/js/func.js":
 /*!******************************!*\
@@ -781,26 +757,14 @@ var requestBtn = func.ajax.requestBtn;
 
 /***/ }),
 
-/***/ "./resources/sass/main.sass":
-/*!**********************************!*\
-  !*** ./resources/sass/main.sass ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!***************************************************************!*\
-  !*** multi ./resources/js/ajax.js ./resources/sass/main.sass ***!
-  \***************************************************************/
+/***/ 2:
+/*!************************************!*\
+  !*** multi ./resources/js/func.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\OpenServer\domains\ctek\resources\js\ajax.js */"./resources/js/ajax.js");
-module.exports = __webpack_require__(/*! D:\OpenServer\domains\ctek\resources\sass\main.sass */"./resources/sass/main.sass");
+module.exports = __webpack_require__(/*! D:\OpenServer\domains\ctek\resources\js\func.js */"./resources/js/func.js");
 
 
 /***/ })

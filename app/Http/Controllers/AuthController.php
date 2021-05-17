@@ -10,12 +10,8 @@ use App\Http\Requests\AuthValidation;
 
 class AuthController extends Controller
 {
-	public function signup(Request $request)
+	public function signup(AuthValidation $request)
 	{
-		$request->validate([
-			'login' => 'required|string',
-			'password' => 'required|string'
-		]);
 		$user = User::create([
 			'login' => $request->login,
 			'password' => $request->password,
@@ -44,6 +40,14 @@ class AuthController extends Controller
 				'message' => 'failed',
 			]);
 		}
+	}
+	public function api_token(Request $request)
+	{
+		$api_token = User::where('id', Auth::id())->pluck('api_token')->first();
+		return response()->json([
+			'message' => 'success',
+			'api_token' => $api_token,
+		]);
 	}
     public function login(AuthValidation $request)
     {

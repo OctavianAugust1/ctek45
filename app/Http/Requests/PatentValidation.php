@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthValidation extends FormRequest
+class PatentValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class AuthValidation extends FormRequest
     public function rules()
     {
         return [
-            'login' => 'required',
-            'password' => 'required'
+            'name' => 'required|string|max:255',
+            'image_patent' => 'required|image'
         ];
     }
 
@@ -37,8 +37,12 @@ class AuthValidation extends FormRequest
     public function messages()
     {
         return [
-            'login.required' => 'Вы не ввели логин',
-            'password.required' => 'Вы не ввели пароль',
+            'name.required' => 'Введите название',
+            'name.string' => 'Поле должно быть строкой',
+            'name.max' => 'Максимально 255 символов',
+
+            'image_patent.required' => 'Выберите изображение',
+            'image_patent.image' => 'Выбранный файл должен быть изображением',
         ];
     }
 }

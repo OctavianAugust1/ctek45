@@ -81,34 +81,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./resources/js/ajax.js":
-/*!******************************!*\
-  !*** ./resources/js/ajax.js ***!
-  \******************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _func_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./func.js */ "./resources/js/func.js");
-
-document.addEventListener('DOMContentLoaded', function () {
-  var form = document.querySelectorAll("form:not([action=\"/login\"])");
-  form.forEach(function (event) {
-    var request = event.action;
-    if (event.querySelector('.form-box__input-text--patents')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["changedNamePatent"])(event, request);
-    if (event.querySelector('textarea')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["changedNameAndDescDev"])(event, request);
-    if (event.querySelector('.dropdown__input-text--change-category')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["changeCategory"])(event, request);
-    if (event.querySelector('button')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["requestBtn"])(event, request);
-  });
-});
-
-/***/ }),
 
 /***/ "./resources/js/func.js":
 /*!******************************!*\
@@ -781,26 +757,42 @@ var requestBtn = func.ajax.requestBtn;
 
 /***/ }),
 
-/***/ "./resources/sass/main.sass":
-/*!**********************************!*\
-  !*** ./resources/sass/main.sass ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./resources/js/main.js":
+/*!******************************!*\
+  !*** ./resources/js/main.js ***!
+  \******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _func_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./func.js */ "./resources/js/func.js");
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (document.querySelector('[enctype="multipart/form-data"]')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["uploadFiles"])();
+  if (document.querySelector('img')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["lazyLoadImage"])();
+  if (document.querySelector('.animate-emergence')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["animateEmergence"])();
+  if (document.querySelector('.for-the-entire-window')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["forTheEntireWindow"])();
+  if (document.querySelector('.delete-image')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["deleteImage"])();
+  if (document.querySelector('.hamburger')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["hamburger"])();
+  if (document.querySelector('textarea')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["textEditor"])();
+  if (document.querySelector('pre')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["textEdited"])();
+  if (document.querySelector('.dropdown--select-category')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["selectCategory"])();
+  if (document.querySelector('.dropdown__list--sort')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["sortCategory"])();
+  if (document.querySelector('#upButton')) Object(_func_js__WEBPACK_IMPORTED_MODULE_0__["upButton"])(); // validation email
+  // preg_match('/^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u', $item)
+});
 
 /***/ }),
 
-/***/ 0:
-/*!***************************************************************!*\
-  !*** multi ./resources/js/ajax.js ./resources/sass/main.sass ***!
-  \***************************************************************/
+/***/ 1:
+/*!************************************!*\
+  !*** multi ./resources/js/main.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\OpenServer\domains\ctek\resources\js\ajax.js */"./resources/js/ajax.js");
-module.exports = __webpack_require__(/*! D:\OpenServer\domains\ctek\resources\sass\main.sass */"./resources/sass/main.sass");
+module.exports = __webpack_require__(/*! D:\OpenServer\domains\ctek\resources\js\main.js */"./resources/js/main.js");
 
 
 /***/ })

@@ -103,17 +103,17 @@
     <div class="cooperate-with-us homepage--container">
         <h2 class="title-h2 homepage--title-h2 cooperate-with-us__title-h2">Сотрудничают с нами</h2>
         <div class="cooperate-with-us__images">
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about_us/logo1.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about_us/logo3.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about_us/logo5.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about_us/logo7.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about_us/logo8.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about_us/logo9.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about_us/logo10.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about_us/logo11.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about_us/logo12.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about_us/logo13.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about_us/logo14.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo1.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo3.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo5.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo7.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo8.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo9.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo10.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo11.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo12.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo13.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo14.webp') }}" alt=""></div>
         </div>
     </div>
 @endsection

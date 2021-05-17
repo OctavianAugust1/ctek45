@@ -18,20 +18,15 @@
     <div class="development">
         @auth
             <form class="form" action="{{ route('change_information_development') }}" method="POST">
-                @csrf
                 <input type="hidden" name="id" value="{{ $development->id }}">
                 <div class="form-box development__form-box">
                     <input class="development__input-text" type="text" name="name" value="{{ $development->name }}">
-					<div>
-						<div id="editor"></div>
-					</div>
-                    <textarea class="form-box__textarea development__textarea" id="textarea_quill" name="description">{{ $development->description }}</textarea>
+                    <textarea class="form-box__textarea development__textarea" name="description">{{ $development->description }}</textarea>
                 </div>
-                <button class="button">Сохранить</button>
+                {{-- <button class="button">Сохранить</button> --}}
             </form>
             <hr>
             <form class="form" action="{{ route('add_development_image') }}" enctype="multipart/form-data" method="POST">
-                @csrf
                 <input type="hidden" name="development_id" value="{{ $development->id }}">
                 <div class="form-box form-box--add">
                     <label class="form-box__caption">Изображения проекта</label>
@@ -63,7 +58,6 @@
                             </svg>
                         </div>
                         <form class="form form--development__thumbnail" action="{{ route('delete_image_development') }}" method="POST">
-                            @csrf
                             <input type="hidden" name="path" value="{{ $development_image->path }}">
                             <button class="form__button">Удалить изображение</button>
                         </form>
@@ -72,13 +66,10 @@
             @endforeach
         </div>
         @guest
-			<div id="description">{{ $development->description }}</div>
-            <div id="quill_editor"></div>
-            <pre class="desc" id="dev_description"></pre>
+            <pre class="desc">{{ $development->description }}</pre>
         @endguest
         @auth
             <form class="form" class="delete_development" action="{{ route('delete_development') }}" method="POST">
-                @csrf
                 <input type="hidden" name="id" value="{{ $development->id }}">
                 <button class="form__button">Удалить</button>
             </form>

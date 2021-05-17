@@ -81,6 +81,12 @@ a:hover
 	background: rgb(99, 150, 207)
 	color: white
 
+.disabled-hover,
+.sendFormButton
+	&:hover
+		background: none !important
+		color: unset !important
+
 .delete-image
 	position: absolute
 	top: 10px
@@ -111,22 +117,68 @@ a:hover
 
 .list
 	list-style: disc
+
+ul, ol
 	margin-left: 25px
 
-.desc, .fr-view
+.error
+	font-weight: bold
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2)
+
+.successPopUp
+	position: fixed
+	z-index: 1
+	left: 0
+	bottom: 0
+	margin: 0 0 20px 20px
+	height: 100px
+	width: 300px
+	display: flex
+	justify-content: center
+	align-items: center
+	font-weight: bold
+	font-size: 1.5rem
+	font-family: $standart-font
+	background: rgba(0, 0, 0, 0.6)
+	color: white
+	border-radius: 20px
+	animation: successPopUp 3s forwards
+
+@keyframes successPopUp
+	from
+		opacity: 1
+	80%
+		opacity: 1
+	to
+		opacity: 0
+
+.error
+	color: red
+	animation: createErrorsField .3s
+
+@keyframes createErrorField
+	0%
+		opacity: 0
+	100%
+		opacity: 1
+
+.desc, .ck-editor__editable
+	font-family: $standart-font !important
 	word-break: break-word
 	white-space: pre-wrap
 
-.ql-toolbar
-	background: white
+.ck-editor__editable
+	min-height: 200px
 
-#editor
-	height: 100px
-	max-height: 200px
-	background: white
+.ck-editor__top,
+.ck-editor__main
+	border: solid 1px gray !important
 
-#textarea_quill
-	display: none
+.ck-editor__top
+	border-bottom: 0 !important
+
+.ck-editor__main
+	border-top: 0 !important
 
 hr
 	width: 100%
@@ -145,6 +197,7 @@ hr
 	grid-template-rows: auto auto 1fr auto
 
 input, textarea
+	font-family: inherit
 	resize: none
 	outline: none
 	padding: 5px
@@ -165,6 +218,24 @@ input:not(input[type="button"]):focus, textarea:focus
 	padding: 10px
 	max-width: 90%
 
+.upButton
+	position: fixed
+	height: 50px
+	width: 50px
+	right: 20px
+	bottom: 20px
+	opacity: 0
+	transition: opacity .3s linear
+
+.arrow-up
+	max-height: 80%
+	min-width: 80%
+	overflow: hidden
+	cursor: pointer
+	transition: filter .3s ease
+	&:hover
+		filter: drop-shadow(0 0 2px black)
+
 .grid--patents
 	+grid(400px)
 
@@ -181,6 +252,30 @@ input:not(input[type="button"]):focus, textarea:focus
 .feedback--title
 	margin-bottom: 20px
 
+form[action*="/api/"]
+	position: relative
+	&::after
+		display: none
+		content: ''
+		position: absolute
+		z-index: 1
+		top: 0
+		bottom: 0
+		right: 0
+		left: 0
+		height: 100%
+		width: 100%
+		background: url('/public/image/other/load.gif') rgba(133, 201, 186, 0.3)  no-repeat center/cover 
+		background-size: auto auto
+		transform: scale(1.05)
+		border-radius: 10px
+		opacity: 0
+		visibility: hidden
+	&.formSend::after
+		display: block !important
+		opacity: unset !important
+		visibility: unset !important
+
 .form-box
 	margin: 1rem 0
 
@@ -193,6 +288,7 @@ input:not(input[type="button"]):focus, textarea:focus
 .form--change-text
 	display: flex
 	flex-flow: row wrap
+	width: 100%
 
 .login__form-box,
 .contacts__form-box,
@@ -325,9 +421,9 @@ img
 	.preview__image:hover &
 		opacity: 1
 
-.preview__image--removing
+.removing
 	transform: scale(0)
-	transition: transform .2s
+	transition: transform .3s
 
 .animate-emergence
 	opacity: 0
@@ -401,6 +497,12 @@ img
 
 	.footer__logo
 		display: none
+
+	.successPopUp
+		margin: unset
+		border-radius: unset
+		height: 50px
+		width: 100%
 
 	.preview
 		grid-template-columns: 1fr 1fr
@@ -529,6 +631,13 @@ img
 	.header__nav-link
 		font-size: 1.2rem
 
+	.upButton
+		display: none
+
+	.fr-box
+		& *
+			z-index: unset !important
+
 	.form-box
 		display: flex
 		flex-direction: column
@@ -581,7 +690,7 @@ img
 		visibility: hidden
 		grid-area: unset
 		position: fixed
-		z-index: 1
+		z-index: 11
 		right: 0
 		top: 0
 		bottom: 0

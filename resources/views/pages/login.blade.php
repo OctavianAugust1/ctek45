@@ -5,17 +5,15 @@
     
 		@if ($errors->any())
 			<div class="alert alert-danger">
-				<ul>
-					@foreach ($errors->all() as $error)
-						<li>{{ $error }}</li>
-					@endforeach
-				</ul>
+				@foreach ($errors->all() as $error)
+					<div class="error">{{ $error }}</div>
+				@endforeach
 			</div>
 		@endif
 
 		
 		<h2 class="title-h2 login--title">Авторизация</h2>
-		<form class="form" action="{{ route('loginA') }}" method="POST">
+		<form class="form" action="/login" method="POST">
 			@csrf
 			<div class="form-box form-box--add">
 				<span class="form-box__caption">Логин</span>

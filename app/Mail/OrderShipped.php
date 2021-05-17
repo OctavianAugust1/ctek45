@@ -38,6 +38,6 @@ class OrderShipped extends Mailable
             'email' => $this->email,
             'msg' => $this->msg
         ])
-        ->subject('fff');
+        ->subject('ООО Фирма "СТЭК"');
     }
 }

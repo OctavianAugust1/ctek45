@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Patent;
+use App\Development;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -22,13 +24,14 @@ class PagesController extends Controller
     }
     public function patents()
     {
-        $patents = DB::table('patents')->get();
+        $patents = Patent::get();
         return view('pages.patents', compact('patents'));
     }
     public function developments()
     {
-        $developments = DB::table('developments')->get();
-        return view('pages.developments', compact('developments'));
+        $developments = Development::get();
+        $developmentsCategoryes = Development::distinct()->pluck('category');
+        return view('pages.developments', compact(['developments', 'developmentsCategoryes']));
     }
     public function about_us()
     {
@@ -36,7 +39,7 @@ class PagesController extends Controller
     }
     public function development($id)
     {
-        $development = DB::table('developments')->where('id', $id)->first();
+        $development = Development::where('id', $id)->first();
         $development_images = DB::table('development_images')->where([
             ['development_id', $id],
             ['type', 'small']

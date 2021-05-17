@@ -4,13 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	{{-- <link rel="stylesheet" href="{{ asset("public/css/reset.css") }}">
-	<link rel="stylesheet" href="{{ asset("public/css/style.css?5") }}"> --}}
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	
 	<link rel="stylesheet" type="text/css" href="{{ asset('public'.mix("/css/main.css")) }}">
 	<link rel="icon" href="{{ asset('public/image/logo/icon.ico') }}" type="image/x-icon">
-	{{-- froala-editor --}}
-	<link rel="stylesheet" href="{{ asset('public/js/froala-editor/css/froala_editor.pkgd.min.css') }}" type="text/css">
-	<link rel="stylesheet" href="{{ asset('public/js/froala-editor/css/froala_style.min.css') }}" type="text/css">
 
 	<title>СТЭК</title>
 </head>
@@ -47,6 +44,12 @@
 	</header>
 
 	<main class="homepage">
+		<div class="upButton" id="upButton">
+			<svg class="arrow-up" viewBox="0 0 512 512">
+				<path fill="currentColor" d="M256 504c137 0 248-111 248-248S393 8 256 8 8 119 8 256s111 248 248 248zm0-448c110.5 0 200 89.5 200 200s-89.5 200-200 200S56 366.5 56 256 145.5 56 256 56zm20 328h-40c-6.6 0-12-5.4-12-12V256h-67c-10.7 0-16-12.9-8.5-20.5l99-99c4.7-4.7 12.3-4.7 17 0l99 99c7.6 7.6 2.2 20.5-8.5 20.5h-67v116c0 6.6-5.4 12-12 12z">
+				</path>
+			</svg>
+		</div>
 		@yield('content')
 	</main>
 
@@ -63,8 +66,6 @@
 			</div>
 		</div>
 	</footer>
-	<script type="text/javascript" src="{{ asset('public'.mix('/js/script.js')) }}" defer></script>
-	<script type="text/javascript" src="{{ asset('public/js/froala-editor/js/froala_editor.pkgd.min.js') }}" defer></script>
-	<script type="text/javascript" src="{{ asset('public/js/froala-editor/js/languages/ru.js') }}" defer></script>
+	<script type="text/javascript" type="module" src="{{ asset('public'.mix('/js/all.js')) }}" defer></script>
 </body>
 </html>

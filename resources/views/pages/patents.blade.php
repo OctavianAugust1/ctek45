@@ -14,13 +14,12 @@
 
 
         <form class="form" id="upload_patent" action="{{ route('upload_patent') }}" method="POST" enctype="multipart/form-data">
-            @csrf
             <div class="form-box form-box--add">
-                <label class="form-box__caption">Заголовок</label>
+                <label class="form-box__caption">Заголовок<span style="font-weight: bold"> *</span></label>
                 <input class="form-box__input-text" type="text" name="name" required>
             </div>
             <div class="form-box form-box--add">
-                <label class="form-box__caption">Изображение патента</label>
+                <label class="form-box__caption">Изображение патента<span style="font-weight: bold"> *</span></label>
                 <input class="form-box__input-file" type="file" name="image_patent" accept="image/*">
                 <input class="input-button form-box__input-btn" type="button" value="Обзор">
             </div>
@@ -49,16 +48,14 @@
                     @endguest
                     @auth
                         <form class="form form--change-text" action="{{ route('change_information_patent') }}" method="POST">
-                            @csrf
                             <div class="form-box form-box--patents">
                                 <input class="form-box__input-file" type="hidden" name="id" value="{{ $patent->id }}">
                                 <input class="form-box__input-text form-box__input-text--patents" type="text" name="name" value="{{ $patent->name }}">
                             </div>
-                            <button class="form__button">Сохранить</button>
+                            {{-- <button class="form__button">Сохранить</button> --}}
                         </form>
                         <hr>
                         <form class="form patents__form" action="{{ route('change_patent') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
                             <input type="hidden" name="id" value="{{ $patent->id }}">
                             <div class="form-box form-box--patents">
                                 <input class="form-box__input-file" type="file" name="image_patent" accept="image/*">
@@ -68,8 +65,7 @@
                         </form>
                         <hr>
                         <form class="form patents__form" action="{{ route('delete_patent') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $patent->id }}">
+                            <input type="hidden" name="patent_id" value="{{ $patent->id }}">
                             <button class="form__button">Удалить</button>
                         </form>
                     @endauth
