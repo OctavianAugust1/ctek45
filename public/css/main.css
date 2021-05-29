@@ -67,7 +67,7 @@ table {
 }
 
 .logo {
-  height: 75px;
+  height: 140px;
   justify-self: start;
 }
 
@@ -85,11 +85,12 @@ table {
 
 .header__logo {
   grid-area: logo;
-  height: 100px;
   width: 215px;
 }
 
 .header__title {
+  text-align: center;
+  line-height: 1.2;
   grid-area: title;
   font-weight: bold;
   font-size: 2.6em;
@@ -140,10 +141,12 @@ table {
 
 .footer__caption {
   grid-area: title;
+  margin-bottom: 10px;
 }
 
 .footer__desc {
   grid-area: inf_txt;
+  line-height: 1.8;
 }
 
 .footer__logo {
@@ -170,8 +173,8 @@ table {
   position: absolute;
   display: block;
   width: 100%;
-  margin-top: 120px;
-  height: calc(40vh - 120px);
+  margin-top: 160px;
+  height: calc(40vh - 160px);
   background: linear-gradient(180deg, #d4e3f4 5%, rgba(0, 0, 0, 0) 100%);
   z-index: 1;
 }
@@ -218,12 +221,22 @@ table {
 }
 
 .upper-preview {
-  margin-top: 120px;
-  height: calc(100vh - 120px);
+  margin-top: 160px;
+  height: calc(100vh - 160px);
   width: 100%;
   background-color: black;
   box-shadow: 0px 20px 20px 14px rgba(0, 0, 0, 0.1);
   display: flex;
+}
+.upper-preview::after {
+  content: "";
+  position: absolute;
+  top: 160px;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 160px);
+  background: url("/public/image/homepage/blueprint1.webp") no-repeat center/cover;
+  opacity: 0.7;
 }
 
 .upper-preview__title-h1 {
@@ -234,17 +247,6 @@ table {
   font-size: 3vw;
 }
 
-.upper-preview::after {
-  content: "";
-  position: absolute;
-  top: 120px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url("/public/image/homepage/blueprint1.webp") no-repeat center/cover;
-  opacity: 0.7;
-}
-
 .box {
   margin: auto;
   font-family: Open Sans, Nunito, Arial;
@@ -252,6 +254,11 @@ table {
   color: white;
   text-shadow: 2px 2px 4px black;
   z-index: 1;
+}
+
+.organization-desc__quote,
+.advantages__desc {
+  line-height: 2;
 }
 
 .organization-desc {
@@ -355,7 +362,7 @@ table {
   font-size: 1.3rem;
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: 15% 1fr;
 }
 
 .advantages__advantage:not(:last-child) {
@@ -409,7 +416,18 @@ table {
   margin-top: 20px;
 }
 
+.comand-image {
+  height: 502px;
+  width: 450px;
+}
+
+.comand-image__img {
+  border-radius: 20px;
+  max-width: 100%;
+}
+
 .about-us__images {
+  margin: 20px 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -500,6 +518,10 @@ iframe {
 /* developments */
 .developments__form-box:first-of-type {
   margin-top: 0;
+}
+
+.developments__category {
+  font-style: italic;
 }
 
 .form--dropdown {
@@ -871,7 +893,7 @@ input:not(input[type=button]):focus, textarea:focus {
   right: 20px;
   bottom: 20px;
   opacity: 0;
-  transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear, visibility 0.3s linear;
 }
 
 .arrow-up {
@@ -1144,17 +1166,18 @@ img {
   }
 
   .header__title {
+    line-height: 1;
     margin: 5px 0;
     font-size: 1.5rem;
   }
 
   .header__gradient::after {
-    margin-top: 138px;
+    margin-top: 137px;
   }
 
   .logo {
     height: 50px;
-    width: 110px;
+    width: 80px;
   }
 
   .header__nav {
@@ -1260,6 +1283,11 @@ img {
     width: 100%;
   }
 
+  .comand-image {
+    height: 100%;
+    width: 100%;
+  }
+
   .homepage--container {
     max-width: unset;
     padding: 10px;
@@ -1271,9 +1299,9 @@ img {
     margin-top: 138px;
     height: calc(100vh - 138px);
   }
-
   .upper-preview::after {
     top: 138px;
+    height: calc(100vh - 138px);
     overflow: hidden;
   }
 
@@ -1361,10 +1389,6 @@ img {
     display: none;
   }
 
-  .fr-box * {
-    z-index: unset !important;
-  }
-
   .form-box {
     display: flex;
     flex-direction: column;
@@ -1415,6 +1439,10 @@ img {
     max-width: 100%;
   }
 
+  .header__grid--home-page {
+    height: 128px;
+  }
+
   .header__grid {
     grid-template: "logo title hamburger";
   }
@@ -1455,7 +1483,7 @@ img {
 }
 @media (max-width: 1400px) and (min-width: 481px) {
   .logo {
-    height: 70px;
+    height: 98px;
     width: 150px;
   }
 
@@ -1464,17 +1492,17 @@ img {
   }
 
   .header__gradient::after {
-    margin-top: 90px;
-    height: calc(40vh - 90px);
+    margin-top: 121px;
+    height: calc(40vh - 121px);
   }
 
   .upper-preview {
-    margin-top: 90px;
-    height: calc(100vh - 90px);
+    margin-top: 121px;
+    height: calc(100vh - 121px);
   }
-
   .upper-preview::after {
-    top: 90px;
+    height: calc(100vh - 121px);
+    top: 121px;
   }
 
   .organization-desc {

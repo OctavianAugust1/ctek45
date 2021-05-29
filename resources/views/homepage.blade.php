@@ -21,8 +21,8 @@
 						</path>
 					</svg>
 				</div>
-				<img class="logo header__logo" data="{{ asset('public/image/logo/logo.svg') }}" alt="">
-				<h1 class="header__title">Инжиниринговая компания Фирма СТЭК</h1>
+				<img class="logo header__logo" data="{{ asset('public/image/logo/logo1.svg') }}" alt="">
+				<h1 class="header__title">Инжиниринговая компания<br>Фирма СТЭК</h1>
 				<nav class="header__nav">
 					<a class="header__nav-link" href="{{ route('index') }}">Главная</a>
 					<a class="header__nav-link" href="{{ route('about_us') }}">О нас</a>
@@ -55,13 +55,14 @@
 
 	<footer class="footer">
 		<div class="footer__grid container">
-			<img class="logo footer__logo" data="{{ asset('public/image/logo/logo.svg') }}" alt="">
+			<img class="logo footer__logo" data="{{ asset('public/image/logo/logo1.svg') }}" alt="">
 			<span class="footer__caption">Контактная информация</span>
 			<div class="footer__desc">
-				<p>
-					ООО Фирма «СТЭК», 640007, Россия, г.Курган, пр-т Машиностроителей, д.1, оф.412;
-					е-mail: ctek45@yandex.ru
-				</p>
+				<div>
+					<p>ООО Фирма «СТЭК»</p>
+					<p>640007, Россия, г.Курган, пр-т Машиностроителей, д.1, оф.412</p>
+					<p>е-mail: ctek45@yandex.ru</p>
+				</div>
 				<p>Директор: Денисов Юрий Геннадьевич, моб. +7-912-832-62-18</p>
 			</div>
 		</div>

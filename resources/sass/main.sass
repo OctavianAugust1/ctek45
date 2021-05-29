@@ -225,7 +225,7 @@ input:not(input[type="button"]):focus, textarea:focus
 	right: 20px
 	bottom: 20px
 	opacity: 0
-	transition: opacity .3s linear
+	transition: opacity .3s linear, visibility .3s linear
 
 .arrow-up
 	max-height: 80%
@@ -459,15 +459,16 @@ img
 		grid-template-columns: 1fr 1fr
 
 	.header__title
+		line-height: 1
 		margin: 5px 0
 		font-size: 1.5rem
 
 	.header__gradient::after
-		margin-top: 138px
+		margin-top: 137px
 
 	.logo
 		height: 50px
-		width: 110px
+		width: 80px
 
 	.header__nav
 		visibility: hidden
@@ -483,7 +484,7 @@ img
 		display: flex
 		flex-direction: column
 		justify-content: space-around
-		
+
 	.homepage,
 	.container
 		border-radius: unset
@@ -552,6 +553,10 @@ img
 		height: 100%
 		width: 100%
 
+	.comand-image
+		height: 100%
+		width: 100%
+
 	.homepage--container
 		max-width: unset
 		padding: 10px
@@ -561,10 +566,10 @@ img
 	.upper-preview
 		margin-top: 138px
 		height: calc(100vh - 138px)
-
-	.upper-preview::after
-		top: 138px
-		overflow: hidden
+		&::after
+			top: 138px
+			height: calc(100vh - 138px)
+			overflow: hidden
 
 	.upper-preview__title-h1,
 	.upper-preview__title-h2
@@ -634,10 +639,6 @@ img
 	.upButton
 		display: none
 
-	.fr-box
-		& *
-			z-index: unset !important
-
 	.form-box
 		display: flex
 		flex-direction: column
@@ -679,6 +680,9 @@ img
 	.container
 		max-width: 100%
 
+	.header__grid--home-page
+		height: 128px
+
 	.header__grid
 		grid-template: "logo title hamburger"
 
@@ -713,22 +717,22 @@ img
 
 @media (max-width: $notebook-width) and (min-width: $mobile-width + 1px)
 	.logo
-		height: 70px
+		height: 98px
 		width: 150px
 
 	.header__nav-link
 		font-size: 1.2rem
 
 	.header__gradient::after
-		margin-top: 90px
-		height: calc(40vh - 90px)
+		margin-top: 121px
+		height: calc(40vh - 121px)
 
 	.upper-preview
-		margin-top: 90px
-		height: calc(100vh - 90px)
-
-	.upper-preview::after
-		top: 90px
+		margin-top: 121px
+		height: calc(100vh - 121px)
+		&::after
+			height: calc(100vh - 121px)
+			top: 121px
 
 	.organization-desc
 		grid-template-columns: auto auto

@@ -15,11 +15,11 @@
 		
 		<div class="contact__desc">
 			<p class="contact__paragraph">Директор: Денисов Юрий Геннадьевич </p>
-			<p class="contact__paragraph">т. +7-912-832-62-18</p>
+			<p class="contact__paragraph">моб. +7-912-832-62-18</p>
 			<p class="contact__paragraph">Зам. директора: Вибе Вячеслав Петрович</p>
-			<p class="contact__paragraph">т. +7-912-834-16-21</p>
+			<p class="contact__paragraph">моб. +7-912-834-16-21</p>
 			<p class="contact__paragraph">Гл. бухгалтер: Денисова Елена Владимировна</p>
-			<p class="contact__paragraph">т. +7-912-831-51-70</p>
+			<p class="contact__paragraph">моб. +7-912-831-51-70</p>
 		</div>
 	</div>
 

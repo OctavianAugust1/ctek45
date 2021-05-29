@@ -80,7 +80,7 @@
                         <img class="developments__thumbnail-img" src="" data="{{ asset($development_preview_small->path) }}" alt="">
                     </div>
                     <span class="developments__name">{{ $development->name }}</span>
-					@guest <div>Категория: <span class="categoryDev">{{ $development->category }}</span></div> @endguest
+					@guest <div class="developments__category">Категория: <span class="categoryDev">{{ $development->category }}</span></div> @endguest
                     @auth
 						<span class="caption">Категория</span>
 						<div class="dropdown dropdown--select-category">

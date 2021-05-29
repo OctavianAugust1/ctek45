@@ -11,15 +11,20 @@
     <div class="organization-desc homepage--container">
         <div class="organization-desc__quote animate-emergence">
             <h2 class="title-h2 homepage--title-h2">О фирме</h2>
-            <p>
-                Компания существует на рынке 30 лет. 
-                Основные виды деятельности: разработка конструкторской документации, научно-исследовательская деятельность, автоматизация технологических процессов и оборудования.   
-            </p>
+            <div>
+				<p>Компания успешно развивается на рынке 30 лет.</p>
+				<p>Основные виды деятельности:</p>
+				<ul>
+					<li>разработка конструкторской документации,</li>
+					<li>научно-исследовательская деятельность,</li>
+					<li>автоматизация технологических процессов и оборудования.</li>
+				</ul>
+            </div>
         </div>
         <div class="organization-desc__thumbnail organization-desc__thumbnail--anim-translate">
-            <div class="organization-desc__project-1"><img class="organization-desc__img-1" data="{{ asset('public/image/homepage/company1_bg.webp') }}" alt=""></div>
-            <div class="organization-desc__project-2"><img class="organization-desc__img-2" data="{{ asset('public/image/homepage/company2_bg.webp') }}" alt=""></div>
-            <div class="organization-desc__project-3"><img class="organization-desc__img-3" data="{{ asset('public/image/homepage/company3_bg.webp') }}" alt=""></div>
+            <div class="organization-desc__project-1"><img class="organization-desc__img-1" src="{{ asset('public/image/homepage/company1_bg.webp') }}" data="{{ asset('public/image/homepage/company1_bg.webp') }}" alt=""></div>
+            <div class="organization-desc__project-2"><img class="organization-desc__img-2" src="{{ asset('public/image/homepage/company2_bg.webp') }}" data="{{ asset('public/image/homepage/company2_bg.webp') }}" alt=""></div>
+            <div class="organization-desc__project-3"><img class="organization-desc__img-3" src="{{ asset('public/image/homepage/company3_bg.webp') }}" data="{{ asset('public/image/homepage/company3_bg.webp') }}" alt=""></div>
         </div>
     </div>
     
@@ -79,41 +84,22 @@
                 </ul>
             </div>
         </div>
-        {{-- <div class="advantages__advantage animate-emergence">
-            <div class="image"><img data="{{ asset('public/image/logo/icon.ico') }}" alt=""></div>
-            <div>
-                Минимальные сроки разработки от идеи до готового проекта.
-            </div>
-        </div> --}}
     </div>
-    {{-- <div class="our_works container-hp animate-emergence">
-        <h2>Лучшие работы</h2>
-        <div class="developments">
-            @foreach ($developments as $development)
-                <div class="development">
-                    <div class="image"><img data="{{ asset($development->preview_development) }}" alt=""></div>
-                    <span>{{ $development->name }}</span>
-                    <form action="{{asset('/development')}}/{{$development->id}}" method="GET">
-                        <button>Подробнее</button>
-                    </form>
-                </div>
-            @endforeach
-        </div>
-    </div> --}}
+	
     <div class="cooperate-with-us homepage--container">
         <h2 class="title-h2 homepage--title-h2 cooperate-with-us__title-h2">Сотрудничают с нами</h2>
         <div class="cooperate-with-us__images">
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo1.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo3.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo5.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo7.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo8.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo9.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo10.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo11.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo12.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo13.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" data="{{ asset('public/image/about-us/logo14.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo1.webp') }}" data="{{ asset('public/image/about-us/logo1.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo3.webp') }}" data="{{ asset('public/image/about-us/logo3.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo5.webp') }}" data="{{ asset('public/image/about-us/logo5.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo7.webp') }}" data="{{ asset('public/image/about-us/logo7.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo8.webp') }}" data="{{ asset('public/image/about-us/logo8.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo9.webp') }}" data="{{ asset('public/image/about-us/logo9.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo10.webp') }}" data="{{ asset('public/image/about-us/logo10.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo11.webp') }}" data="{{ asset('public/image/about-us/logo11.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo12.webp') }}" data="{{ asset('public/image/about-us/logo12.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo13.webp') }}" data="{{ asset('public/image/about-us/logo13.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo14.webp') }}" data="{{ asset('public/image/about-us/logo14.webp') }}" alt=""></div>
         </div>
     </div>
 @endsection

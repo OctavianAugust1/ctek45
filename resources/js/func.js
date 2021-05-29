@@ -93,9 +93,7 @@ const func = {
 		
 		function handleImg(myImg, observer) {
 			myImg.forEach(myImgSingle => {
-				if (myImgSingle.intersectionRatio > 0) {
-					loadImage(myImgSingle.target)
-				}
+				if (myImgSingle.intersectionRatio > 0) loadImage(myImgSingle.target)
 			})
 		}
 		
@@ -104,10 +102,7 @@ const func = {
 		}
 		
 		const observer = new IntersectionObserver(handleImg, options)
-		
-		images.forEach(img => {
-			observer.observe(img)	
-		})
+		images.forEach(img => observer.observe(img))
 	},
 
 	animateEmergence: () => {
@@ -316,8 +311,23 @@ const func = {
 		const upBtn = document.getElementById('upButton')
 		upBtn.addEventListener('click', () => window.scrollTo(pageXOffset, 0))
 		window.addEventListener('scroll', () => {
-			if (pageYOffset < document.documentElement.clientHeight) upBtn.style.opacity = 0
-			else upBtn.style.opacity = 1
+			if (pageYOffset < document.documentElement.clientHeight) {
+				upBtn.style.opacity = 0
+				upBtn.style.visibility = 'hidden'
+			}
+			else {
+				upBtn.style.opacity = 1
+				upBtn.style.visibility = 'unset'
+			}
+		})
+	},
+
+	mobileHeightAutoResize: () => {
+		let vh = window.innerHeight * 0.01
+		document.documentElement.style.setProperty('--vh', `${vh}px`)
+		window.addEventListener('resize', () => {
+			vh = window.innerHeight * 0.01
+			document.documentElement.style.setProperty('--vh', `${vh}px`)
 		})
 	},
 
@@ -669,6 +679,7 @@ export const textEdited = func.textEdited
 export const selectCategory = func.selectCategory
 export const sortCategory = func.sortCategory
 export const upButton = func.upButton
+export const mobileHeightAutoResize = func.mobileHeightAutoResize
 
 export const patent_item_add = func.ajax.patent_item_add
 export const development_item_add = func.ajax.development_item_add

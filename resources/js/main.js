@@ -10,6 +10,7 @@ import {
 	selectCategory,
 	sortCategory,
 	upButton,
+	mobileHeightAutoResize,
 } from './func.js'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (document.querySelector('.dropdown__list--sort')) sortCategory()
 
 	if (document.querySelector('#upButton')) upButton()
+
+	// if (document.querySelector('.upper-preview')) mobileHeightAutoResize()
 
 	// validation email
 	// preg_match('/^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u', $item)
