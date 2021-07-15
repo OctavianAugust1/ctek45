@@ -26,7 +26,7 @@ class DevelopmentValidation extends FormRequest
         return [
 			'name' => 'required|string|max:255',
 			'description' => 'nullable|string',
-			'category' => 'required|string',
+			'category' => 'required|integer',
 			'image_development' => 'required|image',
 			'images_development' => 'nullable|array',
 			'images_development.*' => 'nullable|image'
@@ -47,7 +47,7 @@ class DevelopmentValidation extends FormRequest
 
             'description.string' => 'Поле должно быть строкой',
 
-            'category.required' => 'Выберите существующую или введите новую категорию',
+            'category.required' => 'Выберите категорию',
 
             'image_development.required' => 'Выберите изображение',
             'image_development.image' => 'Выбранный файл должен быть изображением',

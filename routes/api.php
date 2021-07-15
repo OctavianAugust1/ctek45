@@ -19,6 +19,20 @@ use Illuminate\Http\Request;
 
 
 Route::middleware('auth:api')->group(function () {
+	Route::post('about_us_change', 'UploadController@about_us_change')->name('about_us_change');
+	
+	Route::post('add_article', 'UploadController@add_article')->name('add_article');
+	Route::post('change_article', 'UploadController@change_article')->name('change_article');
+	Route::post('delete_article', 'UploadController@delete_article')->name('delete_article');
+	
+	Route::post('up_rotate_category', 'UploadController@up_rotate_category')->name('up_rotate_category');
+	Route::post('down_rotate_category', 'UploadController@down_rotate_category')->name('down_rotate_category');
+
+	Route::post('add_category', 'UploadController@add_category')->name('add_category');
+	Route::post('change_category_name', 'UploadController@change_category_name')->name('change_category_name');
+	Route::post('delete_category', 'UploadController@delete_category')->name('delete_category');
+	Route::post('change_main_page_inf', 'UploadController@change_main_page_inf')->name('change_main_page_inf');
+
 	Route::post('upload_patent', 'UploadController@upload_patent')->name('upload_patent');
 	Route::post('delete_patent', 'UploadController@delete_patent')->name('delete_patent');
 	Route::post('change_patent', 'UploadController@change_patent')->name('change_patent');

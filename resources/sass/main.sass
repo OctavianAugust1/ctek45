@@ -1,5 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap')
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap')
+@font-face
+	font-family: 'Open Sans'
+	font-style: normal
+	font-weight: 400
+	font-display: swap
+	src: url('/public/font/opensans/open-sans-v20-latin_cyrillic-regular.eot')
+	src: local(''), url('/public/font/opensans/open-sans-v20-latin_cyrillic-regular.eot?#iefix') format('embedded-opentype'), url('/public/font/opensans/open-sans-v20-latin_cyrillic-regular.woff2') format('woff2'), url('/public/font/opensans/open-sans-v20-latin_cyrillic-regular.woff') format('woff'), url('/public/font/opensans/open-sans-v20-latin_cyrillic-regular.ttf') format('truetype'), url('/public/font/opensans/open-sans-v20-latin_cyrillic-regular.svg#OpenSans') format('svg')
+@font-face
+	font-family: 'Nunito'
+	font-style: normal
+	font-weight: 400
+	font-display: swap
+	src: url('/public/font/nunito/nunito-v16-latin_cyrillic-regular.eot')
+	src: local(''), url('/public/font/nunito/nunito-v16-latin_cyrillic-regular.eot?#iefix') format('embedded-opentype'), url('/public/font/nunito/nunito-v16-latin_cyrillic-regular.woff2') format('woff2'), url('/public/font/nunito/nunito-v16-latin_cyrillic-regular.woff') format('woff'), url('/public/font/nunito/nunito-v16-latin_cyrillic-regular.ttf') format('truetype'), url('/public/font/nunito/nunito-v16-latin_cyrillic-regular.svg#Nunito') format('svg')
 $title-font: Open Sans, Nunito, Arial
 $standart-font: Nunito, Open Sans, Arial
 
@@ -8,7 +20,7 @@ $logo-color: #185aa0
 $body-bg-color: rgb(250, 250, 250)
 
 $mobile-width: 480px
-$tablet-width: 1020px
+$tablet-width: 1040px
 $notebook-width: 1400px
 
 %form-box_opt-1
@@ -28,20 +40,25 @@ $notebook-width: 1400px
 	margin: 20px 0
 
 // @import normalize
-@import reset, index, aboutUs, contacts, development, developments, patents
+@import reset, index, aboutUs, contacts, development, developments, patents, articles
 
 *,
 *::after,
 *::before
 	box-sizing: border-box
 
-a,
-a:active,
-a:hover
-	color: black
+// a,
+// a:visited,
+// a:active,
+// a:hover,
+// a:focus
+// 	color: black
+
+a
 	text-decoration: none
 
 .link
+	color: black
 	text-align: center
 
 .title-h1
@@ -90,7 +107,7 @@ a:hover
 .delete-image
 	position: absolute
 	top: 10px
-	right: 50px
+	right: 10px
 	height: 30px
 	width: 30px
 	background: white
@@ -120,6 +137,26 @@ a:hover
 
 ul, ol
 	margin-left: 25px
+
+.pagination
+	display: flex
+	flex-flow: row wrap
+	justify-content: center
+	font-size: 1.4rem
+	& .active .page-link,
+	& .disabled .page-link
+		color: black !important
+		font-weight: bold !important
+
+.page-item
+	list-style: none
+	margin: 0 20px
+
+.page-link
+	color: $logo-color
+	&:hover
+		color: black
+		text-shadow: 1px 1px 6px rgba(140, 140, 140)
 
 .error
 	font-weight: bold
@@ -183,7 +220,31 @@ ul, ol
 hr
 	width: 100%
 	border: none
-	margin: 2rem 0
+	margin: 1rem 0
+
+.breadcrumbs
+	display: flex
+	align-items: center
+	overflow: hidden
+	padding: 5px
+	margin-bottom: 10px
+
+.breadcrumbs__link
+	border: 1px solid black
+	border-radius: 20px
+	padding: 10px
+	font-weight: bold
+	transition: box-shadow .3s ease
+	&:last-child
+		font-weight: unset
+	&:hover:not(&:last-child)
+		box-shadow: 0 0 4px black
+
+.breadcrumbs__name
+	text-overflow: ellipsis
+	overflow: hidden
+	max-width: 20%
+	white-space: nowrap
 
 // пристыковка footer к низу страницы
 .html
@@ -276,6 +337,18 @@ form[action*="/api/"]
 		opacity: unset !important
 		visibility: unset !important
 
+.change-image
+	position: absolute
+	cursor: pointer
+	top: 10px
+	right: 10px
+	height: 50px
+	width: 50px
+	background: rgba(0, 0, 0, 1)
+	transition: .3s ease
+	&:hover
+		box-shadow: 0 0 4px black
+
 .form-box
 	margin: 1rem 0
 
@@ -295,39 +368,94 @@ form[action*="/api/"]
 .development__form-box
 	@extend %form-box_opt-2
 
+.form-box__textarea:not([name="message"])
+	display: none
+
 .form-box__textarea
 	height: 200px
+
+.category
+	display: grid
+	grid-template-columns: auto 1fr
+	grid-template-rows: auto auto
+	background: rgba(103, 255, 255, 0.144)
+	border: 1px solid black
+	box-shadow: inset 0 0 16px rgb(0, 69, 160)
+	margin: 2rem 0
+	padding: 1rem
+	& .category__right-block
+		margin-left: 20px
+		grid-column: 2
+		grid-row: 1/3
+
+.form--category
+	display: none
+
+.category__arrow-up,
+.category__arrow-down
+	height: 50px
+	width: 50px
+	cursor: pointer
+	&:hover
+		filter: drop-shadow(0 0 2px black)
+	& svg
+		max-height: 100%
+		max-width: 100%
+
+.category__arrow-up
+	grid-row: 1
+
+.category__arrow-down
+	align-self: end
+	grid-row: 2
+
+.form--admin
+	display: flex
+	flex-flow: row wrap
+	& *
+		margin: 10px 0
+
+.form-box--admin
+	width: 100%
+	& *
+		width: 100%
 
 img
 	line-height: 0
 
 .for-the-entire-window
-	position: absolute
-	top: 10px
-	right: 10px
-	height: 30px
-	width: 30px
-	background: white
-	border: 1px solid black
-	border-radius: 50%
 	cursor: pointer
-	opacity: 0
-	transition: opacity .2s linear
-	.patents__thumbnail:hover &,
-	.developments__thumbnail:hover &,
-	.development__thumbnail-image:hover &
-		opacity: .5
-	.patents__thumbnail &:hover,
-	.developments__thumbnail &:hover,
-	.development__thumbnail-image &:hover
-		opacity: 1
+	transition: all .3s
+	&:hover
+		box-shadow: 0 0 8px black
 
-.for-the-entire-window__icon
-	height: 100%
-	width: 100%
-	object-fit: cover
-	padding: 20%
-	color: red
+// .for-the-entire-window
+// 	position: absolute
+// 	top: 10px
+// 	right: 10px
+// 	height: 30px
+// 	width: 30px
+// 	background: white
+// 	border: 1px solid black
+// 	border-radius: 50%
+// 	cursor: pointer
+// 	opacity: 0
+// 	transition: opacity .2s linear
+// 	.patents__thumbnail:hover &,
+// 	.developments__thumbnail:hover &,
+// 	.development__thumbnail-image:hover &
+// 		opacity: .5
+// 	.patents__thumbnail &:hover,
+// 	.developments__thumbnail &:hover,
+// 	.development__thumbnail-image &:hover
+// 		opacity: 1
+
+// .for-the-entire-window__icon
+// 	height: 100%
+// 	width: 100%
+// 	object-fit: cover
+// 	padding: 20%
+// 	color: red
 
 .modal
 	z-index: 3
@@ -356,23 +484,71 @@ img
 	padding: 20px
 	display: flex
 
+.modal__img
+	position: relative
+	margin: auto
+	display: flex
+	height: 100%
+	max-width: 90%
+
 .modal__image
 	position: relative
 	margin: auto
 	max-height: 100%
-	max-width: 90%
+	max-width: 100%
 	border: 1px solid black
 	background: white
 
-.modal__image:not(.modal__close)
-	max-width: 100%
-	max-height: 100%
+// .modal__image:not(.modal__close)
+// 	max-width: 100%
+// 	max-height: 100%
+
+.modal__arrow-left,
+.modal__arrow-right
+	position: absolute
+	top: 0
+	bottom: 0
+	width: 10vw
+
+.modal__arrow-left
+	left: 0
+	background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0) 100%)
+	display: flex
+	align-items: center
+	justify-content: center
+	cursor: pointer
+	opacity: .5
+	transition: opacity .3s ease
+	&::before
+		content: ''
+		background: url('/public/image/other/left-arrow.svg') no-repeat center/cover
+		height: 50px
+		width: 50px
+	&:hover
+		opacity: 1
+
+.modal__arrow-right
+	right: 0
+	background: linear-gradient(270deg, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0) 100%)
+	display: flex
+	align-items: center
+	justify-content: center
+	cursor: pointer
+	opacity: .5
+	transition: opacity .3s ease
+	&::before
+		content: ''
+		background: url('/public/image/other/right-arrow.svg') no-repeat center/cover
+		height: 50px
+		width: 50px
+	&:hover
+		opacity: 1
 
 .modal__close
 	position: absolute
 	height: 50px
 	width: 50px
-	right: 20px
+	right: -50px
 	/* background: rgba(0, 0, 0, 0.3) */
 	cursor: pointer
 	opacity: .5
@@ -423,7 +599,8 @@ img
 
 .removing
 	transform: scale(0)
-	transition: transform .3s
+	opacity: 0
+	transition: transform 1.2s linear, opacity .3s linear
 
 .animate-emergence
 	opacity: 0
@@ -556,6 +733,10 @@ img
 	.comand-image
 		height: 100%
 		width: 100%
+		margin-right: unset
+
+	.desc--article > p
+		font-size: 8vw
 
 	.homepage--container
 		max-width: unset
@@ -643,20 +824,34 @@ img
 		display: flex
 		flex-direction: column
 
-	.for-the-entire-window
-		cursor: unset
-		opacity: unset
-		transition: unset
+	.breadcrumbs__name
+		max-width: 50%
 
-	.development__thumbnail-images:hover .for-the-entire-window
-		opacity: unset
+	.article
+		grid-template-columns: auto
+		grid-template-rows: auto auto
 
-	.for-the-entire-window:hover
-		opacity: unset
+	.article__buttons
+		margin-top: 30px
+		justify-content: space-between
+
+	// .for-the-entire-window
+	// 	cursor: unset
+	// 	opacity: unset
+	// 	transition: unset
+
+	// .development__thumbnail-images:hover .for-the-entire-window
+	// 	opacity: unset
+
+	// .for-the-entire-window:hover
+	// 	opacity: unset
 
 	.modal__form
 		background: rgba(0, 0, 0)
 		padding: 0px
+
+	.modal__img
+		max-width: 100%
 
 	.modal__image
 		max-width: 100%
@@ -675,6 +870,8 @@ img
 
 	.modal__close path
 		fill: white
+		stroke: black
+		stroke-width: 20
 
 @media (max-width: $tablet-width) and (min-width: $mobile-width + 1px)
 	.container

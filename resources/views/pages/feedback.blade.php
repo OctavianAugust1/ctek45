@@ -1,5 +1,6 @@
 @extends('app')
 @section('title', 'Связь с нами - ')
+@section('description', 'Связаться с ООО Фирма СТЭК написав и отправив письмо на почту')
 @section('content')
 	<h2 class="title-h2 feedback--title">Вы можете связаться для сотрудничества с нами</h2>
 	<form class="form" action="{{ route('mail') }}" method="POST">

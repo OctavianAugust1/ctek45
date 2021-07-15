@@ -1,18 +1,10 @@
 @extends('app')
 @section('title', 'Проекты - ')
+@section('description', 'Все проекты выполненные Фирмой СТЭК, совместно с другими организациями и выполненные самостоятельно')
 @section('content')
     @auth
-
-    
-        @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        @endif
-
-
+		<script src="{{ asset('/public/js/ckeditor5-build-classic/ckeditor.js') }}"></script>
+		<script src="{{ asset('/public/js/ckeditor5-build-classic/translations/ru.js') }}"></script>
         <form class="form" action="{{ route('upload_development') }}" method="POST" enctype="multipart/form-data">
             <div class="form-box form-box--add">
                 <label class="form-box__caption">Заголовок<span style="font-weight: bold"> *</span></label>
@@ -25,8 +17,8 @@
             <div class="form-box form-box--add">
                 <label class="form-box__caption">Категория<span style="font-weight: bold"> *</span></label>
 				<div class="dropdown dropdown--select-category" id="selectCategory">
-					<input class="dropdown__input-text--select-category" type="text" name="category">
-					<select class="dropdown__list dropdown__list--select-category">
+					{{-- <input class="dropdown__input-text--select-category" type="text" name="category"> --}}
+					<select class="dropdown__list dropdown__list--add-dev dropdown__list--select-category" name="category">
 						<option class="dropdown__item dropdown__item--disabled" disabled>Категория:</option>
 						<option class="dropdown__item">Без категории</option>
 						@foreach ($developmentsCategoryes as $developmentsCategory)
@@ -37,12 +29,12 @@
 					</select>
 				</div>
             </div>
-            <div class="form-box form-box--add">
+            <div class="form-box form-box--add dragdrop">
                 <label class="form-box__caption">Превью<span style="font-weight: bold"> *</span></label>
                 <input class="form-box__input-file" type="file" name="image_development" accept="image/*">
                 <input class="input-button form-box__input-btn" type="button" value="Обзор">
             </div>
-            <div class="form-box form-box--add">
+            <div class="form-box form-box--add dragdrop">
                 <label class="form-box__caption">Изображения проекта</label>
                 <input class="form-box__input-file" type="file" name="images_development[]" accept="image/*" multiple>
                 <input class="input-button form-box__input-btn" type="button" value="Обзор">
@@ -71,29 +63,32 @@
                 @php
                     $development_preview_big = DB::table('development_preview')->where([['type', 'big'], ['development_id', $development->id]])->first();
                     $development_preview_small = DB::table('development_preview')->where([['type', 'small'], ['development_id', $development->id]])->first();
+					$category = DB::table('categories')->where('rotating_id', $development->category)->value('category');
                 @endphp
                 <div class="developments__item">
                     <div class="developments__thumbnail">
-                        <div class="for-the-entire-window" data-big="{{ asset($development_preview_big->path) }}">
-                            <img class="for-the-entire-window__icon" src="" data="{{ asset('public/image/other/expand.svg') }}" alt="">
-                        </div>
-                        <img class="developments__thumbnail-img" src="" data="{{ asset($development_preview_small->path) }}" alt="">
+                        <img class="developments__thumbnail-img for-the-entire-window" src="" data="{{ asset($development_preview_small->path) }}" data-big="{{ asset($development_preview_big->path) }}" alt="">
                     </div>
-                    <span class="developments__name">{{ $development->name }}</span>
-					@guest <div class="developments__category">Категория: <span class="categoryDev">{{ $development->category }}</span></div> @endguest
+                    <h3 class="developments__name">{{ $development->name }}</h3>
+					@guest <div class="developments__category">Категория: <span class="categoryDev">{{ $category }}</span></div> @endguest
                     @auth
-						<span class="caption">Категория</span>
-						<div class="dropdown dropdown--select-category">
-							<form class="form form--dropdown" action="{{ route('change_category') }}" method="POST">
-								<input type="hidden" name="id" value="{{ $development->id }}">
-								<input class="dropdown__input-text--select-category dropdown__input-text--change-category" type="text" name="category">
-							</form>
-							<select class="dropdown__list dropdown__list--select-category">
-								<option class="dropdown__item dropdown__item--disabled" disabled>Категория:</option>
-								@foreach ($developmentsCategoryes as $developmentsCategory)
-									<option class="dropdown__item" @if ($developmentsCategory == $development->category) selected @endif>{{ $developmentsCategory }}</option>
-								@endforeach
-							</select>
+						<div class="category-change">
+							<span class="caption">Категория</span>
+							<div class="dropdown dropdown--select-category">
+								<form class="form form--dropdown" action="{{ route('change_category') }}" method="POST">
+									<input type="hidden" name="id" value="{{ $development->id }}">
+									{{-- <input class="dropdown__input-text--select-category dropdown__input-text--change-category" type="text" name="category"> --}}
+									<select class="dropdown__list dropdown__list--select-category dropdown__list--change-category" name="category">
+										<option class="dropdown__item dropdown__item--disabled" disabled>Категория:</option>
+										@foreach ($developmentsCategoryes as $developmentsCategory)
+											@php
+												$id = DB::table('categories')->where('category', $developmentsCategory)->value('rotating_id');
+											@endphp
+											<option class="dropdown__item" @if ($id == $development->category) selected @endif>{{ $developmentsCategory }}</option>
+										@endforeach
+									</select>
+								</form>
+							</div>
 						</div>
                         <form class="form developments__item--form" action="{{ route('change_development_preview_image') }}" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="id" value="{{ $development->id }}">
@@ -104,10 +99,16 @@
                             <button class="form__button">Загрузить другую картинку</button>
                         </form>
                         <hr>
+						<form class="form" class="delete_development" action="{{ route('delete_development') }}" method="POST">
+							<input type="hidden" name="id" value="{{ $development->id }}">
+							<button class="form__button">Удалить</button>
+						</form>
+						<hr>
                     @endauth
                     <a class="link button" href="{{asset('/development')}}/{{$development->id}}">Подробнее</a>
                 </div>
             @endforeach
         </div>
+		{{ $developments->links() }}
     </div>
 @endsection

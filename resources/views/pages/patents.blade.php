@@ -1,24 +1,14 @@
 @extends('app')
 @section('title', 'Патенты - ')
+@section('description', 'Патенты зарегистрированные на ООО Фирма СТЭК')
 @section('content')
     @auth
-
-
-        @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        @endif
-
-
         <form class="form" id="upload_patent" action="{{ route('upload_patent') }}" method="POST" enctype="multipart/form-data">
             <div class="form-box form-box--add">
                 <label class="form-box__caption">Заголовок<span style="font-weight: bold"> *</span></label>
                 <input class="form-box__input-text" type="text" name="name" required>
             </div>
-            <div class="form-box form-box--add">
+            <div class="form-box form-box--add dragdrop">
                 <label class="form-box__caption">Изображение патента<span style="font-weight: bold"> *</span></label>
                 <input class="form-box__input-file" type="file" name="image_patent" accept="image/*">
                 <input class="input-button form-box__input-btn" type="button" value="Обзор">
@@ -38,13 +28,10 @@
                 @endphp
                 <div class="patents__item">
                     <div class="patents__thumbnail">
-                        <div class="for-the-entire-window" data-big="{{ asset($patent_preview_big->path) }}">
-                            <img class="for-the-entire-window__icon" src="" data="{{ asset('public/image/other/expand.svg') }}" alt="">
-                        </div>
-                        <div class="patents__thumbnail-image"><img class="patents__thumbnail-img" src="" data="{{ asset($patent_preview_small->path) }}" alt=""></div>
+                        <div class="patents__thumbnail-image for-the-entire-window"><img class="patents__thumbnail-img" src="" data="{{ asset($patent_preview_small->path) }}" data-big="{{ asset($patent_preview_big->path) }}" alt=""></div>
                     </div>
                     @guest
-                        <label class="patents__name">{{ $patent->name }}</label>
+                        <h3 class="patents__name">{{ $patent->name }}</h3>
                     @endguest
                     @auth
                         <form class="form form--change-text" action="{{ route('change_information_patent') }}" method="POST">
@@ -52,7 +39,6 @@
                                 <input class="form-box__input-file" type="hidden" name="id" value="{{ $patent->id }}">
                                 <input class="form-box__input-text form-box__input-text--patents" type="text" name="name" value="{{ $patent->name }}">
                             </div>
-                            {{-- <button class="form__button">Сохранить</button> --}}
                         </form>
                         <hr>
                         <form class="form patents__form" action="{{ route('change_patent') }}" method="POST" enctype="multipart/form-data">
@@ -72,5 +58,6 @@
                 </div>
             @endforeach
         </div>
+		{{ $patents->links() }}
     </div>
 @endsection

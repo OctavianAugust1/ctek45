@@ -1,17 +1,42 @@
 <!DOCTYPE html>
-<html class="html" lang="ru">
+<html class="html" lang="ru-RU">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="keywords" content="ооо фирма стэк, фирма стэк, стэк, стэк курган, стек, фирма стек, ооо стэк, ооо стек, стек курган">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+	@auth <meta name="api_token" content="{{ Auth::user()->api_token }}"> @endauth
+	@if(App::environment('production'))
+		<meta name="yandex-verification" content="09cdfabf53172981" />
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-KJTRC53');</script>
+		<!-- End Google Tag Manager -->
+	@endif
 	
 	<link rel="stylesheet" type="text/css" href="{{ asset('public'.mix("/css/main.css")) }}">
 	<link rel="icon" href="{{ asset('public/image/logo/icon.ico') }}" type="image/x-icon">
 
-	<title>СТЭК</title>
+	<title>Конструкторское бюро ООО Фирма СТЭК</title>
+	<meta name="description" content="Конструкторское бюро ООО Фирма СТЭК в городе Кургане является инжиниринговой компанией">
 </head>
 <body class="body">
+	@if(App::environment('production'))
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJTRC53"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+	@endif
+	@auth
+		<script src="{{ asset('/public/js/ckeditor5-build-balloon/ckeditor.js') }}"></script>
+		<script src="{{ asset('/public/js/ckeditor5-build-balloon/translations/ru.js') }}"></script>
+		<div id="balloon"></div>
+	@endauth
+
 	<header class="header header__gradient">
 		<div class="header__grid--home-page">
 			<div class="header__grid header__grid--wrapper-home-page">
@@ -22,15 +47,17 @@
 					</svg>
 				</div>
 				<img class="logo header__logo" data="{{ asset('public/image/logo/logo1.svg') }}" alt="">
-				<h1 class="header__title">Инжиниринговая компания<br>Фирма СТЭК</h1>
+				<span class="header__title">Инжиниринговая компания <br><h1>Фирма СТЭК</h1></span>
 				<nav class="header__nav">
 					<a class="header__nav-link" href="{{ route('index') }}">Главная</a>
 					<a class="header__nav-link" href="{{ route('about_us') }}">О нас</a>
+					<a class="header__nav-link" href="{{ route('articles') }}">Статьи</a>
 					<a class="header__nav-link" href="{{ route('patents') }}">Патенты</a>
 					<a class="header__nav-link" href="{{ route('developments') }}">Наши проекты</a>
 					<a class="header__nav-link" href="{{ route('contacts') }}">Контакты</a>
 					<a class="header__nav-link" href="{{ route('feedback') }}">Связь с нами</a>
 					@auth
+						<a class="header__nav-link" href="{{ route('admin') }}">Админ</a>
 						<a class="header__nav-link" href="{{ route('logout') }}">
 							<svg class="sign-out" viewBox="0 0 512 512">
 								<path class="sign-out1" fill="currentColor" d="M497 273L329 441c-15 15-41 4.5-41-17v-96H152c-13.3 0-24-10.7-24-24v-96c0-13.3 10.7-24 24-24h136V88c0-21.4 25.9-32 41-17l168 168c9.3 9.4 9.3 24.6 0 34zM192 436v-40c0-6.6-5.4-12-12-12H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h84c6.6 0 12-5.4 12-12V76c0-6.6-5.4-12-12-12H96c-53 0-96 43-96 96v192c0 53 43 96 96 96h84c6.6 0 12-5.4 12-12z">
@@ -60,10 +87,10 @@
 			<div class="footer__desc">
 				<div>
 					<p>ООО Фирма «СТЭК»</p>
-					<p>640007, Россия, г.Курган, пр-т Машиностроителей, д.1, оф.412</p>
+					<p>640007, Россия, г.Курган, пр-кт Машиностроителей, 20А, оф.9</p>
 					<p>е-mail: ctek45@yandex.ru</p>
 				</div>
-				<p>Директор: Денисов Юрий Геннадьевич, моб. +7-912-832-62-18</p>
+				<p>Директор: Денисов Юрий Геннадьевич</p>
 			</div>
 		</div>
 	</footer>

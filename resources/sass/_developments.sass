@@ -1,4 +1,22 @@
 /* developments */
+.dragdrop--active,
+.dragdrop--visible
+	display: flex
+	border: 1px dotted black
+	background: rgb(162, 218, 240)
+	height: 100px
+	&::after
+		content: 'Перетащите изображение сюда'
+		position: relative
+		margin: auto
+	& *
+		display: none !important
+		pointer-events: none !important
+
+.dragdrop--active
+	background: rgb(98, 198, 238)
+	border: 1px solid black
+
 .developments__form-box
 	@extend %form-box_opt-1
 
@@ -8,14 +26,13 @@
 .developments__category
 	font-style: italic
 
-.form--dropdown
-	width: 100%
-
 .dropdown--select-category
-	width: 100%
 	display: flex
 	flex-flow: row nowrap
 	align-content: center
+
+.dropdown__list--add-dev
+	width: 100%
 
 .dropdown__input-text--select-category
 	height: 100%
@@ -23,6 +40,13 @@
 
 .non-select-category
 	display: none !important
+
+.category-change
+	width: 100%
+	display: flex
+	flex-flow: row nowrap
+	align-items: center
+	justify-content: space-between
 
 .developments__header
 	display: flex

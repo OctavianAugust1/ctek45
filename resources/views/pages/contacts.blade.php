@@ -1,25 +1,44 @@
 @extends('app')
 @section('title', 'Контакты - ')
+@section('description', 'Контактная информация Фирмы СТЭК, юридический адрес, персонал')
 @section('content')
 
 	<h2 class="title-h2">Контакты</h2>
 	<div class="contact">
 		<div class="contact__desc">
 			<p class="contact__paragraph">ООО Фирма “СТЭК”</p>
-			<p class="contact__paragraph">Юр. адрес: 640007, Курган, пр-кт Машиностроителей, д.1, оф.412</p>
+			<p class="contact__paragraph">Юр. адрес: 640007, Курган, пр-кт Машиностроителей, 20А, оф.9</p>
 			<p class="contact__paragraph">ИНН  4501001740  КПП 450101001</p>
 			<p class="contact__paragraph">e-mail: ctek45@yandex.ru</p>
 			<p class="contact__paragraph">Почтовый адрес: </p>
-			<p class="contact__paragraph">640023, г.Курган, 3 мкр., д.34А, кв.46</p>
+			<p class="contact__paragraph">640023, г. Курган, 3 мкр., д.34А, кв.46</p>
 		</div>
 		
-		<div class="contact__desc">
-			<p class="contact__paragraph">Директор: Денисов Юрий Геннадьевич </p>
-			<p class="contact__paragraph">моб. +7-912-832-62-18</p>
-			<p class="contact__paragraph">Зам. директора: Вибе Вячеслав Петрович</p>
-			<p class="contact__paragraph">моб. +7-912-834-16-21</p>
-			<p class="contact__paragraph">Гл. бухгалтер: Денисова Елена Владимировна</p>
-			<p class="contact__paragraph">моб. +7-912-831-51-70</p>
+		<div class="contact__desc contact__blocks">
+			<div class="contact__block">
+				<div class="contact__image">
+					<img class="contact__img" src="" data="{{ asset('public/image/other/contact1.webp') }}" alt="" height="" width="">
+				</div>
+				<div>
+					<p class="contact__paragraph contact__paragraph--block">Директор: Денисов Юрий Геннадьевич </p>
+				</div>
+			</div>
+			<div class="contact__block">
+				<div class="contact__image">
+					<img class="contact__img" src="" data="{{ asset('public/image/other/contact2.webp') }}" alt="" height="" width="">
+				</div>
+				<div>
+					<p class="contact__paragraph contact__paragraph--block">Зам. директора: Вибе Вячеслав Петрович</p>
+				</div>
+			</div>
+			<div class="contact__block">
+				<div class="contact__image">
+					<img class="contact__img" src="" data="{{ asset('public/image/other/contact3.webp') }}" alt="" height="" width="">
+				</div>
+				<div>
+					<p class="contact__paragraph contact__paragraph--block">Гл. бухгалтер: Денисова Елена Владимировна</p>
+				</div>
+			</div>
 		</div>
 	</div>
 

@@ -11,20 +11,21 @@
     <div class="organization-desc homepage--container">
         <div class="organization-desc__quote animate-emergence">
             <h2 class="title-h2 homepage--title-h2">О фирме</h2>
-            <div>
-				<p>Компания успешно развивается на рынке 30 лет.</p>
+            <div class="baloon">
+				<pre class="desc">{{ $mainInf[0] }}</pre>
+				{{-- <p>Компания успешно развивается на рынке 30 лет.</p>
 				<p>Основные виды деятельности:</p>
 				<ul>
 					<li>разработка конструкторской документации,</li>
 					<li>научно-исследовательская деятельность,</li>
 					<li>автоматизация технологических процессов и оборудования.</li>
-				</ul>
+				</ul> --}}
             </div>
         </div>
         <div class="organization-desc__thumbnail organization-desc__thumbnail--anim-translate">
-            <div class="organization-desc__project-1"><img class="organization-desc__img-1" src="{{ asset('public/image/homepage/company1_bg.webp') }}" data="{{ asset('public/image/homepage/company1_bg.webp') }}" alt=""></div>
-            <div class="organization-desc__project-2"><img class="organization-desc__img-2" src="{{ asset('public/image/homepage/company2_bg.webp') }}" data="{{ asset('public/image/homepage/company2_bg.webp') }}" alt=""></div>
-            <div class="organization-desc__project-3"><img class="organization-desc__img-3" src="{{ asset('public/image/homepage/company3_bg.webp') }}" data="{{ asset('public/image/homepage/company3_bg.webp') }}" alt=""></div>
+            <div class="organization-desc__project-1"><img class="organization-desc__img-1" src="{{ asset('public/image/homepage/company1_bg.webp') }}" data="{{ asset('public/image/homepage/company1_bg.webp') }}" alt="" width="" height=""></div>
+            <div class="organization-desc__project-2"><img class="organization-desc__img-2" src="{{ asset('public/image/homepage/company2_bg.webp') }}" data="{{ asset('public/image/homepage/company2_bg.webp') }}" alt="" width="" height=""></div>
+            <div class="organization-desc__project-3"><img class="organization-desc__img-3" src="{{ asset('public/image/homepage/company3_bg.webp') }}" data="{{ asset('public/image/homepage/company3_bg.webp') }}" alt="" width="" height=""></div>
         </div>
     </div>
     
@@ -38,14 +39,14 @@
                     </path>
                 </svg>
             </div>
-            <div class="advantages__desc">
-                <span class="advantages__caption">Комплексный подход</span>
-                <ul class="list">
+            <div class="advantages__desc baloon">
+				<pre class="desc">{{ $mainInf[1] }}</pre>
+                {{-- <ul class="list">
                     <li class="item homepage__item">Полный цикл работ (разработка технического задания, РКД, обоснований, технологий, расчетов, согласование, сопровождение при изготовлении и пусконаладке)
                     Комплексный подход при разработке проекта по механике, гидравлике, пневматике, электронике, программному обеспечению</li>
                     <li class="item homepage__item">Более 100 выполненных проектов и изделий, применение уникальных, стандартизированных и опробованных решений</li>
                     <li class="item homepage__item">Проекты для МЧС, МВД, медицины, нефтегазовой отрасли, дорожной спецтехники, робототехники</li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
         <div class="advantages__advantage animate-emergence">
@@ -55,15 +56,15 @@
                     </path>
                 </svg>                    
             </div>
-            <div class="advantages__desc">
-                <span class="advantages__caption">Специалисты в своей области</span>
-                <ul class="list">
+            <div class="advantages__desc baloon">
+				<pre class="desc">{{ $mainInf[2] }}</pre>
+                {{-- <ul class="list">
                     <li class="item homepage__item">Высокий уровень подготовки специалистов по разным областям науки и техники, знание ГОСТ, ЕСКД</li>
                     <li class="item">Все специалисты имеют высшее образование, опыт работы по специальности не менее 10 лет, многие окончили аспирантуру</li>
                     <li class="item homepage__item">Опыт разработки сложных технических изделий более 10 лет</li>
                     <li class="item homepage__item">Специалисты оценят различные варианты конструкции на предмет технологичности изготовления изделий и оптимизации затрат на производство </li>
                     <li class="item homepage__item">Технологи оценят материалоемкость изготовления продукции, оптимизируют  процесс изготовления деталей и узлов и  согласуют их с заводом-изготовителем</li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
         <div class="advantages__advantage animate-emergence">
@@ -73,15 +74,13 @@
                     </path>
                 </svg>                    
             </div>
-            <div class="advantages__desc">
-                <div>
-                    <span class="advantages__caption">Минимальные сроки разработки. Минимизация затрат</span>
-                </div>
-                <ul class="list">
+            <div class="advantages__desc baloon">
+				<pre class="desc">{{ $mainInf[3] }}</pre>
+                {{-- <ul class="list">
                     <li class="item homepage__item">Удаленная работа с оплатой по фактическому объему</li>
                     <li class="item homepage__item">Заказчику нет необходимости содержать постоянно свой полный штат сотрудников</li>
                     <li class="item homepage__item">При резких скачках объемов разработки вы всегда можете обратиться к специалистам и передать часть работы </li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
     </div>
@@ -89,17 +88,17 @@
     <div class="cooperate-with-us homepage--container">
         <h2 class="title-h2 homepage--title-h2 cooperate-with-us__title-h2">Сотрудничают с нами</h2>
         <div class="cooperate-with-us__images">
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo1.webp') }}" data="{{ asset('public/image/about-us/logo1.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo3.webp') }}" data="{{ asset('public/image/about-us/logo3.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo5.webp') }}" data="{{ asset('public/image/about-us/logo5.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo7.webp') }}" data="{{ asset('public/image/about-us/logo7.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo8.webp') }}" data="{{ asset('public/image/about-us/logo8.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo9.webp') }}" data="{{ asset('public/image/about-us/logo9.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo10.webp') }}" data="{{ asset('public/image/about-us/logo10.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo11.webp') }}" data="{{ asset('public/image/about-us/logo11.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo12.webp') }}" data="{{ asset('public/image/about-us/logo12.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo13.webp') }}" data="{{ asset('public/image/about-us/logo13.webp') }}" alt=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo14.webp') }}" data="{{ asset('public/image/about-us/logo14.webp') }}" alt=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo1.webp') }}" data="{{ asset('public/image/about-us/logo1.webp') }}" alt="" width="" height=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo3.webp') }}" data="{{ asset('public/image/about-us/logo3.webp') }}" alt="" width="" height=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo5.webp') }}" data="{{ asset('public/image/about-us/logo5.webp') }}" alt="" width="" height=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo7.webp') }}" data="{{ asset('public/image/about-us/logo7.webp') }}" alt="" width="" height=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo8.webp') }}" data="{{ asset('public/image/about-us/logo8.webp') }}" alt="" width="" height=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo9.webp') }}" data="{{ asset('public/image/about-us/logo9.webp') }}" alt="" width="" height=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo10.webp') }}" data="{{ asset('public/image/about-us/logo10.webp') }}" alt="" width="" height=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo11.webp') }}" data="{{ asset('public/image/about-us/logo11.webp') }}" alt="" width="" height=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo12.webp') }}" data="{{ asset('public/image/about-us/logo12.webp') }}" alt="" width="" height=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo13.webp') }}" data="{{ asset('public/image/about-us/logo13.webp') }}" alt="" width="" height=""></div>
+            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo14.webp') }}" data="{{ asset('public/image/about-us/logo14.webp') }}" alt="" width="" height=""></div>
         </div>
     </div>
 @endsection

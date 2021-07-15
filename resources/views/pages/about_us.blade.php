@@ -1,9 +1,22 @@
 @extends('app')
 @section('title', 'О  нас - ')
+@section('description', 'Информация о деятельности фирмы СТЭК как конструкторского бюро в городе Кургане с момента своего основания')
 @section('content')
 	<div class="about-us">
 		<h2 class="title-h2">О нас</h2>
-		<p class="about-us__desc">
+		@auth
+			<script src="{{ asset('/public/js/ckeditor5-build-classic/ckeditor.js') }}"></script>
+			<script src="{{ asset('/public/js/ckeditor5-build-classic/translations/ru.js') }}"></script>
+			<form class="form" action="{{ route('about_us_change') }}" method="POST">
+				<div class="form-box">
+					<textarea class="form-box__textarea form-box__textarea--about-us" name="text">{{ $about_us }}</textarea>
+				</div>
+			</form>
+		@endauth
+		@guest
+			<pre class="desc">{{ $about_us }}</pre>
+		@endguest
+		{{-- <p class="about-us__desc">
 			Предприятие ООО Фирма «СТЭК» было создано и зарегистрировано 28 декабря 1991 г. в форме товарищества с ограниченной ответственностью и ставило перед собой основные задачи:
 		</p>
 		<ul class="list">
@@ -12,10 +25,6 @@
 			<li class="item">Помощь организациям, предприятиям и частным лицам в патентовании изобретений</li>
 		</ul>
 
-		<p>Наша команда</p>
-		<div class="comand-image">
-			<img class="comand-image__img" src="" data="{{ asset('public/image/other/comand.webp') }}" alt="">
-		</div>
 		<p class="about-us__desc">
 			За первые годы деятельности были заключены договоры и произведены такие интересные работы как:
 		</p>
@@ -45,12 +54,9 @@
 			<li class="item">АО «УАЗ»</li>
 		</ul>
 		<div class="about-us__images">
-			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo1.webp') }}" alt=""></div>
-			{{-- <img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo2.webp') }}" alt=""> --}}
-			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo3.webp') }}" alt=""></div>
-			{{-- <img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo4.webp') }}" alt=""> --}}
-			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo5.webp') }}" alt=""></div>
-			{{-- <img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo6.webp') }}" alt=""> --}}
+			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo1.webp') }}" alt="" width="" height=""></div>
+			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo3.webp') }}" alt="" width="" height=""></div>
+			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo5.webp') }}" alt="" width="" height=""></div>
 		</div>
 	
 		<p class="about-us__desc">
@@ -71,21 +77,35 @@
 		<p class="about-us__desc">В последние годы приоритетными направлениями становятся разработка новых конструкций разнообразного назначения для противопожарной и спецтехники в том числе для «Академии противопожарной техники и МЧС».</p>
 		<p class="about-us__desc">В числе заказчиков  появляются ОАО «Варгашинский завод противопожарного и специального оборудования», «Опытно-конструкторское бюро «Техника» (г. Москва), ГУ НПО «СТиС» МВД России, ЗАО НПП «КлАСС» (г. Москва), ООО "КАВЗ", ЗАО НПО "КЗСТ", ОАО "Пневмостроймашина" (г. Екатеринбург) и др.</p>
 		<div class="about-us__images">
-			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo7.webp') }}" alt=""></div>
-			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo8.webp') }}" alt=""></div>
-			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo9.webp') }}" alt=""></div>
-			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo10.webp') }}" alt=""></div>
-			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo11.webp') }}" alt=""></div>
-			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo12.webp') }}" alt=""></div>
+			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo7.webp') }}" alt="" width="" height=""></div>
+			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo8.webp') }}" alt="" width="" height=""></div>
+			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo9.webp') }}" alt="" width="" height=""></div>
+			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo10.webp') }}" alt="" width="" height=""></div>
+			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo11.webp') }}" alt="" width="" height=""></div>
+			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo12.webp') }}" alt="" width="" height=""></div>
 		</div>
 
 		<p class="about-us__desc">В области научных исследований и разработок ООО Фирма «СТЭК» сотрудничает с Тюменским государственным нефтегазовым университетом, ФГУ "РНЦ "Восстановительная травматология и ортопедия" имени академика Г.А.Илизарова" и др.</p>
 		<div class="about-us__images">
-			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo13.webp') }}" alt=""></div>
-			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo14.webp') }}" alt=""></div>
+			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo13.webp') }}" alt="" width="" height=""></div>
+			<div class="about-us__image"><img class="about-us__img" src="" data="{{ asset('public/image/about-us/logo14.webp') }}" alt="" width="" height=""></div>
 		</div>
 		
 		<p class="about-us__desc">Машины, оснащенные оборудованием разработанным ООО Фирма «СТЭК», вызывают интерес всех уровней на выставках спецтехники. Директор ООО Фирмы «СТЭК» награжден медалью «Академии ППТ и МЧС» за вклад в развитие противопожарной и специальной техники.</p>
-		<p class="about-us__desc">Сегодня ООО Фирма «СТЭК» обладает высоким потенциалом для решения сложнейших научно-технических задач. Предприятие имеет патенты на изобретения и полезные модели, зарегистрированные в Федеральном институте промышленной собственности.</p>
+		<p class="about-us__desc">Сегодня ООО Фирма «СТЭК» обладает высоким потенциалом для решения сложнейших научно-технических задач. Предприятие имеет патенты на изобретения и полезные модели, зарегистрированные в Федеральном институте промышленной собственности.</p> --}}
+		
+		<p style="font-weight: bold; margin-top: 20px; font-size: 1.5rem">Наша команда</p>
+		<div class="comand">
+			<div class="comand-image">
+				{{-- <div class="change-image"></div> --}}
+				<img class="comand-image__img" src="" data="{{ asset('public/image/about-us/comand1.webp') }}" alt="" width="" height="">
+			</div>
+			<div class="comand-image">
+				<img class="comand-image__img" src="" data="{{ asset('public/image/about-us/comand3.webp') }}" alt="" width="" height="">
+			</div>
+			<div class="comand-image">
+				<img class="comand-image__img" src="" data="{{ asset('public/image/about-us/comand2.webp') }}" alt="" width="" height="">
+			</div>
+		</div>
 	</div>
 @endsection

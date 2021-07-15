@@ -33,7 +33,7 @@ class AuthController extends Controller
 		if (User::where('login', $request->login)->first()) {
 			return response()->json([
 				'message' => 'success',
-				'api_token' => User::where('login', $request->login)->pluck('api_token')->first(),
+				'api_token' => User::where('login', $request->login)->value('api_token'),
 			]);
 		} else {
 			return response()->json([
@@ -41,22 +41,16 @@ class AuthController extends Controller
 			]);
 		}
 	}
-	public function api_token(Request $request)
-	{
-		$api_token = User::where('id', Auth::id())->pluck('api_token')->first();
-		return response()->json([
-			'message' => 'success',
-			'api_token' => $api_token,
-		]);
-	}
     public function login(AuthValidation $request)
     {
         $user = User::where([
 			['login', $request->login],
 			['password', $request->password]
 		])->first();
+		
         if ($user) {
-            Auth::guard('web')->login($user, true);
+            // Auth::guard('web')->login($user, true);
+            Auth::login($user, true);
             return redirect()->route('index');
         } else return redirect()->back();
     }

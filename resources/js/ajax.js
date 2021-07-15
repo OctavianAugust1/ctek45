@@ -1,12 +1,8 @@
 import {
-	patent_item_add,
-	development_item_add,
-	development_images_add,
-	sendRequest,
 	changedNamePatent,
+	changedTextAboutUs,
 	changedNameAndDescDev,
 	changeCategory,
-	response,
 	requestBtn,
 } from './func.js'
 
@@ -15,8 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	form.forEach(event => {
 		const request = event.action
 		if (event.querySelector('.form-box__input-text--patents')) changedNamePatent(event, request)
-		if (event.querySelector('textarea')) changedNameAndDescDev(event, request)
-		if (event.querySelector('.dropdown__input-text--change-category')) changeCategory(event, request)
+		if (event.querySelector('.form-box__textarea--about-us')) changedTextAboutUs(event, request)
+		if (event.querySelector('.development__input-text, .form-box__input-text--article')) changedNameAndDescDev(event, request)
+		if (event.querySelector('.dropdown__list--change-category')) changeCategory(event, request)
 
 		if (event.querySelector('button')) requestBtn(event, request)
 	})

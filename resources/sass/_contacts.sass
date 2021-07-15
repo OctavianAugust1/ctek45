@@ -2,8 +2,36 @@
 .contact__desc
 	margin: 2rem 0
 
+.contact__blocks
+	// display: grid
+	// grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+	// justify-items: center
+	display: flex
+	flex-flow: row wrap
+	justify-content: space-evenly
+
+.contact__block
+	display: flex
+	flex-flow: row wrap
+	justify-content: center
+	width: 300px
+	margin: 20px
+
+.contact__image
+	height: 250px
+	width: 250px
+
+.contact__img
+	height: 100%
+	width: 100%
+	object-fit: cover
+	border-radius: 20px
+
 .contact__paragraph
 	margin: 10px 0
+
+.contact__paragraph--block
+	text-align: center
 
 /* 2gis */
 .double-gis--contacts
