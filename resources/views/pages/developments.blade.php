@@ -20,11 +20,8 @@
 					{{-- <input class="dropdown__input-text--select-category" type="text" name="category"> --}}
 					<select class="dropdown__list dropdown__list--add-dev dropdown__list--select-category" name="category">
 						<option class="dropdown__item dropdown__item--disabled" disabled>Категория:</option>
-						<option class="dropdown__item">Без категории</option>
-						@foreach ($developmentsCategoryes as $developmentsCategory)
-							@if ($developmentsCategory != 'Без категории')
-								<option class="dropdown__item"> {{ $developmentsCategory }}</option>
-							@endif
+						@foreach ($developmentsCategories as $developmentsCategory)
+							<option class="dropdown__item" value="{{ $developmentsCategory->rotating_id }}"> {{ $developmentsCategory->category }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -52,8 +49,8 @@
 				<select class="dropdown__list dropdown__list--sort">
 					<option class="dropdown__item dropdown__item--disabled" disabled>Категория:</option>
                     <option class="dropdown__item">Не выбрано</option>
-					@foreach ($developmentsCategoryes as $developmentsCategory)
-						<option class="dropdown__item">{{ $developmentsCategory }}</option>
+					@foreach ($developmentsCategories as $developmentsCategory)
+						<option class="dropdown__item">{{ $developmentsCategory->category }}</option>
 					@endforeach
 				</select>
             </div>
@@ -67,7 +64,7 @@
                 @endphp
                 <div class="developments__item">
                     <div class="developments__thumbnail">
-                        <img class="developments__thumbnail-img for-the-entire-window" src="" data="{{ asset($development_preview_small->path) }}" data-big="{{ asset($development_preview_big->path) }}" alt="">
+                        <img class="developments__thumbnail-img for-the-entire-window" data="{{ asset($development_preview_small->path) }}" data-big="{{ asset($development_preview_big->path) }}" alt="">
                     </div>
                     <h3 class="developments__name">{{ $development->name }}</h3>
 					@guest <div class="developments__category">Категория: <span class="categoryDev">{{ $category }}</span></div> @endguest
@@ -77,14 +74,13 @@
 							<div class="dropdown dropdown--select-category">
 								<form class="form form--dropdown" action="{{ route('change_category') }}" method="POST">
 									<input type="hidden" name="id" value="{{ $development->id }}">
-									{{-- <input class="dropdown__input-text--select-category dropdown__input-text--change-category" type="text" name="category"> --}}
 									<select class="dropdown__list dropdown__list--select-category dropdown__list--change-category" name="category">
 										<option class="dropdown__item dropdown__item--disabled" disabled>Категория:</option>
-										@foreach ($developmentsCategoryes as $developmentsCategory)
+										@foreach ($developmentsCategories as $developmentsCategory)
 											@php
-												$id = DB::table('categories')->where('category', $developmentsCategory)->value('rotating_id');
+												$id = DB::table('categories')->where('category', $developmentsCategory->category)->value('rotating_id');
 											@endphp
-											<option class="dropdown__item" @if ($id == $development->category) selected @endif>{{ $developmentsCategory }}</option>
+											<option class="dropdown__item" @if ($id == $development->category) selected @endif>{{ $developmentsCategory->category }}</option>
 										@endforeach
 									</select>
 								</form>

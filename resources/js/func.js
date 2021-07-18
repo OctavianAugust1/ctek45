@@ -200,7 +200,7 @@ const func = {
 	},
 
 	lazyLoad: () => {
-		const images = document.querySelectorAll('img')
+		const images = document.querySelectorAll('img:not([src])')
 		const options = {
 			root: null,
 			threshold: 0.1
@@ -495,15 +495,15 @@ const func = {
 			setTimeout(() => {
 				if (document.querySelector('.ck .ck-editor__editable')) {
 					const editedText = element.parentElement.querySelector('.ck .ck-editor__editable')
-					if (editedText.querySelector('img')) {
-						const images = editedText.querySelectorAll('img')
-						const re = /.*?\/{2}.*?\/(?<linkPath>.*?\/).*/
-						images.forEach(image => {
-							const imageSrc = image.src
-							let match = re.exec(imageSrc)
-							image.src = imageSrc.replace(match.groups.linkPath, '')
-						})
-					}
+					// if (editedText.querySelector('img')) {
+					// 	const images = editedText.querySelectorAll('img')
+					// 	const re = /.*?\/{2}.*?\/(?<linkPath>.*?\/).*/
+					// 	images.forEach(image => {
+					// 		const imageSrc = image.src
+					// 		let match = re.exec(imageSrc)
+					// 		image.src = imageSrc.replace(match.groups.linkPath, '')
+					// 	})
+					// }
 					editedText.addEventListener('DOMSubtreeModified', () => {
 						setTimeout(() => { element.value = editor.getData() })
 					})
@@ -527,23 +527,46 @@ const func = {
 		})
 	},
 
-	textEdited: () => {
-		const dev_desc = document.querySelectorAll('pre')
-		dev_desc.forEach(element => {
-			const dev_desc_text = element.textContent
-			element.textContent = ''
-			element.insertAdjacentHTML('beforeend', dev_desc_text)
-			if (element.querySelector('img')) {
-				const images = element.querySelectorAll('img')
-				const re = /.*?\/{2}.*?\/(?<linkPath>.*?\/).*/
-				images.forEach(image => {
-					const imageSrc = image.src
-					let match = re.exec(imageSrc)
-					image.src = imageSrc.replace(match.groups.linkPath, '')
-				})
-			}
+	changeImage: () => {
+		const defaultImages = document.querySelectorAll('.change-image__button')
+		defaultImages.forEach(element => {
+			element.addEventListener('click', () => {
+				const form = element.closest('.form')
+				const choiceImage = form.querySelector('[type="file"]')
+				function change() {
+					choiceImage.removeEventListener('change', change)
+					const btn = form.querySelector('button')
+					btn.click()
+				}
+				choiceImage.addEventListener('change', change)
+				choiceImage.click()
+				function focus() {
+					setTimeout(() => {
+						choiceImage.removeEventListener('change', change)
+					}, 100);
+				}
+				window.addEventListener('focus', focus);
+			})
 		})
 	},
+
+	// textEdited: () => {
+	// 	const dev_desc = document.querySelectorAll('pre')
+	// 	dev_desc.forEach(element => {
+	// 		const dev_desc_text = element.textContent
+	// 		element.textContent = ''
+	// 		element.insertAdjacentHTML('beforeend', dev_desc_text)
+	// 		if (element.querySelector('img')) {
+	// 			const images = element.querySelectorAll('img')
+	// 			const re = /.*?\/{2}.*?\/(?<linkPath>.*?\/).*/
+	// 			images.forEach(image => {
+	// 				const imageSrc = image.src
+	// 				let match = re.exec(imageSrc)
+	// 				image.src = imageSrc.replace(match.groups.linkPath, '')
+	// 			})
+	// 		}
+	// 	})
+	// },
 
 	sortCategory: () => {
 		const sort = document.querySelector('.dropdown__list--sort')
@@ -626,11 +649,11 @@ const func = {
 					<div class="dropdown dropdown--select-category">
 						<form class="form form--dropdown" action="${window.location.origin}/api/change_category" method="POST">
 							<input type="hidden" name="id" value="${data.development.id}">
+							<select class="dropdown__list dropdown__list--select-category dropdown__list--change-category" name="category">
+								<option class="dropdown__item dropdown__item--disabled" disabled>Категория:</option>
+								${categories}
+							</select>
 						</form>
-						<select class="dropdown__list dropdown__list--select-category dropdown__list--change-category" name="category">
-							<option class="dropdown__item dropdown__item--disabled" disabled>Категория:</option>
-							${categories}
-						</select>
 					</div>
 					<form class="form developments__item--form" action="${window.location.origin}/api/change_development_preview_image" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="id" value="${data.development.id}">
@@ -751,7 +774,7 @@ const func = {
 					<div class="article__buttons">
 						<form action="${window.location.origin}/api/delete_article" method="POST">
 							<input type="hidden" name="id" value="${data.id}">
-							<button class="form__button">Удалить</button>
+							<button class="form__button article__button">Удалить</button>
 						</form>
 						<a class="link button article__button" href="${window.location.origin}/article/${data.id}">Читать далее...</a>
 					</div>
@@ -962,7 +985,6 @@ const func = {
 					developments.insertAdjacentHTML('beforeend', development_item_add(data, categories()))
 					uploadFiles('.developments__item:nth-last-child(1) ')
 					forTheEntireWindow('.developments__item:nth-last-child(1) ')
-					selectCategory('.developments__item:nth-last-child(1) ')
 					const formCategoryChange = document.querySelector('.developments__item:nth-last-child(1) form[action*="change_category"]')
 					changeCategory(formCategoryChange, formCategoryChange.action)
 					const formsDevAdd = document.querySelectorAll('.developments__item:nth-last-child(1) .form')
@@ -1147,7 +1169,8 @@ export const deleteImage = func.deleteImage
 export const rotateCategory = func.rotateCategory
 export const hamburger = func.hamburger
 export const textEditor = func.textEditor
-export const textEdited = func.textEdited
+export const changeImage = func.changeImage
+// export const textEdited = func.textEdited
 export const sortCategory = func.sortCategory
 export const upButton = func.upButton
 export const dragAndDrop = func.dragAndDrop

@@ -42,8 +42,8 @@ class PagesController extends Controller
     public function developments()
     {
         $developments = Development::orderBy('category', 'asc')->paginate(12);
-        $developmentsCategoryes = Category::pluck('category');
-        return view('pages.developments', compact(['developments', 'developmentsCategoryes']));
+        $developmentsCategories = Category::get();
+        return view('pages.developments', compact(['developments', 'developmentsCategories']));
     }
     public function development($id)
     {

@@ -17,8 +17,12 @@ class Authenticate extends Middleware
         // if (! $request->expectsJson()) {
         //     return route('index');
         // }
-		return abort(response()->json([
-			'message' => 'Required api_token'
-		]));
+		if ($request->method() == 'post') {
+			return abort(response()->json([
+				'message' => 'Required api_token'
+			]));
+		} else {
+			return route('index');
+		}
     }
 }

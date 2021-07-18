@@ -28,7 +28,7 @@
                 @endphp
                 <div class="patents__item">
                     <div class="patents__thumbnail">
-                        <div class="patents__thumbnail-image for-the-entire-window"><img class="patents__thumbnail-img" src="" data="{{ asset($patent_preview_small->path) }}" data-big="{{ asset($patent_preview_big->path) }}" alt=""></div>
+                        <div class="patents__thumbnail-image for-the-entire-window"><img class="patents__thumbnail-img" data="{{ asset($patent_preview_small->path) }}" data-big="{{ asset($patent_preview_big->path) }}" alt=""></div>
                     </div>
                     @guest
                         <h3 class="patents__name">{{ $patent->name }}</h3>

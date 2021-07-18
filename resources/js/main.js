@@ -7,14 +7,15 @@ import {
 	rotateCategory,
 	hamburger,
 	textEditor,
-	textEdited,
+	changeImage,
+	// textEdited,
 	sortCategory,
 	upButton,
 	dragAndDrop,
 } from './func.js'
 
 document.addEventListener('DOMContentLoaded', () => {
-	if (document.querySelector('[enctype="multipart/form-data"]')) uploadFiles()
+	if (document.querySelector('[enctype="multipart/form-data"]:not(.change-image)')) uploadFiles()
 	
 	if (document.querySelector('img')) lazyLoadImage()
 	
@@ -30,7 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	if (document.querySelector('textarea') || (document.querySelector('.baloon') && document.querySelector('#balloon'))) textEditor()
 
-	if (document.querySelector('pre')) textEdited()
+	if (document.querySelector('.change-image')) changeImage()
+
+	// if (document.querySelector('pre')) textEdited()
 
 	// if (document.querySelector('.dropdown--select-category')) selectCategory()
 

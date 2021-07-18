@@ -39,7 +39,7 @@
                     $development_preview_big = DB::table('development_images')->where([['type', 'big'], ['id', $development_image->id + 1]])->first();
                 @endphp
                 <div class="development__thumbnail-image">
-                    <img class="development__thumbnail-img for-the-entire-window" src="" data="{{ asset($development_preview_small->path) }}" data-big="{{ asset($development_preview_big->path) }}" alt="">
+                    <img class="development__thumbnail-img for-the-entire-window" data="{{ asset($development_preview_small->path) }}" data-big="{{ asset($development_preview_big->path) }}" alt="">
                     @auth
                         <div class="delete-image">
                             <svg class="delete-image__svg" viewBox="0 0 352 512">
@@ -56,7 +56,7 @@
             @endforeach
         </div>
         @guest
-            <pre class="desc">{{ $development->description }}</pre>
+            <pre class="desc">{!! $development->description !!}</pre>
         @endguest
     </div>
 @endsection

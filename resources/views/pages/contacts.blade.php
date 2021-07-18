@@ -17,7 +17,15 @@
 		<div class="contact__desc contact__blocks">
 			<div class="contact__block">
 				<div class="contact__image">
-					<img class="contact__img" src="" data="{{ asset('public/image/other/contact1.webp') }}" alt="" height="" width="">
+					@auth
+						<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+							<input type="hidden" name="path" value="public/image/other/contact1.webp">
+							<input type="file" name="image" accept="image/*">
+							<div class="change-image__button"></div>
+							<button class="form__button button">Загрузить</button>
+						</form>
+					@endauth
+					<img class="contact__img" data="{{ asset('public/image/other/contact1.webp') }}" alt="" height="" width="">
 				</div>
 				<div>
 					<p class="contact__paragraph contact__paragraph--block">Директор: Денисов Юрий Геннадьевич </p>
@@ -25,7 +33,15 @@
 			</div>
 			<div class="contact__block">
 				<div class="contact__image">
-					<img class="contact__img" src="" data="{{ asset('public/image/other/contact2.webp') }}" alt="" height="" width="">
+					@auth
+						<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+							<input type="hidden" name="path" value="public/image/other/contact2.webp">
+							<input type="file" name="image" accept="image/*">
+							<div class="change-image__button"></div>
+							<button class="form__button button">Загрузить</button>
+						</form>
+					@endauth
+					<img class="contact__img" data="{{ asset('public/image/other/contact2.webp') }}" alt="" height="" width="">
 				</div>
 				<div>
 					<p class="contact__paragraph contact__paragraph--block">Зам. директора: Вибе Вячеслав Петрович</p>
@@ -33,7 +49,15 @@
 			</div>
 			<div class="contact__block">
 				<div class="contact__image">
-					<img class="contact__img" src="" data="{{ asset('public/image/other/contact3.webp') }}" alt="" height="" width="">
+					@auth
+						<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+							<input type="hidden" name="path" value="public/image/other/contact3.webp">
+							<input type="file" name="image" accept="image/*">
+							<div class="change-image__button"></div>
+							<button class="form__button button">Загрузить</button>
+						</form>
+					@endauth
+					<img class="contact__img" data="{{ asset('public/image/other/contact3.webp') }}" alt="" height="" width="">
 				</div>
 				<div>
 					<p class="contact__paragraph contact__paragraph--block">Гл. бухгалтер: Денисова Елена Владимировна</p>

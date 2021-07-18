@@ -29,7 +29,7 @@
 						@auth
 							<form class="form" action="{{ route('delete_article') }}" method="POST">
 								<input type="hidden" name="id" value="{{ $article->id }}">
-								<button class="form__button form__button--article">Удалить</button>
+								<button class="form__button article__button">Удалить</button>
 							</form>
 						@endauth
 						<a class="link button article__button" href="{{asset('/article')}}/{{$article->id}}">Читать далее...</a>

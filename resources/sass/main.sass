@@ -338,16 +338,22 @@ form[action*="/api/"]
 		visibility: unset !important
 
 .change-image
-	position: absolute
-	cursor: pointer
+	position: absolute !important
 	top: 10px
 	right: 10px
-	height: 50px
-	width: 50px
-	background: rgba(0, 0, 0, 1)
-	transition: .3s ease
-	&:hover
-		box-shadow: 0 0 4px black
+	& *:not(.change-image__button)
+		display: none
+	& .change-image__button
+		cursor: pointer
+		height: 50px
+		width: 50px
+		margin: 5px
+		border: 1px solid black
+		border-radius: 20px
+		background: white url('/public/image/other/exchange.svg') no-repeat center/70%
+		transition: .2s box-shadow ease
+		&:hover
+			box-shadow: 0 0 6px 1px black
 
 .form-box
 	margin: 1rem 0
@@ -369,10 +375,10 @@ form[action*="/api/"]
 	@extend %form-box_opt-2
 
 .form-box__textarea:not([name="message"])
-	display: none
+	visibility: hidden
 
 .form-box__textarea
-	height: 200px
+	height: 240px
 
 .category
 	display: grid
@@ -731,7 +737,6 @@ img
 		width: 100%
 
 	.comand-image
-		height: 100%
 		width: 100%
 		margin-right: unset
 
@@ -828,11 +833,11 @@ img
 		max-width: 50%
 
 	.article
-		grid-template-columns: auto
-		grid-template-rows: auto auto
+		flex-flow: row wrap
 
 	.article__buttons
 		margin-top: 30px
+		width: 100%
 		justify-content: space-between
 
 	// .for-the-entire-window

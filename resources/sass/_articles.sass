@@ -5,27 +5,35 @@
 	min-height: 100px
 	padding: 20px
 	margin: 20px 0
-	display: grid
-	grid-template-columns: 1fr 20%
+	// display: grid
+	// grid-template-columns: 1fr 20%
+	// align-items: center
+	display: flex
+	flex-flow: row nowrap
+	justify-content: space-between
 	align-items: center
 
 .article__button
-	justify-self: end
 	width: unset !important
+	white-space: nowrap
 
 .article__buttons
 	display: flex
-	flex-flow: row wrap
+	flex-flow: row nowrap
+	justify-content: flex-end
 	& > *:not(:first-child)
 		margin-left: 8px
 
-.form__button--article
-	width: unset !important
-
-.desc--article > p
-	text-align: justify
-	text-indent: 2rem
-	margin: 10px 0
+.desc--article 
+	& > p
+		text-align: justify
+		text-indent: 2rem
+		margin: 10px 0
+	& .image
+		width: 100%
+		padding: 10px
+	& img
+		max-width: 100%
 
 .form-box__input-text--article
 	width: 100%

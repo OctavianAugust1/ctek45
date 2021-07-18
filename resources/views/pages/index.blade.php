@@ -12,7 +12,7 @@
         <div class="organization-desc__quote animate-emergence">
             <h2 class="title-h2 homepage--title-h2">О фирме</h2>
             <div class="baloon">
-				<pre class="desc">{{ $mainInf[0] }}</pre>
+				<pre class="desc">{!! $mainInf[0] !!}</pre>
 				{{-- <p>Компания успешно развивается на рынке 30 лет.</p>
 				<p>Основные виды деятельности:</p>
 				<ul>
@@ -23,9 +23,39 @@
             </div>
         </div>
         <div class="organization-desc__thumbnail organization-desc__thumbnail--anim-translate">
-            <div class="organization-desc__project-1"><img class="organization-desc__img-1" src="{{ asset('public/image/homepage/company1_bg.webp') }}" data="{{ asset('public/image/homepage/company1_bg.webp') }}" alt="" width="" height=""></div>
-            <div class="organization-desc__project-2"><img class="organization-desc__img-2" src="{{ asset('public/image/homepage/company2_bg.webp') }}" data="{{ asset('public/image/homepage/company2_bg.webp') }}" alt="" width="" height=""></div>
-            <div class="organization-desc__project-3"><img class="organization-desc__img-3" src="{{ asset('public/image/homepage/company3_bg.webp') }}" data="{{ asset('public/image/homepage/company3_bg.webp') }}" alt="" width="" height=""></div>
+            <div class="organization-desc__project-1">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/homepage/company1_bg.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="organization-desc__img-1" src="{{ asset('public/image/homepage/company1_bg.webp') }}" data="{{ asset('public/image/homepage/company1_bg.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="organization-desc__project-2">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/homepage/company2_bg.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="organization-desc__img-2" src="{{ asset('public/image/homepage/company2_bg.webp') }}" data="{{ asset('public/image/homepage/company2_bg.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="organization-desc__project-3">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/homepage/company3_bg.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="organization-desc__img-3" src="{{ asset('public/image/homepage/company3_bg.webp') }}" data="{{ asset('public/image/homepage/company3_bg.webp') }}" alt="" width="" height="">
+			</div>
         </div>
     </div>
     
@@ -40,7 +70,7 @@
                 </svg>
             </div>
             <div class="advantages__desc baloon">
-				<pre class="desc">{{ $mainInf[1] }}</pre>
+				<pre class="desc">{!! $mainInf[1] !!}</pre>
                 {{-- <ul class="list">
                     <li class="item homepage__item">Полный цикл работ (разработка технического задания, РКД, обоснований, технологий, расчетов, согласование, сопровождение при изготовлении и пусконаладке)
                     Комплексный подход при разработке проекта по механике, гидравлике, пневматике, электронике, программному обеспечению</li>
@@ -57,7 +87,7 @@
                 </svg>                    
             </div>
             <div class="advantages__desc baloon">
-				<pre class="desc">{{ $mainInf[2] }}</pre>
+				<pre class="desc">{!! $mainInf[2] !!}</pre>
                 {{-- <ul class="list">
                     <li class="item homepage__item">Высокий уровень подготовки специалистов по разным областям науки и техники, знание ГОСТ, ЕСКД</li>
                     <li class="item">Все специалисты имеют высшее образование, опыт работы по специальности не менее 10 лет, многие окончили аспирантуру</li>
@@ -75,7 +105,7 @@
                 </svg>                    
             </div>
             <div class="advantages__desc baloon">
-				<pre class="desc">{{ $mainInf[3] }}</pre>
+				<pre class="desc">{!! $mainInf[3] !!}</pre>
                 {{-- <ul class="list">
                     <li class="item homepage__item">Удаленная работа с оплатой по фактическому объему</li>
                     <li class="item homepage__item">Заказчику нет необходимости содержать постоянно свой полный штат сотрудников</li>
@@ -88,17 +118,127 @@
     <div class="cooperate-with-us homepage--container">
         <h2 class="title-h2 homepage--title-h2 cooperate-with-us__title-h2">Сотрудничают с нами</h2>
         <div class="cooperate-with-us__images">
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo1.webp') }}" data="{{ asset('public/image/about-us/logo1.webp') }}" alt="" width="" height=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo3.webp') }}" data="{{ asset('public/image/about-us/logo3.webp') }}" alt="" width="" height=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo5.webp') }}" data="{{ asset('public/image/about-us/logo5.webp') }}" alt="" width="" height=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo7.webp') }}" data="{{ asset('public/image/about-us/logo7.webp') }}" alt="" width="" height=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo8.webp') }}" data="{{ asset('public/image/about-us/logo8.webp') }}" alt="" width="" height=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo9.webp') }}" data="{{ asset('public/image/about-us/logo9.webp') }}" alt="" width="" height=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo10.webp') }}" data="{{ asset('public/image/about-us/logo10.webp') }}" alt="" width="" height=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo11.webp') }}" data="{{ asset('public/image/about-us/logo11.webp') }}" alt="" width="" height=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo12.webp') }}" data="{{ asset('public/image/about-us/logo12.webp') }}" alt="" width="" height=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo13.webp') }}" data="{{ asset('public/image/about-us/logo13.webp') }}" alt="" width="" height=""></div>
-            <div class="cooperate-with-us__image"><img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo14.webp') }}" data="{{ asset('public/image/about-us/logo14.webp') }}" alt="" width="" height=""></div>
+            <div class="cooperate-with-us__image">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/logo1.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo1.webp') }}" data="{{ asset('public/image/about-us/logo1.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="cooperate-with-us__image">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/logo3.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo3.webp') }}" data="{{ asset('public/image/about-us/logo3.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="cooperate-with-us__image">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/logo5.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo5.webp') }}" data="{{ asset('public/image/about-us/logo5.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="cooperate-with-us__image">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/logo7.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo7.webp') }}" data="{{ asset('public/image/about-us/logo7.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="cooperate-with-us__image">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/logo8.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo8.webp') }}" data="{{ asset('public/image/about-us/logo8.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="cooperate-with-us__image">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/logo9.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo9.webp') }}" data="{{ asset('public/image/about-us/logo9.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="cooperate-with-us__image">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/logo10.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo10.webp') }}" data="{{ asset('public/image/about-us/logo10.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="cooperate-with-us__image">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/logo11.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo11.webp') }}" data="{{ asset('public/image/about-us/logo11.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="cooperate-with-us__image">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/logo12.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo12.webp') }}" data="{{ asset('public/image/about-us/logo12.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="cooperate-with-us__image">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/logo13.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo13.webp') }}" data="{{ asset('public/image/about-us/logo13.webp') }}" alt="" width="" height="">
+			</div>
+            <div class="cooperate-with-us__image">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/logo14.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="cooperate-with-us__img" src="{{ asset('public/image/about-us/logo14.webp') }}" data="{{ asset('public/image/about-us/logo14.webp') }}" alt="" width="" height="">
+			</div>
         </div>
     </div>
 @endsection

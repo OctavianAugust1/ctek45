@@ -14,7 +14,7 @@
 			</form>
 		@endauth
 		@guest
-			<pre class="desc">{{ $about_us }}</pre>
+			<pre class="desc">{!! $about_us !!}</pre>
 		@endguest
 		{{-- <p class="about-us__desc">
 			Предприятие ООО Фирма «СТЭК» было создано и зарегистрировано 28 декабря 1991 г. в форме товарищества с ограниченной ответственностью и ставило перед собой основные задачи:
@@ -97,14 +97,37 @@
 		<p style="font-weight: bold; margin-top: 20px; font-size: 1.5rem">Наша команда</p>
 		<div class="comand">
 			<div class="comand-image">
-				{{-- <div class="change-image"></div> --}}
-				<img class="comand-image__img" src="" data="{{ asset('public/image/about-us/comand1.webp') }}" alt="" width="" height="">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/comand1.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="comand-image__img" data="{{ asset('public/image/about-us/comand1.webp') }}" alt="" width="" height="">
 			</div>
 			<div class="comand-image">
-				<img class="comand-image__img" src="" data="{{ asset('public/image/about-us/comand3.webp') }}" alt="" width="" height="">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/comand3.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="comand-image__img" data="{{ asset('public/image/about-us/comand3.webp') }}" alt="" width="" height="">
 			</div>
 			<div class="comand-image">
-				<img class="comand-image__img" src="" data="{{ asset('public/image/about-us/comand2.webp') }}" alt="" width="" height="">
+				@auth
+					<form class="form change-image" action="{{ route('change_image') }}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="path" value="public/image/about-us/comand2.webp">
+						<input type="file" name="image" accept="image/*">
+						<div class="change-image__button"></div>
+						<button class="form__button button">Загрузить</button>
+					</form>
+				@endauth
+				<img class="comand-image__img" data="{{ asset('public/image/about-us/comand2.webp') }}" alt="" width="" height="">
 			</div>
 		</div>
 	</div>

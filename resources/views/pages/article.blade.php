@@ -22,7 +22,7 @@
 		@endauth
 		@guest
 			<div class="title-h2">{{ $article->name }}</div>
-			<pre class="desc desc--article">{{ $article->text }}</pre>
+			<pre class="desc desc--article">{!! $article->text !!}</pre>
 		@endguest
 	</div>
 @endsection

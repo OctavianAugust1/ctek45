@@ -37,19 +37,23 @@ class UploadController extends Controller
 		return array($pathImageBig, $pathImageSmall);
 	}
 
-	// public function change_image(Request $request)
-	// {
-	// 	$request->validate([
-	// 		'path' => 'required|string',
-	// 		'image' => 'required|image',
-	// 	]);
-	// 	$nameImage = ;
-	// 	$this->imageIntervention($request->path, $nameImage, $request->file);
-	// 	return response()->json([
-	// 		'message' => 'success',
-	// 		'path' => $request->path,
-	// 	]);
-	// }
+	public function change_image(Request $request)
+	{
+		$request->validate([
+			'path' => 'required|string',
+			'image' => 'required|image',
+		]);
+		$path = explode('/', $request->path);
+		$path = array_slice($path, 1, -1);
+		$path = implode('/', $path);
+		$name = explode('/', $request->path);
+		$name = end($name);
+		$imageStorage = $request->file('image')->storeAs($path, $name, 'site_files');
+		return response()->json([
+			'message' => 'success',
+			'path' => 'public/'.$imageStorage,
+		]);
+	}
 
 	public function change_main_page_inf(Request $request)
 	{
@@ -81,7 +85,7 @@ class UploadController extends Controller
 			'message' => 'success',
 			'fileName' => $nameImage.'.webp',
 			'uploaded' => 1,
-			'url' => $image,
+			'url' => asset($image),
 		]);
 	}
 
@@ -172,12 +176,16 @@ class UploadController extends Controller
         $nameImage = Str::random(20);
 		list($pathImageBig, $pathImageSmall) = $this->imageIntervention($path_section, $nameImage, $request->file('image_development'), 500, 300);
 
-		$category = Category::where('category', $request->category)>value('rotating_id');
+		if ($request->description) {
+			$description = $request->description;
+		} else {
+			$description = '';
+		}
 		
         $dev = Development::create([
             'name' => $request->name,
             'description' => $description,
-            'category' => $category,
+            'category' => $request->category,
         ]);
         $devId = $dev->id;
         DB::table('development_preview')->insert([
@@ -205,8 +213,8 @@ class UploadController extends Controller
 			'development' => [
 				'id' => $devId,
 				'name' => $request->name,
-				'categories' => Development::distinct()->pluck('category'),
-				'category' => $request->category,
+				'categories' => Category::distinct()->pluck('category'),
+				'category' => Category::where('rotating_id', $request->category)->value('category'),
 				'development_preview_small' => DB::table('development_preview')->where([['development_id', $devId], ['type', 'small']])->value('path'),
 				'development_preview_big' => DB::table('development_preview')->where([['development_id', $devId], ['type', 'big']])->value('path'),
 			]
@@ -219,7 +227,7 @@ class UploadController extends Controller
 			'category' => 'required|string|max:255',
 		]);
 
-		$id = Category::where('category', $request->category)->value('id');
+		$id = Category::where('category', $request->category)->value('rotating_id');
 		Development::where('id', $request->id)->update(['category' => $id]);
 
 		return response()->json([
