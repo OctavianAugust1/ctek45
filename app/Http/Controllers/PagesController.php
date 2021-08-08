@@ -22,7 +22,8 @@ class PagesController extends Controller
     }
     public function contacts()
     {
-        return view('pages.contacts');
+		$contacts = DB::table('contacts')->pluck('contact');
+        return view('pages.contacts', compact('contacts'));
     }
     public function articles()
     {

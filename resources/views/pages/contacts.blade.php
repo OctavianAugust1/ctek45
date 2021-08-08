@@ -3,15 +3,21 @@
 @section('description', 'Контактная информация Фирмы СТЭК, юридический адрес, персонал')
 @section('content')
 
+	@auth
+		<script src="{{ asset('/public/js/ckeditor5-build-balloon/ckeditor.js') }}"></script>
+		<script src="{{ asset('/public/js/ckeditor5-build-balloon/translations/ru.js') }}"></script>
+		<div id="balloon"></div>
+	@endauth
 	<h2 class="title-h2">Контакты</h2>
 	<div class="contact">
-		<div class="contact__desc">
-			<p class="contact__paragraph">ООО Фирма “СТЭК”</p>
+		<div id="1" class="contact__desc baloon baloon_contacts">
+			{!! $contacts[0] !!}
+			{{-- <p class="contact__paragraph">ООО Фирма “СТЭК”</p>
 			<p class="contact__paragraph">Юр. адрес: 640007, Курган, пр-кт Машиностроителей, 20А, оф.9</p>
 			<p class="contact__paragraph">ИНН  4501001740  КПП 450101001</p>
 			<p class="contact__paragraph">e-mail: ctek45@yandex.ru</p>
 			<p class="contact__paragraph">Почтовый адрес: </p>
-			<p class="contact__paragraph">640023, г. Курган, 3 мкр., д.34А, кв.46</p>
+			<p class="contact__paragraph">640023, г. Курган, 3 мкр., д.34А, кв.46</p> --}}
 		</div>
 		
 		<div class="contact__desc contact__blocks">

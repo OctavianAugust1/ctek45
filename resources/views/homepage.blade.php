@@ -85,12 +85,22 @@
 			<img class="logo footer__logo" data="{{ asset('public/image/logo/logo1.svg') }}" alt="">
 			<span class="footer__caption">Контактная информация</span>
 			<div class="footer__desc">
-				<div>
+				@if (url()->current() == route('contacts'))
+					<div id="2" class="baloon baloon_footer_contacts">
+						{!! $contacts[1] !!}
+					</div>
+				@else
+					@php
+						$contacts = DB::table('contacts')->pluck('contact');
+					@endphp
+					{!! $contacts[1] !!}
+				@endif
+				{{-- <div>
 					<p>ООО Фирма «СТЭК»</p>
 					<p>640007, Россия, г.Курган, пр-кт Машиностроителей, 20А, оф.9</p>
 					<p>е-mail: ctek45@yandex.ru</p>
 				</div>
-				<p>Директор: Денисов Юрий Геннадьевич</p>
+				<p>Директор: Денисов Юрий Геннадьевич</p> --}}
 			</div>
 		</div>
 	</footer>

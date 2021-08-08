@@ -1,7 +1,7 @@
 {
-    "/js/ajax.js": "/js/ajax.js?id=5c59bb83c443d9895583",
-    "/css/main.css": "/css/main.css?id=a1ea4a8ae386e5ed5d3d",
-    "/js/func.js": "/js/func.js?id=4d47550e2eac7768110e",
-    "/js/main.js": "/js/main.js?id=be275ed5f224c752389e",
-    "/js/all.js": "/js/all.js?id=97199cf011e29e7adb2a"
+    "/js/ajax.js": "/js/ajax.js",
+    "/css/main.css": "/css/main.css",
+    "/js/func.js": "/js/func.js",
+    "/js/main.js": "/js/main.js",
+    "/js/all.js": "/js/all.js"
 }

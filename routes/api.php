@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 
 
 Route::middleware('auth:api')->group(function () {
+	Route::post('change_contacts', 'UploadController@change_contacts')->name('change_contacts');
 	Route::post('change_image', 'UploadController@change_image')->name('change_image');
 	
 	Route::post('about_us_change', 'UploadController@about_us_change')->name('about_us_change');

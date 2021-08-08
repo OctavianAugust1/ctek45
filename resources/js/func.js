@@ -520,8 +520,12 @@ const func = {
 			BalloonEditor
 				.create(element, config)
 				.then(newEditor => {
-					change_main_page_inf(element, id, newEditor, window.location.origin + '/api/' + 'change_main_page_inf')
-					id += 1
+					if (!(element.classList.contains('baloon_contacts') || element.classList.contains('baloon_footer_contacts'))) {
+						change_main_page_inf(element, id, newEditor, window.location.origin + '/api/' + 'change_main_page_inf')
+						id += 1
+					} else {
+						change_contacts(element, element.id, newEditor, window.location.origin + '/api/' + 'change_contacts')
+					}
 				})
 				.catch(error => console.error(error))
 		})
@@ -843,6 +847,16 @@ const func = {
 				const formData = new FormData()
 				formData.append('id', id)
 				formData.append('text', text.getData())
+				sendRequest('POST', request, formData).catch(err => console.log(err))
+			})
+		},
+
+		// change_contacts
+		change_contacts: (editor, id, text, request) => {
+			editor.addEventListener('DOMSubtreeModified', () => {
+				const formData = new FormData()
+				formData.append('id', id)
+				formData.append('contact', text.getData())
 				sendRequest('POST', request, formData).catch(err => console.log(err))
 			})
 		},
@@ -1184,6 +1198,7 @@ export const sendRequest = func.ajax.sendRequest
 export const changedNamePatent = func.ajax.changedNamePatent
 export const changedTextAboutUs = func.ajax.changedTextAboutUs
 export const change_main_page_inf = func.ajax.change_main_page_inf
+export const change_contacts = func.ajax.change_contacts
 export const changedNameAndDescDev = func.ajax.changedNameAndDescDev
 export const changeCategory = func.ajax.changeCategory
 export const response = func.ajax.response

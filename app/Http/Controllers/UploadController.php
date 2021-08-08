@@ -38,6 +38,18 @@ class UploadController extends Controller
 		return array($pathImageBig, $pathImageSmall);
 	}
 
+	public function change_contacts(Request $request)
+	{
+		$request->validate([
+			'id' => 'required|integer',
+			'contact' => 'required|string'
+		]);
+		DB::table('contacts')->where('id', $request->id)->update(['contact' => $request->contact]);
+		return response()->json([
+			'message' => 'success'
+		], 200);
+	}
+
 	public function change_image(Request $request)
 	{
 		$request->validate([
