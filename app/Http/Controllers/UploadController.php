@@ -10,6 +10,7 @@ use App\Category;
 use App\Article;
 use App\Http\Requests\PatentValidation;
 use App\Http\Requests\DevelopmentValidation;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,7 +21,7 @@ class UploadController extends Controller
 		if ($file->extension() == 'gif') {
 			$image_small = $file->store('public/'.$path_section.'/small/'.$devId);
 			$image_small = str_ireplace('public', 'storage', $image_small);
-			\Intervention\Image\Facades\Image::make($image_small)->fit($height, $width)->save($image_small, 100);
+			Image::make($image_small)->fit($height, $width)->save($image_small, 100);
 			$image_small = str_ireplace('storage', 'public/storage', $image_small);
 
 			$image_big = $file->store('public/'.$path_section.'/big/'.$devId);
@@ -29,8 +30,8 @@ class UploadController extends Controller
 		}
         $pathImageBig = 'storage/'.$path_section.'/big/'.$devId.$nameImage.'.webp';
         $pathImageSmall = 'storage/'.$path_section.'/small/'.$devId.$nameImage.'_small.webp';
-        \Intervention\Image\Facades\Image::make($file)->save($pathImageBig, 80);
-        \Intervention\Image\Facades\Image::make($pathImageBig)->fit($height, $width)->save($pathImageSmall, 70);
+        Image::make($file)->save($pathImageBig, 80);
+        Image::make($pathImageBig)->fit($height, $width)->save($pathImageSmall, 70);
         $pathImageBig = 'public/'.$pathImageBig;
         $pathImageSmall = 'public/'.$pathImageSmall;
 
