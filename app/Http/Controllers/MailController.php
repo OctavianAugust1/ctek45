@@ -16,7 +16,7 @@ class MailController extends Controller
         $msg = $request->message;
         Mail::to('stas_petrov_01@mail.ru')->send(new OrderShipped($name, $email, $msg));
         return response()->json([
-			'message' => 'success'
-		]);
+            'message' => 'success'
+        ]);
     }
 }

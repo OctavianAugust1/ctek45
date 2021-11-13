@@ -10,6 +10,7 @@ class SeoController extends Controller
     {
         return 'sitemap';
     }
+
     public function robots()
     {
         return 'seo';

@@ -15,7 +15,13 @@ class PatentController extends Controller
     {
         $path_section = 'patent';
         $nameImage = Str::random(20);
-		list($pathImageBig, $pathImageSmall) = $this->imageIntervention($path_section, $nameImage, $request->file('image_patent'), 350, 500);
+        list($pathImageBig, $pathImageSmall) = $this->imageIntervention(
+            $path_section,
+            $nameImage,
+            $request->file('image_patent'),
+            350,
+            500
+        );
 
         $patent = Patent::create([
             'name' => $request->name
@@ -26,20 +32,27 @@ class PatentController extends Controller
             ['patent_id' => $maxId, 'type' => 'small', 'path' => $pathImageSmall]
         ]);
         return response()->json([
-			'message' => 'success',
-			'patent' => [
-				'id' => $patent->id,
-				'name' => $patent->name,
-				'patent_preview_small' => DB::table('patent_preview')->where([['patent_id', $patent->id], ['type', 'small']])->value('path'),
-				'patent_preview_big' => DB::table('patent_preview')->where([['patent_id', $patent->id], ['type', 'big']])->value('path'),
-			]
-		]);
+            'message' => 'success',
+            'patent' => [
+                'id' => $patent->id,
+                'name' => $patent->name,
+                'patent_preview_small' => DB::table('patent_preview')->where([
+                    ['patent_id', $patent->id],
+                    ['type', 'small']
+                ])->value('path'),
+                'patent_preview_big' => DB::table('patent_preview')->where([
+                    ['patent_id', $patent->id],
+                    ['type', 'big']
+                ])->value('path'),
+            ]
+        ]);
     }
+
     public function delete_patent(Request $request)
     {
-		$request->validate([
-			'patent_id' => 'required|integer',
-		]);
+        $request->validate([
+            'patent_id' => 'required|integer',
+        ]);
         $images = DB::table('patent_preview')->where('patent_id', $request->patent_id)->get();
         foreach ($images as $image) {
             $image_path = str_ireplace('public/storage', 'public', $image->path);
@@ -49,9 +62,10 @@ class PatentController extends Controller
         DB::table('patents')->where('id', $request->patent_id)->delete();
 
         return response()->json([
-			'message' => 'success',
-		]);
+            'message' => 'success',
+        ]);
     }
+
     public function change_patent(Request $request)
     {
         $request->validate([
@@ -65,18 +79,37 @@ class PatentController extends Controller
 
         $path_section = 'patent';
         $nameImage = Str::random(20);
-		list($pathImageBig, $pathImageSmall) = $this->imageIntervention($path_section, $nameImage, $request->file('image_patent'), 350, 500);
+        list($pathImageBig, $pathImageSmall) = $this->imageIntervention(
+            $path_section,
+            $nameImage,
+            $request->file('image_patent'),
+            350,
+            500
+        );
 
-        DB::table('patent_preview')->where([['patent_id', $request->id], ['type', 'big']])->update(['path' => $pathImageBig]);
-        DB::table('patent_preview')->where([['patent_id', $request->id], ['type', 'small']])->update(['path' => $pathImageSmall]);
+        DB::table('patent_preview')->where([
+            ['patent_id', $request->id],
+            ['type', 'big']
+        ])->update(['path' => $pathImageBig]);
+        DB::table('patent_preview')->where([
+            ['patent_id', $request->id],
+            ['type', 'small']
+        ])->update(['path' => $pathImageSmall]);
         return response()->json([
-			'message' => 'success',
-			'patent' => [
-				'patent_preview_big' => DB::table('patent_preview')->where([['patent_id', $request->id], ['type', 'big']])->value('path'),
-				'patent_preview_small' => DB::table('patent_preview')->where([['patent_id', $request->id], ['type', 'small']])->value('path'),
-			]
-		]);
+            'message' => 'success',
+            'patent' => [
+                'patent_preview_big' => DB::table('patent_preview')->where([
+                    ['patent_id', $request->id],
+                    ['type', 'big']
+                ])->value('path'),
+                'patent_preview_small' => DB::table('patent_preview')->where([
+                    ['patent_id', $request->id],
+                    ['type', 'small']
+                ])->value('path'),
+            ]
+        ]);
     }
+
     public function change_information_patent(Request $request)
     {
         $request->validate([
@@ -84,11 +117,11 @@ class PatentController extends Controller
         ]);
         DB::table('patents')->where('id', $request->id)->update(['name' => $request->name]);
         return response()->json([
-			'message' => 'success',
-			'patent' => [
-				'id' => $request->id,
-				'name' => DB::table('patents')->where('id', $request->id)->value('name'),
-			]
-		]);
+            'message' => 'success',
+            'patent' => [
+                'id' => $request->id,
+                'name' => DB::table('patents')->where('id', $request->id)->value('name'),
+            ]
+        ]);
     }
 }
