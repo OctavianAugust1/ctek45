@@ -82,4 +82,9 @@ class PagesController extends Controller
         $categories = Category::orderBy('rotating_id', 'asc')->get();
         return view('pages.admin', compact(['categories', 'categories_count', 'first_category', 'latest_category']));
     }
+
+    public function admin1()
+    {
+        return view('backend.admin1');
+    }
 }

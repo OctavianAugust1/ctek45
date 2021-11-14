@@ -14,7 +14,7 @@
 			(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
 			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
 			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-		
+
 			ym(83810059, "init", {
 				clickmap:true,
 				trackLinks:true,
@@ -32,9 +32,8 @@
 		})(window,document,'script','dataLayer','GTM-KJTRC53');</script>
 		<!-- End Google Tag Manager -->
 	@endif
-	
+
 	<link rel="stylesheet" href="{{ asset('public'.mix("/css/main.css")) }}" type="text/css">
-	<link rel="icon" href="{{ asset('public/image/logo/icon.ico') }}" type="image/x-icon">
 
 	<title>@yield('title')Конструкторское бюро ООО Фирма СТЭК</title>
 	<meta name="description" content="@yield('description')">
@@ -46,7 +45,7 @@
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
 	@endif
-	
+
 	<header class="header">
 		<div class="header__grid header__grid--app container">
 			<div class="hamburger">
@@ -112,7 +111,7 @@
 			</div>
 		</div>
 	</footer>
-	
+
 	<script type="text/javascript" type="module" src="{{ asset('public'.mix('/js/all.js')) }}" defer></script>
 </body>
 </html>

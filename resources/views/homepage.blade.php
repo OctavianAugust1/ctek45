@@ -14,7 +14,7 @@
 			(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
 			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
 			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-		
+
 			ym(83810059, "init", {
 				clickmap:true,
 				trackLinks:true,
@@ -32,9 +32,8 @@
 		})(window,document,'script','dataLayer','GTM-KJTRC53');</script>
 		<!-- End Google Tag Manager -->
 	@endif
-	
+
 	<link rel="stylesheet" type="text/css" href="{{ asset('public'.mix("/css/main.css")) }}">
-	<link rel="icon" href="{{ asset('public/image/logo/icon.ico') }}" type="image/x-icon">
 
 	<title>Конструкторское бюро ООО Фирма СТЭК</title>
 	<meta name="description" content="Конструкторское бюро ООО Фирма СТЭК в городе Кургане является инжиниринговой компанией">
@@ -77,7 +76,7 @@
 							<svg class="sign-out" viewBox="0 0 512 512">
 								<path class="sign-out1" fill="currentColor" d="M497 273L329 441c-15 15-41 4.5-41-17v-96H152c-13.3 0-24-10.7-24-24v-96c0-13.3 10.7-24 24-24h136V88c0-21.4 25.9-32 41-17l168 168c9.3 9.4 9.3 24.6 0 34zM192 436v-40c0-6.6-5.4-12-12-12H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h84c6.6 0 12-5.4 12-12V76c0-6.6-5.4-12-12-12H96c-53 0-96 43-96 96v192c0 53 43 96 96 96h84c6.6 0 12-5.4 12-12z">
 								</path>
-							</svg>	
+							</svg>
 						</a>
 					@endauth
 				</nav>

@@ -86,7 +86,7 @@ class DevelopmentController extends Controller
     {
         $request->validate([
             'id' => 'required|integer',
-            'category' => 'required|string|max:255',
+            'category' => 'required|integer',
         ]);
 
         $id = Category::where('category', $request->category)->value('rotating_id');

@@ -16,6 +16,7 @@ Route::get('/', 'PagesController@index')->name('index');
 //Route::get('robots.txt', 'SeoController@robots')->name('robots');
 Route::middleware('auth')->group(function () {
 	Route::get('admin', 'PagesController@admin')->name('admin');
+	Route::get('admin1', 'PagesController@admin1')->name('admin1');
 });
 Route::get('about_us', 'PagesController@about_us')->name('about_us');
 Route::get('articles', 'PagesController@articles')->name('articles');
