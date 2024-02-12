@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require 'api.php';
+
 Route::get('{any}', fn() => view('app'))->where('any', '.*');

@@ -20,6 +20,7 @@ return new class extends Migration
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->string('name');
+            $table->string('cover');
             $table->text('description')->nullable();
             $table->timestamps();
         });
